@@ -13,8 +13,32 @@ struct BlastiApp: App {
 
     var body: some Scene {
         WindowGroup {
-            Login()
+            SplashScreenView()
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
         }
+    }
+}
+
+struct SplashScreenView: View {
+    @State private var isLoading = true
+
+    var body: some View {
+        if isLoading {
+            AnimatedBackground()
+                .onAppear {
+                    // Simulate loading for 3 seconds, then navigate to login page
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+                        isLoading = false
+                    }
+                }
+        } else {
+            Login()
+        }
+    }
+}
+
+struct LoginView: View {
+    var body: some View {
+        Text("Login Page")
     }
 }

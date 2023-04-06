@@ -15,6 +15,9 @@
 		22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5E29D4D77300615678 /* Preview Assets.xcassets */; };
 		22F05E6129D4D77300615678 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6029D4D77300615678 /* Persistence.swift */; };
 		22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6229D4D77300615678 /* Blasti.xcdatamodeld */; };
+		7AAEE59D29DDAF4C0095EADD /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59C29DDAF4C0095EADD /* test.swift */; };
+		7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59F29DDC40E0095EADD /* ProfileView.swift */; };
+		7AAEE5A229DDC6A20095EADD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE5A129DDC6A20095EADD /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,6 +30,9 @@
 		22F05E5E29D4D77300615678 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22F05E6029D4D77300615678 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		22F05E6329D4D77300615678 /* Blasti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Blasti.xcdatamodel; sourceTree = "<group>"; };
+		7AAEE59C29DDAF4C0095EADD /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		7AAEE59F29DDC40E0095EADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		7AAEE5A129DDC6A20095EADD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Blasti/Views/profile/User.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,6 +49,7 @@
 		228C176A29D6319E00848BFC /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				7AAEE5A129DDC6A20095EADD /* User.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -57,18 +64,20 @@
 		228C176D29D6333400848BFC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				7AAEE59E29DDC3E30095EADD /* profile */,
 				228C176529D6260D00848BFC /* Register.swift */,
 				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
 				228C176F29D6338600848BFC /* Login.swift */,
+				7AAEE59C29DDAF4C0095EADD /* test.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		228C176E29D6334200848BFC /* Services */ = {
+		228C176E29D6334200848BFC /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
 			);
-			path = Services;
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 		22F05E4B29D4D77200615678 = {
@@ -90,7 +99,7 @@
 		22F05E5629D4D77200615678 /* Blasti */ = {
 			isa = PBXGroup;
 			children = (
-				228C176E29D6334200848BFC /* Services */,
+				228C176E29D6334200848BFC /* Utilities */,
 				228C176D29D6333400848BFC /* Views */,
 				228C176B29D631BA00848BFC /* ViewModels */,
 				228C176A29D6319E00848BFC /* Models */,
@@ -109,6 +118,14 @@
 				22F05E5E29D4D77300615678 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		7AAEE59E29DDC3E30095EADD /* profile */ = {
+			isa = PBXGroup;
+			children = (
+				7AAEE59F29DDC40E0095EADD /* ProfileView.swift */,
+			);
+			path = profile;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -181,12 +198,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
 				22F05E6129D4D77300615678 /* Persistence.swift in Sources */,
 				228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */,
 				228C176629D6260D00848BFC /* Register.swift in Sources */,
 				22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */,
+				7AAEE5A229DDC6A20095EADD /* User.swift in Sources */,
 				22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */,
 				228C177029D633AC00848BFC /* Login.swift in Sources */,
+				7AAEE59D29DDAF4C0095EADD /* test.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
