@@ -44,7 +44,7 @@ struct ForgotPasswordView: View {
                             // Send email to user with reset password link
                             self.showAlert = true
                         }) {
-                            Text("Reset Password")
+                            Text("Send Email")
                                 .font(.system(size: 18, design: .rounded).weight(.light))
                                 .foregroundColor(.black)
                                 .padding()

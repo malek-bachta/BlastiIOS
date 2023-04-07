@@ -14,11 +14,14 @@ class SigninViewModel: ObservableObject {
     private let networkService = NetworkService()
     @Published var email = ""
     @Published var password = ""
+    @Published var log : Bool = false
     
     func signIn(email: String, password: String) {
             networkService.signIn(email: email, password: password, onSuccess: { (title, message) in
                 DispatchQueue.main.async {
+                    self.log = true
                     self.signinResult = .success((title, message))
+                    
                 }
             }, onFailure: { (title, message) in
                 DispatchQueue.main.async {

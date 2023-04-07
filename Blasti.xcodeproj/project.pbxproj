@@ -15,6 +15,7 @@
 		22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */; };
 		22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */; };
 		22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455D429DFD27A001ACFF6 /* EditProfile.swift */; };
+		22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */; };
 		22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E5729D4D77200615678 /* BlastiApp.swift */; };
 		22F05E5C29D4D77300615678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5B29D4D77300615678 /* Assets.xcassets */; };
 		22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5E29D4D77300615678 /* Preview Assets.xcassets */; };
@@ -33,6 +34,7 @@
 		22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		22C455D429DFD27A001ACFF6 /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
+		22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
 		22F05E5429D4D77200615678 /* Blasti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blasti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F05E5729D4D77200615678 /* BlastiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlastiApp.swift; sourceTree = "<group>"; };
 		22F05E5B29D4D77300615678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -76,11 +78,9 @@
 		228C176D29D6333400848BFC /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				22C455D929DFFC6C001ACFF6 /* aAuthenfication */,
 				7AAEE59E29DDC3E30095EADD /* profile */,
 				7AAEE59C29DDAF4C0095EADD /* splash.swift */,
-				228C176529D6260D00848BFC /* Register.swift */,
-				228C176F29D6338600848BFC /* Login.swift */,
-				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -91,6 +91,17 @@
 				22C455CC29DF7B78001ACFF6 /* APImanager.swift */,
 			);
 			path = Utilities;
+			sourceTree = "<group>";
+		};
+		22C455D929DFFC6C001ACFF6 /* aAuthenfication */ = {
+			isa = PBXGroup;
+			children = (
+				228C176529D6260D00848BFC /* Register.swift */,
+				228C176F29D6338600848BFC /* Login.swift */,
+				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
+				22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */,
+			);
+			path = aAuthenfication;
 			sourceTree = "<group>";
 		};
 		22F05E4B29D4D77200615678 = {
@@ -220,6 +231,7 @@
 			files = (
 				22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */,
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
+				22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */,
 				22F05E6129D4D77300615678 /* Persistence.swift in Sources */,
 				228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */,
 				228C176629D6260D00848BFC /* Register.swift in Sources */,

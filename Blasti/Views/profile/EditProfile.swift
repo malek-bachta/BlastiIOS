@@ -24,41 +24,71 @@ struct EditProfileView: View {
         NavigationView {
            
                 ZStack{
-                        Color.black
-                            .ignoresSafeArea()
+                    LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+                        
+                        .ignoresSafeArea()
+                   
                     
-                    VStack {
-                        Form {
-                            Section(header: Text("Name")) {
-                                TextField("Enter your name", text: $name)
-                            }
-                            .listRowBackground(Color.yellow.opacity(0.7))
-                            Section(header: Text("Email")) {
-                                TextField("Enter your email", text: $email)
-                                    .keyboardType(.emailAddress)
-                            }
-                            .listRowBackground(Color.yellow.opacity(0.7))
-                            Section(header: Text("Bio")) {
-                                TextEditor(text: $bio)
-                                    .frame(minHeight: 100)
-                            } .listRowBackground(Color.yellow.opacity(0.7))
+                    VStack (alignment: .leading, spacing: 5){
+                        
+                            Text("Edit Profile")
+                                .font(.system(size: 30, design: .rounded).weight(.bold))
+                                
+                                .foregroundColor(.white)
+                                .padding()
+                        VStack (alignment: .leading, spacing: 10){
+                            Text("Name")
+                                .padding()
                             
-                            Section(header: Text("Change Password")) {
+                                .font(.system(size: 20, design: .rounded).weight(.light))
+                                .foregroundColor(.white)
+                            TextField("Change name", text: $name)
+                                .padding()
+                                .foregroundColor(.white)
+                                .background(Color.white.opacity(0.4))
+                                .frame(width: 350, height: 50)
+                                .cornerRadius(10)
+                            
+                                        
+                            Text("Email")
+                                .font(.system(size: 20, design: .rounded).weight(.light))
+                                .foregroundColor(.white)
+                                .padding()
+                            TextField("", text: $email)
+                                .padding()
+                                .background(Color.white.opacity(0.4))
+                                .frame(width: 350, height: 50)
+                                .cornerRadius(10)
+                            
+                                .foregroundColor(.white)
+                           }
+                        
+                            VStack() {
+                                Text("Change Password")
+                                                                    .foregroundColor(.white)
+                                .font(.system(size: 20, design: .rounded).weight(.semibold))
+                               
+                                    //.padding(.bottom, 10)
                                 SecureField("Current Password", text: $currentPassword)
                                 SecureField("New Password", text: $newPassword)
                                 SecureField("Confirm New Password", text: $confirmNewPassword)
                             }
-                            .listRowBackground(Color.yellow.opacity(0.7))
+                            .padding()
+                            .background(Color.white.opacity(0.4))
+                            .cornerRadius(10)
+                            .shadow(radius: 40)
+                            .frame(width: 350, height: 200)
+                            
                         }
-                    }
+
+                    
                 }
-                .navigationBarTitle("Edit Profile")
                 .navigationBarItems(trailing: Button(action: saveChanges) {
                     Text("Save")
-                        .colorMultiply(.green)
+                      .colorMultiply(.white)
                 })
                 .alert(isPresented: $showingAlert) {
-                    Alert(title: Text("Error"), message: Text("There was an error saving your changes."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Couldn't Save"), message: Text("There was an error saving your changes."), dismissButton: .default(Text("OK")))
                 }
             
                }

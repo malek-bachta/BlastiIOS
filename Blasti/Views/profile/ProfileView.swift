@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct Profil: View {
+struct ProfileView: View {
     
     @State var UserName: String = "siwar"
     @State var email: String = ""
@@ -66,16 +66,17 @@ struct Profil: View {
                        }
                 
                 Button(action: {
-                           // handle button tap
-                       }) {
-                           Image( systemName: "gear")
-                    
-                               .foregroundColor(Color.white)
-                               .font(.system(size: 28))
-                                .offset(x: 165, y:-385)
-                                .shadow(radius: 300)
-                       }
-            
+                    // handle button tap
+                }) {
+                    //NavigationLink(destination: EditProfileView()) { 
+                        Image(systemName: "gear")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 28))
+                            .offset(x: 165, y: -385)
+                            .shadow(radius: 300)
+                    //}
+                }
+
                 
                 VStack {
                     Spacer()
@@ -165,6 +166,6 @@ struct Profil: View {
 
 struct Profil_Previews: PreviewProvider {
     static var previews: some View {
-        Profil()
+        ProfileView()
     }
 }

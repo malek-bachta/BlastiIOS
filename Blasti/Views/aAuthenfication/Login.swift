@@ -14,9 +14,17 @@ struct Login: View {
     @State private var showingLoginScreen = false
     @State private var alertMessage = ""
     @State private var showAlert = false
+    @State private var isLoading = false
+    @State private var isHomeActive = false
+
+
     
     var body: some View {
         NavigationView{
+            if (sm.log){
+                ProfileView()
+            }else{
+                
             ZStack {
                 
                 Color.black
@@ -86,7 +94,7 @@ struct Login: View {
                             .cornerRadius(10)
                             .padding(.bottom,5)
                     }
-                        
+                    
                     
                     NavigationLink(destination: ForgotPasswordView(), label: {
                         Text("Forget password")
@@ -94,16 +102,17 @@ struct Login: View {
                             .offset(x:75)
                             .padding(.bottom,15)
                             .font(.system(size: 15, weight:.semibold))
-                                    })
+                    })
                     Button(action: {
-                        if  sm.email.isEmpty || sm.password.isEmpty {
-                            alertMessage = "Please fill in all fields."
-                            showAlert = true
-                        } else if !isValidEmail(email: sm.email) {
-                            alertMessage = "Please enter a valid email address."
-                            showAlert = true
-                        }else{
+                        withAnimation {
+                            isLoading = true
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
+                                isLoading = false
+                            }
+                        }
+                        if  verify() {
                             sm.signIn(email: sm.email, password: sm.password)
+                            
                         }
                     }) {
                         Text("Login")
@@ -113,23 +122,24 @@ struct Login: View {
                             .background(Color.yellow)
                             .cornerRadius(10)
                             .font(.system(size: 20, design: .rounded).weight(.bold))
-                    }
-                
-                .padding()
-                .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                }
-            
-                    
                         
-                        Text("New Here ?  ")
-                            .foregroundColor(.white)
-                            .offset(x:-30, y:33)
-                            .padding(.bottom,8)
-                            .font(.system(size: 15, weight: .semibold))
+                    }
                     
-                    NavigationLink(destination: Register(), label: {
-
+                    .padding()
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                    }
+                    
+                    
+                    
+                    Text("New Here ?  ")
+                        .foregroundColor(.white)
+                        .offset(x:-30, y:33)
+                        .padding(.bottom,8)
+                        .font(.system(size: 15, weight: .semibold))
+                    
+                    NavigationLink(destination: Register().navigationBarBackButtonHidden(), label: {
+                        
                         Text("register")
                             .foregroundColor(.yellow)
                             .offset(x:45)
@@ -139,33 +149,35 @@ struct Login: View {
                     })
                     
                     
-                    NavigationLink (destination: Text("you are logged in  @\(sm.email)"), isActive: $showingLoginScreen){
-                        EmptyView()
-                    }
+                }
                              
                 }
             }
-            .navigationBarHidden(true)
         }
     }
-    func autheticateUser(username:String, password:String){
-         if username.lowercased()=="dorra05"
-        {
-             WrongEmail = 0
-             if password.lowercased() ==    "dorra123"
-             {
-                 Wrongpassword = 0
-                 showingLoginScreen = true
-             }
-             else
-                {
-                 Wrongpassword = 2
-                }
-         }
-            else{
-                WrongEmail = 2
-                }
+    
+    private func verify() -> Bool {
+        var isValid = true
+        
+        if  sm.email.isEmpty || sm.password.isEmpty {
+            alertMessage = "Please fill in all fields."
+            showAlert = true
+        } else if !isValidEmail(email: sm.email) {
+            alertMessage = "Please enter a valid email address."
+            showAlert = true
+        }
+        return isValid
     }
+    
+   /* private func Signin() {
+        sm.signIn(email: sm.email, password: sm.password, onSuccess: { token in
+            isHomeActive=true
+           
+        }, onFailure: {
+            alertMessage = "Please enter a valid email address."
+            showAlert = true
+        })
+    }*/
         
     struct ContentView_Previews : PreviewProvider
     {

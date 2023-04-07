@@ -18,7 +18,9 @@ struct AnimatedBackground: View {
         
     
     var body: some View {
+        
         ZStack {
+            
             LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.black]), startPoint: .topLeading, endPoint: .bottomTrailing)
                 .ignoresSafeArea()
             ForEach(circleSizes, id: \.self) { size in
@@ -46,6 +48,12 @@ struct AnimatedBackground: View {
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     .scaleEffect(2)
             }
+            Image("logoo")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 80)
+                        .offset(x: 0, y: 0)
+                       
             
         }
         .onAppear {
@@ -53,7 +61,7 @@ struct AnimatedBackground: View {
                 self.xOffset = UIScreen.main.bounds.width / 2
                 self.yOffset = UIScreen.main.bounds.height / 2
             }
-            // Simulate loading for 3 seconds, then stop loading and show the circles
+            //10 s delay
             DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
                 self.isLoading = false
             }

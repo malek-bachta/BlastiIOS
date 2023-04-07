@@ -35,21 +35,48 @@ class NetworkService {
         let signinURL = "https://serverblasti.onrender.com/api/user/login"
         AF.request(signinURL, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
-            .validate(contentType: ["application/json"])
+            .validate(contentType: ["application/json", "text/html"]) // Update content types
             .responseJSON { response in
                 switch response.result {
                 case .success(let data):
                     guard let jsonData = data as? [String: Any],
                         let statusCode = response.response?.statusCode else {
+                            onFailure("Error", "Invalid response format")
+                            return
+                    }
+                    onSuccess("Success", "You are now signed in.")
+                case .failure(let error):
+                    print(response.result)
+                    onFailure("Error", "Network request failed")
+                }
+        }
+    }
+    
+ 
+
+    func editProfile(email: String, password: String, username: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
+        let editProfileURL = "https://serverblasti.onrender.com/api/user/editProfile" // Update URL
+        AF.request(editProfileURL, method: .post, parameters: ["email": email, "password": password, "username": username], encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<401)
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                switch response.result {
+                case .success(let data):
+                    guard let jsonData = data as? [String: Any],
+                            let statusCode = response.response?.statusCode else {
                         onFailure("Error", "Invalid response format")
                         return
                     }
-                       onSuccess("Success", "You are now signed in.")
-                   case .failure(let error):
-                       print(error)
-                       onFailure("Error", "Network request failed")
-                   }
-               }
-       }
-}
+                    onSuccess("Success", "Profile updated successfully.")
+                case .failure(let error):
+                    print(error)
+                    onFailure("Error", "Network request failed")
+                }
+            }
+        }
+
+    }
+
+
+
 
