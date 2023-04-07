@@ -10,7 +10,7 @@ struct ProfileView: View {
     @State var image: UIImage?
     @State private var isPresentingConfirm: Bool = false
     @State private var isPresentingAlert: Bool = false
-    @State private var colors = [Color.black, Color.yellow]
+    @State private var colors = [Color.yellow, Color.black]
 
     var body: some View {
         NavigationView {
@@ -68,7 +68,7 @@ struct ProfileView: View {
                 Button(action: {
                     // handle button tap
                 }) {
-                    //NavigationLink(destination: EditProfileView()) { 
+                   // NavigationLink(destination: EditProfileView()) {
                         Image(systemName: "gear")
                             .foregroundColor(Color.white)
                             .font(.system(size: 28))

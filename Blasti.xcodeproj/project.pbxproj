@@ -96,7 +96,6 @@
 		22C455D929DFFC6C001ACFF6 /* aAuthenfication */ = {
 			isa = PBXGroup;
 			children = (
-				228C176529D6260D00848BFC /* Register.swift */,
 				228C176F29D6338600848BFC /* Login.swift */,
 				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
 				22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */,
@@ -149,6 +148,7 @@
 			children = (
 				7AAEE59F29DDC40E0095EADD /* ProfileView.swift */,
 				22C455D429DFD27A001ACFF6 /* EditProfile.swift */,
+				228C176529D6260D00848BFC /* Register.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";

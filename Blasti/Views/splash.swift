@@ -48,11 +48,11 @@ struct AnimatedBackground: View {
                     .progressViewStyle(CircularProgressViewStyle(tint: .white))
                     .scaleEffect(2)
             }
-            Image("logoo")
+            Image("logos")
                         .resizable()
                         .scaledToFit()
-                        .frame(width: 80)
-                        .offset(x: 0, y: 0)
+                        .frame(width: 200)
+                        .offset(x: 13, y: 0)
                        
             
         }

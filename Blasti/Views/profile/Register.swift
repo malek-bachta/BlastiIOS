@@ -22,9 +22,10 @@ struct Register: View {
     var body: some View {
         NavigationView{
             if (su.sig){
-                ProfileView()
+                Login()
             }else{
                 ZStack {
+                    
                     Color.black
                         .ignoresSafeArea()
                     Circle()
@@ -49,8 +50,9 @@ struct Register: View {
                         .offset(x: -150, y: 300)
                     
                     VStack {
+                      
                         Text("Sign Up")
-                            .font(.largeTitle) .font(.system(size: 30, design: .rounded).weight(.bold))
+                            .font(.system(size: 35, design: .rounded).weight(.bold))
                             .foregroundColor(.white)
                             .padding(.top, -100)
                         VStack(alignment: .leading, spacing: 10) {

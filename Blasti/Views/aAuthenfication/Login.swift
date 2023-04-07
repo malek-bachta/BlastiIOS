@@ -29,11 +29,11 @@ struct Login: View {
                 
                 Color.black
                     .ignoresSafeArea()
-                Image("logoo")
+                Image("logohori")
                             .resizable()
                             .scaledToFit()
-                            .frame(width: 80)
-                            .offset(x: 0, y: -300)
+                            .frame(width: 150)
+                            .offset(x: -125, y: -380)
                            
                 Circle()
                     .fill(Color.yellow.opacity(0.2))
@@ -64,7 +64,7 @@ struct Login: View {
                
                 VStack{
                     Text("Login")
-                        .font(.system(size: 40, design: .rounded).weight(.bold))
+                        .font(.system(size: 35, design: .rounded).weight(.bold))
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
@@ -157,7 +157,7 @@ struct Login: View {
     }
     
     private func verify() -> Bool {
-        var isValid = true
+        let isValid = true
         
         if  sm.email.isEmpty || sm.password.isEmpty {
             alertMessage = "Please fill in all fields."
