@@ -12,10 +12,7 @@ import Foundation
 
 
 struct Register: View {
-    @State private var username: String = ""
-    @State private var email: String = ""
-    @State private var password: String = ""
-    @State private var verifyPassword: String = ""
+    @StateObject var sm = SignupViewModel()
     
     @State private var alertMessage = ""
     @State private var showAlert = false
@@ -57,14 +54,14 @@ struct Register: View {
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Username")
                             .foregroundColor(.white)
-                        TextField("Enter Your Username", text: $username)
+                        TextField("Enter Your Username", text: $sm.username)
                             .padding()
                             .background(Color.white.opacity(0.4))
                             .frame(width: 300, height: 50)
                             .cornerRadius(10)
                         Text("Email")
                             .foregroundColor(.white)
-                        TextField("Enter a Valid Email", text: $email)
+                        TextField("Enter a Valid Email", text: $sm.email)
                             .padding()
                             .background(Color.white.opacity(0.4))
                             .frame(width: 300, height: 50)
@@ -74,14 +71,14 @@ struct Register: View {
                             .textContentType(.emailAddress)
                         Text("Password")
                             .foregroundColor(.white)
-                        SecureField("Enter Your password", text: $password)
+                        SecureField("Enter Your password", text: $sm.password)
                             .padding()
                             .background(Color.white.opacity(0.4))
                             .frame(width: 300, height: 50)
                             .cornerRadius(10)
                         Text("Verify Password")
                             .foregroundColor(.white)
-                        SecureField("Verify your Password", text: $verifyPassword)
+                        SecureField("Verify your Password", text: $sm.verifPassword)
                             .padding()
                             .background(Color.white.opacity(0.4))
                             .frame(width: 300, height: 50)
@@ -89,18 +86,20 @@ struct Register: View {
                     }
                     .padding(.bottom, 20)
                     Button(action: {
-                        if username.isEmpty || email.isEmpty || password.isEmpty || verifyPassword.isEmpty {
+                        if sm.username.isEmpty || sm.email.isEmpty || sm.password.isEmpty || sm.verifPassword.isEmpty {
                             alertMessage = "Please fill in all fields."
                             showAlert = true
-                        } else if password != verifyPassword {
+                        } else if sm.password != sm.verifPassword {
                             alertMessage = "Passwords do not match."
                             showAlert = true
-                        }else if !isValidEmail(email: email) {
+                        }else if !isValidEmail(email: sm.email) {
                             alertMessage = "Please enter a valid email address."
                             showAlert = true
-                        }else if !isValidPassword(password: password){
+                        }else if !isValidPassword(password: sm.password){
                             alertMessage = "Password must contain At least 8 characters in length, one uppercase letter,  one lowercase letter, one number one special character (e.g. !, @, #, $, %, ^, &, *)"
                             showAlert = true
+                        }else{
+                            sm.signUp(email: sm.email, password: sm.password, username: sm.username)
                         }
                     }) {
                         Text("Sign Up")

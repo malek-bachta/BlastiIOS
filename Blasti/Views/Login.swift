@@ -8,12 +8,12 @@
 import SwiftUI
 
 struct Login: View {
-    @State private var username = ""
-    @State private var password = ""
-    @State private var Wrongusername = 0
+    @StateObject var sm = SigninViewModel()
+    @State private var WrongEmail = 0
     @State private var Wrongpassword = 0
     @State private var showingLoginScreen = false
-    
+    @State private var alertMessage = ""
+    @State private var showAlert = false
     
     var body: some View {
         NavigationView{
@@ -61,19 +61,19 @@ struct Login: View {
                         .foregroundColor(.white)
                         .padding(.bottom,18)
                     VStack(alignment: .leading, spacing: 10){
-                        Text("Username")
+                        Text("Email")
                             .foregroundColor(.white)
-                        TextField("Enter Your Username", text: $username)
+                        TextField("Enter Your Email", text: $sm.email)
                             .padding()
                             .frame(width:300, height: 50)
                             .foregroundColor(.white)
                             .background(Color.white.opacity(0.4))
                             .cornerRadius(10)
-                            .border(.red,width: CGFloat(Wrongusername))
+                            .border(.red,width: CGFloat(WrongEmail))
                             .padding(.bottom,10)
                         Text("Password")
                             .foregroundColor(.white)
-                        SecureField("Enter Your Password", text: $password)
+                        SecureField("Enter Your Password", text: $sm.password)
                         
                             .padding()
                             .frame(width:300, height: 50)
@@ -93,31 +93,50 @@ struct Login: View {
                             .padding(.bottom,15)
                             .font(.system(size: 15, weight:.semibold))
                                     })
-                    Button("Login"){
-                        autheticateUser(username:username, password:password)
-                    }.foregroundColor(.black)
-                        .frame(width:200, height: 50)
-                        .background(Color.yellow)
-                        .cornerRadius(10)
-                        .padding(.bottom,8)
+                    Button(action: {
+                        if  sm.email.isEmpty || sm.password.isEmpty {
+                            alertMessage = "Please fill in all fields."
+                            showAlert = true
+                        } else if !isValidEmail(email: sm.email) {
+                            alertMessage = "Please enter a valid email address."
+                            showAlert = true
+                        }else{
+                            sm.signIn(email: sm.email, password: sm.password)
+                        }
+                    }) {
+                        Text("Login")
+                            .foregroundColor(.black)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .background(Color.yellow)
+                            .cornerRadius(10)
+                    }
+                
+                .padding()
+                .alert(isPresented: $showAlert) {
+                    Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                }
+            
                     
-                    Text("New Here ?  ")
-                        .foregroundColor(.white)
-                        .offset(x:-30, y:33)
-                        .padding(.bottom,8)
-                        .font(.system(size: 15, weight: .semibold))
-                    
+                        
+                        Text("New Here ?  ")
+                            .foregroundColor(.white)
+                            .offset(x:-30, y:33)
+                            .padding(.bottom,8)
+                            .font(.system(size: 15, weight: .semibold))
                     
                     NavigationLink(destination: Register(), label: {
+
                         Text("register")
                             .foregroundColor(.yellow)
                             .offset(x:45)
                             .padding(.bottom,8)
                             .font(.system(size: 15, weight: .semibold))
-                                    })
+                        
+                    })
                     
                     
-                    NavigationLink (destination: Text("you are logged in  @\(username)"), isActive: $showingLoginScreen){
+                    NavigationLink (destination: Text("you are logged in  @\(sm.email)"), isActive: $showingLoginScreen){
                         EmptyView()
                     }
                              
@@ -129,7 +148,7 @@ struct Login: View {
     func autheticateUser(username:String, password:String){
          if username.lowercased()=="dorra05"
         {
-             Wrongusername = 0
+             WrongEmail = 0
              if password.lowercased() ==    "dorra123"
              {
                  Wrongpassword = 0
@@ -141,7 +160,7 @@ struct Login: View {
                 }
          }
             else{
-                Wrongusername = 2
+                WrongEmail = 2
                 }
     }
         

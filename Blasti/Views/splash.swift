@@ -1,5 +1,5 @@
 //
-//  test.swift
+//  splash.swift
 //  Blasti
 //
 //  Created by Siwar Nafti on 5/4/2023.

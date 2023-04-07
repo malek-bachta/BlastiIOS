@@ -10,12 +10,16 @@
 		228C176629D6260D00848BFC /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C176529D6260D00848BFC /* Register.swift */; };
 		228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C176729D628A800848BFC /* ForgetPasswordView.swift */; };
 		228C177029D633AC00848BFC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C176F29D6338600848BFC /* Login.swift */; };
+		22C455C829DF7A45001ACFF6 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 22C455C729DF7A45001ACFF6 /* Alamofire */; };
+		22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455CC29DF7B78001ACFF6 /* APImanager.swift */; };
+		22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */; };
+		22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */; };
 		22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E5729D4D77200615678 /* BlastiApp.swift */; };
 		22F05E5C29D4D77300615678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5B29D4D77300615678 /* Assets.xcassets */; };
 		22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5E29D4D77300615678 /* Preview Assets.xcassets */; };
 		22F05E6129D4D77300615678 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6029D4D77300615678 /* Persistence.swift */; };
 		22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6229D4D77300615678 /* Blasti.xcdatamodeld */; };
-		7AAEE59D29DDAF4C0095EADD /* test.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59C29DDAF4C0095EADD /* test.swift */; };
+		7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59C29DDAF4C0095EADD /* splash.swift */; };
 		7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59F29DDC40E0095EADD /* ProfileView.swift */; };
 		7AAEE5A229DDC6A20095EADD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE5A129DDC6A20095EADD /* User.swift */; };
 /* End PBXBuildFile section */
@@ -24,13 +28,16 @@
 		228C176529D6260D00848BFC /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		228C176729D628A800848BFC /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		228C176F29D6338600848BFC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
+		22C455CC29DF7B78001ACFF6 /* APImanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APImanager.swift; sourceTree = "<group>"; };
+		22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
+		22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		22F05E5429D4D77200615678 /* Blasti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blasti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F05E5729D4D77200615678 /* BlastiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlastiApp.swift; sourceTree = "<group>"; };
 		22F05E5B29D4D77300615678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		22F05E5E29D4D77300615678 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22F05E6029D4D77300615678 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		22F05E6329D4D77300615678 /* Blasti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Blasti.xcdatamodel; sourceTree = "<group>"; };
-		7AAEE59C29DDAF4C0095EADD /* test.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = test.swift; sourceTree = "<group>"; };
+		7AAEE59C29DDAF4C0095EADD /* splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splash.swift; sourceTree = "<group>"; };
 		7AAEE59F29DDC40E0095EADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7AAEE5A129DDC6A20095EADD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Blasti/Views/profile/User.swift; sourceTree = SOURCE_ROOT; };
 /* End PBXFileReference section */
@@ -40,6 +47,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C455C829DF7A45001ACFF6 /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -57,6 +65,8 @@
 		228C176B29D631BA00848BFC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */,
+				22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -65,17 +75,18 @@
 			isa = PBXGroup;
 			children = (
 				7AAEE59E29DDC3E30095EADD /* profile */,
+				7AAEE59C29DDAF4C0095EADD /* splash.swift */,
 				228C176529D6260D00848BFC /* Register.swift */,
-				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
 				228C176F29D6338600848BFC /* Login.swift */,
-				7AAEE59C29DDAF4C0095EADD /* test.swift */,
+				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
 		};
-		228C176E29D6334200848BFC /* Utilities */ = {
+		22C455CB29DF7B55001ACFF6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				22C455CC29DF7B78001ACFF6 /* APImanager.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -99,7 +110,7 @@
 		22F05E5629D4D77200615678 /* Blasti */ = {
 			isa = PBXGroup;
 			children = (
-				228C176E29D6334200848BFC /* Utilities */,
+				22C455CB29DF7B55001ACFF6 /* Utilities */,
 				228C176D29D6333400848BFC /* Views */,
 				228C176B29D631BA00848BFC /* ViewModels */,
 				228C176A29D6319E00848BFC /* Models */,
@@ -144,6 +155,9 @@
 			dependencies = (
 			);
 			name = Blasti;
+			packageProductDependencies = (
+				22C455C729DF7A45001ACFF6 /* Alamofire */,
+			);
 			productName = Blasti;
 			productReference = 22F05E5429D4D77200615678 /* Blasti.app */;
 			productType = "com.apple.product-type.application";
@@ -172,6 +186,9 @@
 				Base,
 			);
 			mainGroup = 22F05E4B29D4D77200615678;
+			packageReferences = (
+				22C455C629DF7A45001ACFF6 /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 22F05E5529D4D77200615678 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -198,15 +215,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */,
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
 				22F05E6129D4D77300615678 /* Persistence.swift in Sources */,
 				228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */,
 				228C176629D6260D00848BFC /* Register.swift in Sources */,
 				22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */,
 				7AAEE5A229DDC6A20095EADD /* User.swift in Sources */,
+				22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */,
 				22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */,
 				228C177029D633AC00848BFC /* Login.swift in Sources */,
-				7AAEE59D29DDAF4C0095EADD /* test.swift in Sources */,
+				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
+				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -405,6 +425,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		22C455C629DF7A45001ACFF6 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		22C455C729DF7A45001ACFF6 /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 22C455C629DF7A45001ACFF6 /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		22F05E6229D4D77300615678 /* Blasti.xcdatamodeld */ = {
