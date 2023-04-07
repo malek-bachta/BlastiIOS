@@ -56,12 +56,14 @@ struct Login: View {
                
                 VStack{
                     Text("Login")
+                        .font(.system(size: 40, design: .rounded).weight(.bold))
                         .font(.largeTitle)
                         .bold()
                         .foregroundColor(.white)
                         .padding(.bottom,18)
                     VStack(alignment: .leading, spacing: 10){
                         Text("Email")
+                            .font(.system(size: 20, design: .rounded).weight(.light))
                             .foregroundColor(.white)
                         TextField("Enter Your Email", text: $sm.email)
                             .padding()
@@ -72,9 +74,9 @@ struct Login: View {
                             .border(.red,width: CGFloat(WrongEmail))
                             .padding(.bottom,10)
                         Text("Password")
+                            .font(.system(size: 20, design: .rounded).weight(.light))
                             .foregroundColor(.white)
                         SecureField("Enter Your Password", text: $sm.password)
-                        
                             .padding()
                             .frame(width:300, height: 50)
                             .foregroundColor(.white)
@@ -110,6 +112,7 @@ struct Login: View {
                             .frame(width: 200, height: 50)
                             .background(Color.yellow)
                             .cornerRadius(10)
+                            .font(.system(size: 20, design: .rounded).weight(.bold))
                     }
                 
                 .padding()

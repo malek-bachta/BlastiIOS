@@ -47,19 +47,20 @@ struct Register: View {
                 
                 VStack {
                     Text("Sign Up")
-                        .font(.largeTitle)
-                        .fontWeight(.bold)
+                        .font(.largeTitle) .font(.system(size: 30, design: .rounded).weight(.bold))
                         .foregroundColor(.white)
                         .padding(.top, -100)
                     VStack(alignment: .leading, spacing: 10) {
                         Text("Username")
                             .foregroundColor(.white)
+                            .font(.system(size: 20, design: .rounded).weight(.light))
                         TextField("Enter Your Username", text: $sm.username)
                             .padding()
                             .background(Color.white.opacity(0.4))
                             .frame(width: 300, height: 50)
                             .cornerRadius(10)
                         Text("Email")
+                            .font(.system(size: 20, design: .rounded).weight(.light))
                             .foregroundColor(.white)
                         TextField("Enter a Valid Email", text: $sm.email)
                             .padding()
@@ -70,6 +71,7 @@ struct Register: View {
                             .keyboardType(.emailAddress)
                             .textContentType(.emailAddress)
                         Text("Password")
+                            .font(.system(size: 20, design: .rounded).weight(.light))
                             .foregroundColor(.white)
                         SecureField("Enter Your password", text: $sm.password)
                             .padding()
@@ -77,6 +79,7 @@ struct Register: View {
                             .frame(width: 300, height: 50)
                             .cornerRadius(10)
                         Text("Verify Password")
+                            .font(.system(size: 20, design: .rounded).weight(.light))
                             .foregroundColor(.white)
                         SecureField("Verify your Password", text: $sm.verifPassword)
                             .padding()
@@ -103,6 +106,7 @@ struct Register: View {
                         }
                     }) {
                         Text("Sign Up")
+                            .font(.system(size: 20, design: .rounded).weight(.semibold))
                             .foregroundColor(.black)
                             .padding()
                             .frame(width: 200, height: 50)

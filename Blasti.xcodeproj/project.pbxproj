@@ -14,6 +14,7 @@
 		22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455CC29DF7B78001ACFF6 /* APImanager.swift */; };
 		22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */; };
 		22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */; };
+		22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455D429DFD27A001ACFF6 /* EditProfile.swift */; };
 		22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E5729D4D77200615678 /* BlastiApp.swift */; };
 		22F05E5C29D4D77300615678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5B29D4D77300615678 /* Assets.xcassets */; };
 		22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5E29D4D77300615678 /* Preview Assets.xcassets */; };
@@ -31,6 +32,7 @@
 		22C455CC29DF7B78001ACFF6 /* APImanager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APImanager.swift; sourceTree = "<group>"; };
 		22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewModel.swift; sourceTree = "<group>"; };
 		22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
+		22C455D429DFD27A001ACFF6 /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		22F05E5429D4D77200615678 /* Blasti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blasti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F05E5729D4D77200615678 /* BlastiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlastiApp.swift; sourceTree = "<group>"; };
 		22F05E5B29D4D77300615678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -135,6 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				7AAEE59F29DDC40E0095EADD /* ProfileView.swift */,
+				22C455D429DFD27A001ACFF6 /* EditProfile.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -225,6 +228,7 @@
 				22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */,
 				22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */,
 				228C177029D633AC00848BFC /* Login.swift in Sources */,
+				22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
 			);

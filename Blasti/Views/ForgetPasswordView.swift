@@ -25,12 +25,14 @@ struct ForgotPasswordView: View {
                     .offset(x: 150, y: 200)
                 VStack {
                     Text("Forgot Password")
+                        .font(.system(size: 30, design: .rounded).weight(.bold))
                         .font(.largeTitle)
                         .fontWeight(.bold)
                         .foregroundColor(.white)
                         .padding(.bottom, 30)
                     VStack(alignment: .leading, spacing: 10){
                         Text("Enter your email")
+                            .font(.system(size: 20, design: .rounded).weight(.light))
                             .foregroundColor(.white)
                         TextField("Email", text: $email)
                             .padding()
@@ -43,6 +45,7 @@ struct ForgotPasswordView: View {
                             self.showAlert = true
                         }) {
                             Text("Reset Password")
+                                .font(.system(size: 18, design: .rounded).weight(.light))
                                 .foregroundColor(.black)
                                 .padding()
                                 .frame(width: 200, height: 50)
