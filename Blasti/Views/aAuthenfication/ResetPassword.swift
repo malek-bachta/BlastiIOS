@@ -7,11 +7,11 @@
 
 import Foundation
 import SwiftUI
-struct EdittProfileView: View {
+struct ResetPassword: View {
    
-        @State var currentPassword: String
-        @State var newPassword: String
-        @State var confirmNewPassword: String
+        @State var currentPassword = ""
+        @State var newPassword = ""
+        @State var confirmNewPassword = ""
         @State var showingAlert = false
         @State private var colors = [Color.black, Color.yellow]
 
@@ -113,7 +113,7 @@ struct EdittProfileView: View {
 
     struct EdittProfileView_Previews: PreviewProvider {
         static var previews: some View {
-            EdittProfileView(currentPassword: "", newPassword: "", confirmNewPassword: "")
+            ResetPassword(currentPassword: "", newPassword: "", confirmNewPassword: "")
         }
     }
 

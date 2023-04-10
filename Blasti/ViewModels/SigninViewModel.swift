@@ -30,6 +30,29 @@ class SigninViewModel: ObservableObject {
             })
         }
     
+    func sendCodeForgot(email: String) {
+           networkService.sendCodeForgot(email: email, onSuccess: { (title, message) in
+               // Handle success
+               print(title, message+"email sent succes")
+               
+                       
+           }) { (title, message) in
+               // Handle failure
+               print(title, message+"error")
+           }
+       }
+    
+    func verifyCodeForgot(email: String, codeForget: String) {
+            networkService.verifyCodeForgot(email: email, codeForget: codeForget, onSuccess: { (title, message) in
+                // Handle success
+                print(title, message+"code verified successfully")
+                
+            }) { (title, message) in
+                // Handle failure
+                print(title, message+"error")
+            }
+        }
+    
     
 }
 

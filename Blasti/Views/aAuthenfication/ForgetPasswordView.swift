@@ -7,8 +7,9 @@
 import SwiftUI
 
 struct ForgotPasswordView: View {
-    @State private var email: String = ""
     @State private var showAlert: Bool = false
+    @StateObject var sm = SigninViewModel()
+
     
     var body: some View {
         NavigationView{
@@ -34,14 +35,14 @@ struct ForgotPasswordView: View {
                         Text("Enter your email")
                             .font(.system(size: 20, design: .rounded).weight(.light))
                             .foregroundColor(.white)
-                        TextField("Email", text: $email)
+                        TextField("Email", text: $sm.email)
                             .padding()
                             .background(Color.white.opacity(0.4))
                             .frame(width: 300, height: 50)
                             .cornerRadius(10)
                             .padding(.bottom, 20)
                         Button(action: {
-                            // Send email to user with reset password link
+                            sm.sendCodeForgot(email: sm.email)
                             self.showAlert = true
                         }) {
                             Text("Send Email")
@@ -56,8 +57,9 @@ struct ForgotPasswordView: View {
                 }
                 .padding(.horizontal, 30)
                 .alert(isPresented: $showAlert) {
-                    Alert(title: Text("Password Reset"), message: Text("An email with instructions to reset your password has been sent to \(email)."), dismissButton: .default(Text("OK")))
+                    Alert(title: Text("Password Reset"), message: Text("An email with instructions to reset your password has been sent to \(sm.email)."), dismissButton: .default(Text("OK")))
                 }
+                
             }
         }
     }
