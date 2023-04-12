@@ -15,26 +15,31 @@ class SigninViewModel: ObservableObject {
     @Published var email = ""
     @Published var password = ""
     @Published var log : Bool = false
+    @Published var CodeSent : Bool = false
+    @Published var currentUser: User?
+
+    
     
     func signIn(email: String, password: String) {
-            networkService.signIn(email: email, password: password, onSuccess: { (title, message) in
-                DispatchQueue.main.async {
-                    self.log = true
-                    self.signinResult = .success((title, message))
-                    
-                }
-            }, onFailure: { (title, message) in
-                DispatchQueue.main.async {
-                    self.signinResult = .failure(NSError(domain: title, code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
-                }
-            })
-        }
+        networkService.signIn(email: email, password: password, onSuccess: { (title, message) in
+            DispatchQueue.main.async {
+                self.log = true
+                self.signinResult = .success((title, message))
+                self.currentUser = User(id: "", username: "", email: email, password: password, role: "", avatar: "", bio: "", codeVerif: "", codeForget: "", verified: "")
+            }
+        }, onFailure: { (title, message) in
+            DispatchQueue.main.async {
+                self.signinResult = .failure(NSError(domain: title, code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
+            }
+        })
+    }
+
     
     func sendCodeForgot(email: String) {
            networkService.sendCodeForgot(email: email, onSuccess: { (title, message) in
                // Handle success
                print(title, message+"email sent succes")
-               
+               self.CodeSent = true
                        
            }) { (title, message) in
                // Handle failure
@@ -52,6 +57,16 @@ class SigninViewModel: ObservableObject {
                 print(title, message+"error")
             }
         }
+    
+    
+   
+
+    func isValidEmail(email: String) -> Bool {
+        // Use regular expression to validate email address format
+        let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
+        return emailPredicate.evaluate(with: email)
+    }
     
     
 }

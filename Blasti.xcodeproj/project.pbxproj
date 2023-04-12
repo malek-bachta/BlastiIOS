@@ -21,6 +21,8 @@
 		22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5E29D4D77300615678 /* Preview Assets.xcassets */; };
 		22F05E6129D4D77300615678 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6029D4D77300615678 /* Persistence.swift */; };
 		22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6229D4D77300615678 /* Blasti.xcdatamodeld */; };
+		7AA6998729E5F4DB005FEA9F /* VerifCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6998629E5F4DB005FEA9F /* VerifCode.swift */; };
+		7AA6998929E6CABF005FEA9F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6998829E6CABF005FEA9F /* ProfileViewModel.swift */; };
 		7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59C29DDAF4C0095EADD /* splash.swift */; };
 		7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59F29DDC40E0095EADD /* ProfileView.swift */; };
 		7AAEE5A229DDC6A20095EADD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE5A129DDC6A20095EADD /* User.swift */; };
@@ -41,6 +43,8 @@
 		22F05E5E29D4D77300615678 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22F05E6029D4D77300615678 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		22F05E6329D4D77300615678 /* Blasti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Blasti.xcdatamodel; sourceTree = "<group>"; };
+		7AA6998629E5F4DB005FEA9F /* VerifCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifCode.swift; sourceTree = "<group>"; };
+		7AA6998829E6CABF005FEA9F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		7AAEE59C29DDAF4C0095EADD /* splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splash.swift; sourceTree = "<group>"; };
 		7AAEE59F29DDC40E0095EADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7AAEE5A129DDC6A20095EADD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Blasti/Views/profile/User.swift; sourceTree = SOURCE_ROOT; };
@@ -71,6 +75,7 @@
 			children = (
 				22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */,
 				22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */,
+				7AA6998829E6CABF005FEA9F /* ProfileViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -96,9 +101,11 @@
 		22C455D929DFFC6C001ACFF6 /* aAuthenfication */ = {
 			isa = PBXGroup;
 			children = (
+				228C176529D6260D00848BFC /* Register.swift */,
 				228C176F29D6338600848BFC /* Login.swift */,
 				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
 				22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */,
+				7AA6998629E5F4DB005FEA9F /* VerifCode.swift */,
 			);
 			path = aAuthenfication;
 			sourceTree = "<group>";
@@ -148,7 +155,6 @@
 			children = (
 				7AAEE59F29DDC40E0095EADD /* ProfileView.swift */,
 				22C455D429DFD27A001ACFF6 /* EditProfile.swift */,
-				228C176529D6260D00848BFC /* Register.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -243,6 +249,8 @@
 				22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
+				7AA6998929E6CABF005FEA9F /* ProfileViewModel.swift in Sources */,
+				7AA6998729E5F4DB005FEA9F /* VerifCode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

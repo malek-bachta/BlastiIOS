@@ -16,6 +16,12 @@ struct Register: View {
     
     @State private var alertMessage = ""
     @State private var showAlert = false
+    
+    @State private var circle1Offset = CGSize(width: -150, height: -100)
+        @State private var circle2Offset = CGSize(width: 200, height: -200)
+        @State private var circle3Offset = CGSize(width: -160, height: -390)
+        @State private var circle4Offset = CGSize(width: 200, height: 250)
+        
         
         
         
@@ -32,22 +38,32 @@ struct Register: View {
                         .fill(Color.yellow.opacity(0.2))
                         .frame(width: 300, height: 300)
                         .offset(x: -150, y: -100)
+                        .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
+
                     Circle()
                         .fill(Color.yellow.opacity(0.15))
                         .frame(width: 350, height: 350)
                         .offset(x: 200, y: -200)
+                        .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
+
                     Circle()
                         .fill(Color.yellow.opacity(0.15))
                         .frame(width: 150, height: 500)
                         .offset(x: -160, y: -390)
+                        .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
+
                     Circle()
                         .fill(Color.yellow.opacity(0.2))
                         .frame(width: 150, height: 500)
                         .offset(x: 200, y: 250)
+                        .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
+
                     Circle()
                         .fill(Color.yellow.opacity(0.1))
                         .frame(width: 400, height: 400)
                         .offset(x: -150, y: 300)
+                        .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
+
                     
                     VStack {
                       
@@ -139,6 +155,21 @@ struct Register: View {
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
                     }
+                    .onAppear {
+                                        // start the animations when the view appears
+                                        circle1Offset = CGSize(width: 0, height: -250)
+                                        circle2Offset = CGSize(width: 0, height: 250)
+                                        circle3Offset = CGSize(width: 0, height: -250)
+                                        circle4Offset = CGSize(width: 0, height: 250)
+                                    }
+                                    .onDisappear {
+                                        // reset the circle offsets when the view disappears
+                                        circle1Offset = CGSize(width: -150, height: -100)
+                                        circle2Offset = CGSize(width: 200, height: -200)
+                                        circle3Offset = CGSize(width: -160, height: -390)
+                                        circle4Offset = CGSize(width: 200, height: 250)
+                                    }
+
                 }
             }
         }
