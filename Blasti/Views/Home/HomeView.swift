@@ -45,6 +45,7 @@ struct HomeView: View {
                     .frame(width: 400, height: 400)
                     .offset(x: -150, y: 300)
                 
+                
                 VStack {
                     HStack {
                         TextField("Search...", text: $searchText)
@@ -109,6 +110,7 @@ struct HomeView: View {
                           }
                     
                     Spacer()
+                    
                 }
             }
             .navigationBarTitle("Home", displayMode: .inline)

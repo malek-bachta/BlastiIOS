@@ -9,7 +9,7 @@ struct Login: View {
     @State private var showAlert = false
     @State private var isLoading = false
     @State private var isHomeActive = false
-    @State private var rememberMe = false
+//    @State private var rememberMe = false
     @State private var isPasswordVisible = false
     
     
@@ -110,7 +110,7 @@ struct Login: View {
                             .padding(.bottom, 5)
                             
                             HStack {
-                                Toggle("", isOn: $rememberMe)
+                                Toggle("", isOn: $sm.rememberMe)
                                     .toggleStyle(CheckboxToggleStyle())
                                 Text("Remember me")
                                     .foregroundColor(.white)

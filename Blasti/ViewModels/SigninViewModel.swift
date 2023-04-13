@@ -17,13 +17,22 @@ class SigninViewModel: ObservableObject {
     @Published var log : Bool = false
     @Published var CodeSent : Bool = false
     @Published var currentUser: User?
-
     
+    @Published var rememberMe = false
+
+    init(){
+        if(log || UserDefaults.standard.bool(forKey: "RememberMe")){
+            log=true
+        }
+    }
     
     func signIn(email: String, password: String) {
         networkService.signIn(email: email, password: password, onSuccess: { (title, message) in
             DispatchQueue.main.async {
                 self.log = true
+                if(self.rememberMe){
+                    UserDefaults.standard.set(self.rememberMe, forKey: "RememberMe")
+                }
                 self.signinResult = .success((title, message))
                 self.currentUser = User(id: "", username: "", email: email, password: password, role: "", avatar: "", bio: "", codeVerif: "", codeForget: "", verified: "")
             }
