@@ -11,13 +11,14 @@ struct ProfileView: View {
     @State private var isPresentingConfirm: Bool = false
     @State private var isPresentingAlert: Bool = false
     @State private var colors = [Color.yellow, Color.black]
+    @Environment(\.presentationMode) var presentationMode
+
 
     var body: some View {
         NavigationView {
             ZStack {
                 
                 LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    /*.animation(Animation.linear(duration: 6.0).repeatForever(autoreverses: true))*/
                     .ignoresSafeArea()
                 
                 RoundedRectangle(cornerRadius: 100)
@@ -53,29 +54,33 @@ struct ProfileView: View {
                  Spacer()
                 
          
-                
-                Button(action: {
-                           // handle button tap
-                       }) {
-                           Image( systemName: "house")
-                           
-                               .foregroundColor(Color.white)
-                               .font(.system(size: 25))
-                               .offset(x: -165, y:-385)
-                               .shadow(radius: 300)
-                       }
-                
-                Button(action: {
-                }) {
-                    NavigationLink(destination: SettignsView()) {
-                        Image(systemName: "gear")
-                            .foregroundColor(Color.white)
-                            .font(.system(size: 28))
-                            .offset(x: 165, y: -385)
-                            .shadow(radius: 300)
-                    }
-                }
+                VStack {
+                                    HStack {
+                                        Button(action: {
+                                        }) {
+                                            
+                                                Label("", systemImage: "")
+                                                    .font(.system(size: 40, design: .rounded).weight(.semibold))
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                            
+                                        }
+                                        Spacer()
+                                        
+                                        Button(action: {}) {
+                                            NavigationLink(destination: SettignsView()) {
+                                                Label("", systemImage: "gear")
+                                                    .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                                    .foregroundColor(.white)
+                                                    .padding()
+                                            }
+                                        }
+                                    }
+                                    .padding(.top, 20)
+                                    .padding(.horizontal, 10)
 
+                                    Spacer()
+                                }
                 
                 VStack {
                     Spacer()
@@ -136,20 +141,29 @@ struct ProfileView: View {
                     .offset(x: 0, y: 240)
                     .cornerRadius(10)
                     
-                    Button(action: {
-                        // Handle button action
-                    }) {
-                        Label("GO PREMIUM", systemImage: "star.fill")
-                            .font(.system(size: 20, design: .rounded).weight(.semibold))
-                            .foregroundColor(.black)
-                            .padding()
-                            .frame(width: 200, height: 50)
-                            .background(Color.yellow)
-                            .cornerRadius(10)
-                            
-                    }
+                    Button(action: {}) {
+                                            NavigationLink(destination: AddMoviesView()) {
+                                                HStack {
+                                                    Text("GO PREMIUM")
+                                                        .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                                        .foregroundColor(.white)
+                                                        .padding()
+                                                    Image(systemName: "star.fill")
+                                                        .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                                        .foregroundColor(.white)
+                                                }
+                                                .frame(width: 200, height: 50)
+                                                .background(
+                                                    LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.yellow.opacity(0.3)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                                )
+                                                .cornerRadius(10)
+                                                .shadow(radius: 5)
+                                            }
+                                        }
+                                        .offset(y: -60) // Move the button up a little
+                                       
+                                    
 
-                    Spacer()
                 }
 
                 HStack {

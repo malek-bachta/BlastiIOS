@@ -16,7 +16,7 @@ struct Login: View {
     var body: some View {
         NavigationView{
             if (sm.log){
-                ProfileView()
+                HomePage()
             }else{
                 
                 ZStack {
