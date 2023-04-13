@@ -17,7 +17,7 @@ struct ProfileView: View {
             ZStack {
                 
                 LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
-                    .animation(Animation.linear(duration: 6.0).repeatForever(autoreverses: true))
+                    /*.animation(Animation.linear(duration: 6.0).repeatForever(autoreverses: true))*/
                     .ignoresSafeArea()
                 
                 RoundedRectangle(cornerRadius: 100)
@@ -66,15 +66,14 @@ struct ProfileView: View {
                        }
                 
                 Button(action: {
-                    // handle button tap
                 }) {
-                   // NavigationLink(destination: EditProfileView()) {
+                    NavigationLink(destination: SettignsView()) {
                         Image(systemName: "gear")
                             .foregroundColor(Color.white)
                             .font(.system(size: 28))
                             .offset(x: 165, y: -385)
                             .shadow(radius: 300)
-                    //}
+                    }
                 }
 
                 
@@ -127,17 +126,28 @@ struct ProfileView: View {
                                     .font(.system(size: 20, design: .rounded).weight(.light))
                             }
                             // Add more reservation buttons as needed
-                        }                            .listRowBackground(Color.yellow.opacity(0.7))
-                        .foregroundColor(Color.black)
-                        .font(.system(size: 20, design: .rounded).weight(.bold))
+                        }                          .listRowBackground(Color.yellow.opacity(0.7))
+                            .foregroundColor(Color.black)
+                            .font(.system(size: 20, design: .rounded).weight(.bold))
                             
-                        
                     }
                     .listStyle(.inset)
                     .frame(width: 395, height: 700)
                     .offset(x: 0, y: 240)
                     .cornerRadius(10)
-                   
+                    
+                    Button(action: {
+                        // Handle button action
+                    }) {
+                        Label("GO PREMIUM", systemImage: "star.fill")
+                            .font(.system(size: 20, design: .rounded).weight(.semibold))
+                            .foregroundColor(.black)
+                            .padding()
+                            .frame(width: 200, height: 50)
+                            .background(Color.yellow)
+                            .cornerRadius(10)
+                            
+                    }
 
                     Spacer()
                 }
@@ -148,8 +158,11 @@ struct ProfileView: View {
                         .shadow(radius: 100)
                         .offset(x: 0, y: -325)
                         .font(.system(size: 30, design: .rounded).weight(.semibold))
+                    
+                    
                         
                 }
+               
                 Image("profilemain")
                     .resizable()
                     .scaledToFit()

@@ -145,7 +145,8 @@ struct Register: View {
                             
                             Text("Login")
                                 .foregroundColor(.yellow)
-                                .offset(x:89)
+                                .offset(x:89,y:2)
+                                .frame(width: 50,height: 13)
                                 .padding(.bottom,8)
                                 .font(.system(size: 15, weight: .semibold))
                             

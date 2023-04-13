@@ -11,7 +11,6 @@ import Alamofire
 
 class SignupViewModel: ObservableObject {
     @Published var signupResult: Result<(title: String, message: String), NSError>?
-    @Published var signinResult: Result<(title: String, message: String), NSError>?
     @Published var editProfileResult: Result<(title: String, message: String), NSError>?
     private let networkService = NetworkService()
     @Published var email = ""

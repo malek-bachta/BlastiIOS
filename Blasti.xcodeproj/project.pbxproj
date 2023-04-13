@@ -21,11 +21,15 @@
 		22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5E29D4D77300615678 /* Preview Assets.xcassets */; };
 		22F05E6129D4D77300615678 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6029D4D77300615678 /* Persistence.swift */; };
 		22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E6229D4D77300615678 /* Blasti.xcdatamodeld */; };
-		7AA6998729E5F4DB005FEA9F /* VerifCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6998629E5F4DB005FEA9F /* VerifCode.swift */; };
+		7AA6998729E5F4DB005FEA9F /* VerifyPasswordKey.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6998629E5F4DB005FEA9F /* VerifyPasswordKey.swift */; };
 		7AA6998929E6CABF005FEA9F /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA6998829E6CABF005FEA9F /* ProfileViewModel.swift */; };
 		7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59C29DDAF4C0095EADD /* splash.swift */; };
 		7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59F29DDC40E0095EADD /* ProfileView.swift */; };
 		7AAEE5A229DDC6A20095EADD /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE5A129DDC6A20095EADD /* User.swift */; };
+		B087252A29E74F4C00CF5E57 /* settingsview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087252929E74F4C00CF5E57 /* settingsview.swift */; };
+		B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087252E29E772DB00CF5E57 /* AddMoviesView.swift */; };
+		B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253429E77C6700CF5E57 /* Coordinator.swift */; };
+		B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253629E7822D00CF5E57 /* MoviesViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,11 +47,15 @@
 		22F05E5E29D4D77300615678 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		22F05E6029D4D77300615678 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		22F05E6329D4D77300615678 /* Blasti.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Blasti.xcdatamodel; sourceTree = "<group>"; };
-		7AA6998629E5F4DB005FEA9F /* VerifCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifCode.swift; sourceTree = "<group>"; };
+		7AA6998629E5F4DB005FEA9F /* VerifyPasswordKey.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VerifyPasswordKey.swift; sourceTree = "<group>"; };
 		7AA6998829E6CABF005FEA9F /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		7AAEE59C29DDAF4C0095EADD /* splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splash.swift; sourceTree = "<group>"; };
 		7AAEE59F29DDC40E0095EADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
 		7AAEE5A129DDC6A20095EADD /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = User.swift; path = Blasti/Views/profile/User.swift; sourceTree = SOURCE_ROOT; };
+		B087252929E74F4C00CF5E57 /* settingsview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsview.swift; sourceTree = "<group>"; };
+		B087252E29E772DB00CF5E57 /* AddMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviesView.swift; sourceTree = "<group>"; };
+		B087253429E77C6700CF5E57 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		B087253629E7822D00CF5E57 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +84,8 @@
 				22C455CE29DF8446001ACFF6 /* SignUpViewModel.swift */,
 				22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */,
 				7AA6998829E6CABF005FEA9F /* ProfileViewModel.swift */,
+				B087253429E77C6700CF5E57 /* Coordinator.swift */,
+				B087253629E7822D00CF5E57 /* MoviesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -83,7 +93,8 @@
 		228C176D29D6333400848BFC /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				22C455D929DFFC6C001ACFF6 /* aAuthenfication */,
+				B087252B29E765FD00CF5E57 /* Products */,
+				22C455D929DFFC6C001ACFF6 /* Authenfication */,
 				7AAEE59E29DDC3E30095EADD /* profile */,
 				7AAEE59C29DDAF4C0095EADD /* splash.swift */,
 			);
@@ -98,16 +109,16 @@
 			path = Utilities;
 			sourceTree = "<group>";
 		};
-		22C455D929DFFC6C001ACFF6 /* aAuthenfication */ = {
+		22C455D929DFFC6C001ACFF6 /* Authenfication */ = {
 			isa = PBXGroup;
 			children = (
 				228C176529D6260D00848BFC /* Register.swift */,
 				228C176F29D6338600848BFC /* Login.swift */,
 				228C176729D628A800848BFC /* ForgetPasswordView.swift */,
 				22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */,
-				7AA6998629E5F4DB005FEA9F /* VerifCode.swift */,
+				7AA6998629E5F4DB005FEA9F /* VerifyPasswordKey.swift */,
 			);
-			path = aAuthenfication;
+			path = Authenfication;
 			sourceTree = "<group>";
 		};
 		22F05E4B29D4D77200615678 = {
@@ -155,8 +166,17 @@
 			children = (
 				7AAEE59F29DDC40E0095EADD /* ProfileView.swift */,
 				22C455D429DFD27A001ACFF6 /* EditProfile.swift */,
+				B087252929E74F4C00CF5E57 /* settingsview.swift */,
 			);
 			path = profile;
+			sourceTree = "<group>";
+		};
+		B087252B29E765FD00CF5E57 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B087252E29E772DB00CF5E57 /* AddMoviesView.swift */,
+			);
+			path = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,14 +255,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B087252A29E74F4C00CF5E57 /* settingsview.swift in Sources */,
 				22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */,
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
 				22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */,
+				B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */,
 				22F05E6129D4D77300615678 /* Persistence.swift in Sources */,
 				228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */,
 				228C176629D6260D00848BFC /* Register.swift in Sources */,
 				22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */,
 				7AAEE5A229DDC6A20095EADD /* User.swift in Sources */,
+				B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */,
 				22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */,
 				22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */,
 				228C177029D633AC00848BFC /* Login.swift in Sources */,
@@ -250,7 +273,8 @@
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
 				7AA6998929E6CABF005FEA9F /* ProfileViewModel.swift in Sources */,
-				7AA6998729E5F4DB005FEA9F /* VerifCode.swift in Sources */,
+				7AA6998729E5F4DB005FEA9F /* VerifyPasswordKey.swift in Sources */,
+				B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

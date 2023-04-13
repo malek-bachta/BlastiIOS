@@ -119,6 +119,27 @@ class NetworkService {
                 }
             }
         }
+    
+    func AddMovie(title: String, date: String, genre: String, description: String, duration: String, Production: String, language:String, image: String,   onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
+        let signupURL = "https://serverblasti.onrender.com/api/movies/add"
+        AF.request(signupURL, method: .post, parameters: ["title": title, "date": date, "genre": genre, "description": description, "duration": duration, "Production": Production, "language": language, "image": image], encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<401)
+            .validate(contentType: ["application/json"])
+            .responseJSON { response in
+                switch response.result {
+                case .success(let data):
+                    guard let jsonData = data as? [String: Any],
+                          let statusCode = response.response?.statusCode else {
+                        onFailure("Error", "Invalid response format")
+                        return
+                    }
+                    onSuccess("congrats", "the movie is added succesfully.")
+                case .failure(let error):
+                    print(error)
+                    onFailure("Error", "Network request failed")
+                }
+            }
+    }
 
     }
 
