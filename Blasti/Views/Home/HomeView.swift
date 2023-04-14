@@ -11,9 +11,7 @@ struct HomeView: View {
     @State private var searchText = ""
     @ObservedObject private var moviesViewModel = MoviesViewModel()
 
-    init() {
-           moviesViewModel.getMovies()
-       }
+   
     var body: some View {
         NavigationView {
             ZStack {
@@ -97,7 +95,7 @@ struct HomeView: View {
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                               HStack(spacing: 20) {
-                                  ForEach(moviesViewModel.movies) { movie in
+                                  ForEach(moviesViewModel.movies, id: \.self) { movie in 
                                       BabyCardView(movie: movie)
                                   }
                                   }

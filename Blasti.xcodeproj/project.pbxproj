@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2270425729E8D0270021272D /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270425629E8D0270021272D /* EntityType.swift */; };
+		2270425B29E8D08D0021272D /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270425A29E8D08D0021272D /* APIError.swift */; };
 		228C176629D6260D00848BFC /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C176529D6260D00848BFC /* Register.swift */; };
 		228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C176729D628A800848BFC /* ForgetPasswordView.swift */; };
 		228C177029D633AC00848BFC /* Login.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C176F29D6338600848BFC /* Login.swift */; };
@@ -37,6 +39,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2270425629E8D0270021272D /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
+		2270425A29E8D08D0021272D /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		228C176529D6260D00848BFC /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
 		228C176729D628A800848BFC /* ForgetPasswordView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgetPasswordView.swift; sourceTree = "<group>"; };
 		228C176F29D6338600848BFC /* Login.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Login.swift; sourceTree = "<group>"; };
@@ -141,8 +145,8 @@
 		22F05E5629D4D77200615678 /* Blasti */ = {
 			isa = PBXGroup;
 			children = (
-				7AA6999D29E8411C005FEA9F /* Models */,
 				22C455CB29DF7B55001ACFF6 /* Utilities */,
+				7AA6999D29E8411C005FEA9F /* Models */,
 				228C176D29D6333400848BFC /* Views */,
 				228C176B29D631BA00848BFC /* ViewModels */,
 				22F05E5729D4D77200615678 /* BlastiApp.swift */,
@@ -176,6 +180,8 @@
 			children = (
 				7AA6999E29E84138005FEA9F /* User.swift */,
 				7AA699A029E8416D005FEA9F /* Movies.swift */,
+				2270425629E8D0270021272D /* EntityType.swift */,
+				2270425A29E8D08D0021272D /* APIError.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -281,6 +287,7 @@
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
 				22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */,
 				B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */,
+				2270425729E8D0270021272D /* EntityType.swift in Sources */,
 				22F05E6129D4D77300615678 /* Persistence.swift in Sources */,
 				228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */,
 				228C176629D6260D00848BFC /* Register.swift in Sources */,
@@ -299,6 +306,7 @@
 				7AA6998729E5F4DB005FEA9F /* VerifyPasswordKey.swift in Sources */,
 				7AA6999629E83027005FEA9F /* HomeView.swift in Sources */,
 				B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */,
+				2270425B29E8D08D0021272D /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

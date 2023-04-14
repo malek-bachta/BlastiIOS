@@ -5,10 +5,25 @@
 //  Created by Siwar Nafti on 13/4/2023.
 //
 
-struct Movie: Identifiable {
-    let id: Int
+struct Movie: Codable , Hashable{
+    
     let title: String
-    let imageURL: String
-
-    // Add other fields as needed
+    let description: String
+    let genre: String
+    
+    enum CodingKeys: String, CodingKey {
+       
+        case title
+        case description
+        case genre
+    }
+    
+    init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        
+        title = try container.decode(String.self, forKey: .title)
+        description = try container.decode(String.self, forKey: .description)
+        genre = try container.decode(String.self, forKey: .genre)
+    }
 }
+

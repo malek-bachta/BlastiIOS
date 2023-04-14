@@ -30,7 +30,9 @@ class MoviesViewModel: ObservableObject {
 
     @Published var madd : Bool = false
     
-    
+    init(){
+        self.getMovies()
+    }
     func addMovie(title: String,
 //                  date: String,
                   genre: String,
@@ -63,7 +65,7 @@ class MoviesViewModel: ObservableObject {
     
    
     func getMovies() {
-        networkService.getMovies(onSuccess: { (moviesData) in
+      /*  networkService.getMovies(onSuccess:{ (moviesData) in
             DispatchQueue.main.async {
                 self.movies = moviesData.map { movieData in
                     // Assuming the API returns keys like 'id', 'title', and 'imageURL'
@@ -73,15 +75,31 @@ class MoviesViewModel: ObservableObject {
                     print("Movies fetched: \(self.movies)") // Add this line
 
                     // Create a Movie object for each movieData
-                    return Movie(id: id, title: title, imageURL: imageURL)
+                    return Movie(id: id, title: title,
+                                 imageURL: imageURL
+                    )
                 }
             }
-        }, onFailure: { title, message in
+        },onFailure:{ title, message in
             DispatchQueue.main.async {
                 // You can handle the error here or create a separate property for the error message and update it
                 print("Error: \(title), Message: \(message)")
             }
-        })
+        })*/
+        networkService.fetchMovies() { [weak self]  result in
+            DispatchQueue.main.async {
+                switch result {
+                        case .success(let movies):
+                            self?.movies = movies
+                            print(movies)
+                            
+                        case .failure(let error):
+                            print("error loading movies: \(error)")
+                            //self?.state = .error(error.localizedDescription)
+                        }
+            }
+        }
+    
     }
 
     func movieInput(title: String, placeholder: String, text: Binding<String>) -> some View {
