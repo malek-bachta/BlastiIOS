@@ -24,14 +24,16 @@ class MoviesViewModel: ObservableObject {
     @Published var Production = ""
     @Published var description = ""
     @Published var language = ""
-
+    
     @Published var image = ""
     
-
+    var user:User?
     @Published var madd : Bool = false
     
     init(){
         self.getMovies()
+        user=getuser()
+        print(user)
     }
     func addMovie(title: String,
 //                  date: String,
@@ -63,7 +65,16 @@ class MoviesViewModel: ObservableObject {
     }
     
     
-   
+    func getuser()->User?{
+        let defaults = UserDefaults.standard
+        if let saveduser = defaults.object(forKey: "user") as? Data{
+            let decoder = JSONDecoder()
+            if let loadeduser = try? decoder.decode(User.self, from: saveduser){
+                return loadeduser
+            }
+        }
+        return nil
+    }
     func getMovies() {
       /*  networkService.getMovies(onSuccess:{ (moviesData) in
             DispatchQueue.main.async {

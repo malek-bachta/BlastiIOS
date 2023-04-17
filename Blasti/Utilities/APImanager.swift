@@ -35,7 +35,7 @@ class NetworkService {
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
     
-    func signIn(email: String, password: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
+    /*func signIn(email: String, password: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
         let signinURL = "https://serverblasti.onrender.com/api/user/login"
         AF.request(signinURL, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
@@ -43,18 +43,79 @@ class NetworkService {
             .responseJSON { response in
                 switch response.result {
                 case .success(let data):
-                    guard let jsonData = data as? [String: Any],
-                        let statusCode = response.response?.statusCode else {
+                     /*let jsonData = data as? User
+                          if let statusCode = response.response?.statusCode{
+                              print(jsonData)
+                              
+                              let defaults = UserDefaults.standard
+                              let encoder = JSONEncoder()
+                              if let encoded = try? encoder.encode(jsonData){
+                                  defaults.set(encoded, forKey: "user")
+                              }
+                          } else {
                             onFailure("Error", "Invalid response format")
                             return
                     }
-                    onSuccess("Success", "You are now signed in.")
+                    onSuccess("Success", "You are now signed in.")*/
+                    if let data = data {
+                        let result = try JSONDecoder().decode(User.self, from: DataResponsePublisher(<#T##request: DataRequest##DataRequest#>, queue: <#T##DispatchQueue#>))
+                        
+                        
+                        let defaults = UserDefaults.standard
+                        let encoder = JSONEncoder()
+                        if let encoded = try? encoder.encode(result){
+                            defaults.set(encoded, forKey: "user")
+                            print(result)
+                            
+                            
+                        }}
                 case .failure(let error):
                     print(response.result)
                     onFailure("Error", "Network request failed")
                 }
         }
+    }*/
+    func signIn(email: String, password: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
+        let signinURL = "https://serverblasti.onrender.com/api/user/login"
+        AF.request(signinURL, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
+            .validate(statusCode: 200..<401)
+            .validate(contentType: ["application/json", "text/html"])
+            .responseJSON { response in
+                print("Response: \(response)")
+                
+                switch response.result {
+                case .success(let data):
+                    print("Data: \(data)")
+                    
+                    if let jsonData = data as? [String: Any] {
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
+                            let result = try JSONDecoder().decode(User.self, from: jsonData)
+                            
+                            let defaults = UserDefaults.standard
+                            let encoder = JSONEncoder()
+                            if let encoded = try? encoder.encode(result) {
+                                defaults.set(encoded, forKey: "user")
+                                print("User saved: \(result)")
+                                onSuccess("Success", "You are now signed in.")
+                            }
+                        } catch {
+                            print("Error during JSON decoding: \(error)")
+                            onFailure("Error", "Invalid response format")
+                        }
+                    } else {
+                        print("Data is not a JSON dictionary")
+                        onFailure("Error", "Invalid response format")
+                    }
+                case .failure(let error):
+                    print("Error: \(error)")
+                    print("Response result: \(response.result)")
+                    onFailure("Error", "Network request failed")
+                }
+        }
     }
+
+
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

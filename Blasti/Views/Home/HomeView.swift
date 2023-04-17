@@ -57,8 +57,8 @@ struct HomeView: View {
                         }) {
                             Image(systemName: "bell")
                                 .resizable()
-                                .frame(width: 30, height: 30)
-                                .foregroundColor(Color.yellow)
+                                .frame(width: 25, height: 25)
+                                .foregroundColor(Color.white)
                                 .padding()
                                 .background(Color.white.opacity(0.5))
                                 .clipShape(Circle())
@@ -67,49 +67,73 @@ struct HomeView: View {
                     .padding(.horizontal, 20)
                     .padding(.top, 10)
                     
-//                    ZStack {
-//                        RoundedRectangle(cornerRadius: 25, style: .continuous)
-//                            .fill(Color.white)
 //
-//                        VStack(alignment: .leading) {
-//                            Text("Quote of the day")
-//                                .font(.headline)
-//                                .foregroundColor(Color.black)
-//                                .padding(.bottom, 5)
-//
-//                            Text("The only limit to our realization of tomorrow will be our doubts of today.")
-//                                .font(.body)
-//                                .foregroundColor(Color.black)
-//                                .padding(.bottom, 20)
-//                        }
-//                        .padding(EdgeInsets(top: 20, leading: 40, bottom: 20, trailing: 40))
-//                    }
-//                    .padding(.horizontal, 20)
-//                    .padding(.top, 30)
-                    
+                    ScrollView(.vertical, showsIndicators: false) {
+       
                     Text("Movies")
-                        .font(.title)
+                        .font(.system(size: 35, design: .rounded).weight(.semibold))
                         .fontWeight(.bold)
                         .padding(.top, 20)
                         .foregroundColor(.white)
                     
                     ScrollView(.horizontal, showsIndicators: false) {
                               HStack(spacing: 20) {
-                                  ForEach(moviesViewModel.movies, id: \.self) { movie in 
+                                  ForEach(moviesViewModel.movies, id: \.self) { movie in
+                                      BabyCardView(movie: movie)
+                            
+                                     }
+                                  }
+                              
+                              .padding(.horizontal, 20)
+                              .padding(.top, 10)
+                              .onAppear {                                                  print("Movies in HomeView: \(moviesViewModel.movies)")}
+                            
+                          }
+                    
+                    Spacer()
+                    Text("Events")
+                        .font(.system(size: 35, design: .rounded).weight(.semibold))
+                        .fontWeight(.bold)
+                        .padding(.top, 20)
+                        .foregroundColor(.white)
+                    
+                    ScrollView(.horizontal, showsIndicators: false) {
+                              HStack(spacing: 20) {
+                                  ForEach(moviesViewModel.movies, id: \.self) { movie in
                                       BabyCardView(movie: movie)
                                   }
                                   }
                               
                               .padding(.horizontal, 20)
-                              .padding(.top, 20)
-                              .onAppear { // Add this block
-                                                  print("Movies in HomeView: \(moviesViewModel.movies)")
-                                              }
+                              .padding(.top, 10)
+                              .onAppear {                                                  print("Movies in HomeView: \(moviesViewModel.movies)")}
+                            
                           }
                     
                     Spacer()
+                        
+                        Text("Shows")
+                            .font(.system(size: 35, design: .rounded).weight(.semibold))
+                            .fontWeight(.bold)
+                            .padding(.top, 20)
+                            .foregroundColor(.white)
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                                  HStack(spacing: 20) {
+                                      ForEach(moviesViewModel.movies, id: \.self) { movie in
+                                          BabyCardView(movie: movie)
+                                      }
+                                      }
+                                  
+                                  .padding(.horizontal, 20)
+                                  .padding(.top, 10)
+                                  .onAppear {                                                  print("Movies in HomeView: \(moviesViewModel.movies)")}
+                                
+                              }
+                        
+                        Spacer()
                     
-                }
+                    }  }
             }
             .navigationBarTitle("Home", displayMode: .inline)
             .navigationBarHidden(true)
@@ -123,21 +147,35 @@ struct BabyCardView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            Image("moviecover")
+            Image("coverr")
                 .resizable()
                 .aspectRatio(contentMode: .fill)
-                .frame(width: 250, height:150 )
+                .frame(width: 200, height:250 )
                 .clipShape(Rectangle())
-                .cornerRadius(20)
+                .cornerRadius(10)
+            /* HStack{
+                Button(action: {
+                
+                }) {
+                Image( systemName: "heart.fill")
+                
+                .foregroundColor(Color.red)
+                .frame(width: 10, height: 10)
+                .font(.system(size: 30))
+                
+             }}
+             */
             
             
             Text(movie.title)
                 .foregroundColor(Color.black)
-                .font(.headline)
-        }
+                .font(.system(size: 20, design: .rounded).weight(.light))
+          
+                
+            }
         .padding(20)
         .background(Color.white.opacity(0.5))
-        .cornerRadius(20)
+        .cornerRadius(10)
         .shadow(color: .black.opacity(0.7), radius: 5, x: 0, y: 4)
     }
 }

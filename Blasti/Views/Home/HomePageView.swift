@@ -23,17 +23,17 @@ struct HomePage: View {
 
                             MusicView().tabItem(){
 
-                                Image(systemName: "music.note")
+                                Image(systemName: "star.fill")
 
-                                Text("Music")
+                                Text("Categories")
 
                             }
 
                             AudioBooksView().tabItem(){
 
-                                Image(systemName: "headphones")
+                                Image(systemName: "ticket.fill")
 
-                                Text("Audiobooks")
+                                Text("Tickets")
 
                             }
 

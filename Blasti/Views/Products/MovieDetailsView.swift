@@ -13,7 +13,7 @@ struct HotelDetail: View {
         ScrollView {
             VStack {
                 ZStack(alignment: .top) {
-                    Image("logoo")
+                    Image("moviecover")
                         .renderingMode(.original)
                         .resizable()
                         .aspectRatio(contentMode: .fill)

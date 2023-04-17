@@ -19,3 +19,15 @@ struct User: Codable{
   
 }
 
+
+struct LogedInUser: Codable{
+     var id:String=""
+    var username: String=""
+    var email: String=""
+    var role: String=""
+    var avatar: String=""
+    var bio: String=""
+    var token: String=""
+  
+}
+
