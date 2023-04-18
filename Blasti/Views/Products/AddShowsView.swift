@@ -33,8 +33,14 @@ struct AddShowsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.yellow,.black,.yellow.opacity(0.7),.black, .yellow]), startPoint: .top, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [.yellow,.black,.yellow.opacity(0.9),.black, .yellow]), startPoint: .top, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
+                
+                Rectangle()
+                    .fill(Color.black.opacity(0.5))
+                                   .shadow(radius: 80)
+                                   .frame(width: 400, height: 900)
+                                   .ignoresSafeArea()
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
@@ -43,6 +49,7 @@ struct AddShowsView: View {
                             .bold()
                             .foregroundColor(.white)
                             .padding(.bottom, 18)
+                            .padding(.top, 80)
                         
                         //   mm.showInput(title: "Show Title", placeholder: "Enter Show Title", text: $mm.title)
                         
@@ -187,7 +194,8 @@ struct AddShowsView: View {
                     presentationMode.wrappedValue.dismiss()
                 }) {
                     Text("Cancel")
-                        .foregroundColor(.white)
+                        .foregroundColor(.yellow)
+                        .offset(x:0,y:-20)
                 })
             }
         }

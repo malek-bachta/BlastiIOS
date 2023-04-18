@@ -26,7 +26,6 @@ struct SplashScreenView: View {
         if isLoading {
             AnimatedBackground()
                 .onAppear {
-                    // Simulate loading for 3 seconds, then navigate to login page
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         isLoading = false
                     }
