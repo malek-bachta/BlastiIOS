@@ -107,7 +107,7 @@ struct ProfileView: View {
                             }
                             // Add more favorite buttons as needed
                         }
-                            .listRowBackground(Color.yellow.opacity(0.7))
+                          //  .listRowBackground(Color.yellow.opacity(0.7))
                             .foregroundColor(Color.black)
                             .font(.system(size: 20, design: .rounded).weight(.bold))
 
@@ -131,15 +131,16 @@ struct ProfileView: View {
                                     .font(.system(size: 20, design: .rounded).weight(.light))
                             }
                             // Add more reservation buttons as needed
-                        }                          .listRowBackground(Color.yellow.opacity(0.7))
+                        }                          //.listRowBackground(Color.yellow.opacity(0.7))
                             .foregroundColor(Color.black)
                             .font(.system(size: 20, design: .rounded).weight(.bold))
                             
                     }
                     .listStyle(.inset)
-                    .frame(width: 395, height: 700)
-                    .offset(x: 0, y: 240)
+                    .frame(width: 395, height: 750)
+                    .offset(x: 0, y: 250)
                     .cornerRadius(10)
+                    .shadow(radius: 8)
                     
                     Button(action: {}) {
                                             NavigationLink(destination: AddMoviesView()) {
@@ -147,7 +148,7 @@ struct ProfileView: View {
                                                     Text("GO PREMIUM")
                                                         .font(.system(size: 20, design: .rounded).weight(.semibold))
                                                         .foregroundColor(.white)
-                                                        .padding()
+                                                        
                                                     Image(systemName: "star.fill")
                                                         .font(.system(size: 20, design: .rounded).weight(.semibold))
                                                         .foregroundColor(.white)
@@ -157,7 +158,7 @@ struct ProfileView: View {
                                                     LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.yellow.opacity(0.3)]), startPoint: .topLeading, endPoint: .bottomTrailing)
                                                 )
                                                 .cornerRadius(10)
-                                                .shadow(radius: 5)
+                                                .shadow(radius: 10)
                                             }
                                         }
                                         .offset(y: -60) // Move the button up a little

@@ -18,6 +18,8 @@
 		22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */; };
 		22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455D429DFD27A001ACFF6 /* EditProfile.swift */; };
 		22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */; };
+		22E2BC7F29EE18D0003991EF /* AddShowsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2BC7E29EE18D0003991EF /* AddShowsView.swift */; };
+		22E2BC8129EE1902003991EF /* AddEventsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22E2BC8029EE1902003991EF /* AddEventsView.swift */; };
 		22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22F05E5729D4D77200615678 /* BlastiApp.swift */; };
 		22F05E5C29D4D77300615678 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5B29D4D77300615678 /* Assets.xcassets */; };
 		22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 22F05E5E29D4D77300615678 /* Preview Assets.xcassets */; };
@@ -49,6 +51,8 @@
 		22C455D029DFC7FB001ACFF6 /* SigninViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SigninViewModel.swift; sourceTree = "<group>"; };
 		22C455D429DFD27A001ACFF6 /* EditProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfile.swift; sourceTree = "<group>"; };
 		22C455DA29DFFC9A001ACFF6 /* ResetPassword.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetPassword.swift; sourceTree = "<group>"; };
+		22E2BC7E29EE18D0003991EF /* AddShowsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddShowsView.swift; sourceTree = "<group>"; };
+		22E2BC8029EE1902003991EF /* AddEventsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddEventsView.swift; sourceTree = "<group>"; };
 		22F05E5429D4D77200615678 /* Blasti.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Blasti.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		22F05E5729D4D77200615678 /* BlastiApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlastiApp.swift; sourceTree = "<group>"; };
 		22F05E5B29D4D77300615678 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -199,8 +203,10 @@
 		B087252B29E765FD00CF5E57 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				B087252E29E772DB00CF5E57 /* AddMoviesView.swift */,
 				7AA6999029E818AF005FEA9F /* MovieDetailsView.swift */,
+				B087252E29E772DB00CF5E57 /* AddMoviesView.swift */,
+				22E2BC7E29EE18D0003991EF /* AddShowsView.swift */,
+				22E2BC8029EE1902003991EF /* AddEventsView.swift */,
 			);
 			path = Products;
 			sourceTree = "<group>";
@@ -286,6 +292,7 @@
 				7AA699A129E8416D005FEA9F /* Movies.swift in Sources */,
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
 				22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */,
+				22E2BC7F29EE18D0003991EF /* AddShowsView.swift in Sources */,
 				B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */,
 				2270425729E8D0270021272D /* EntityType.swift in Sources */,
 				22F05E6129D4D77300615678 /* Persistence.swift in Sources */,
@@ -303,6 +310,7 @@
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
 				7AA6998929E6CABF005FEA9F /* ProfileViewModel.swift in Sources */,
 				7AA6999F29E84138005FEA9F /* User.swift in Sources */,
+				22E2BC8129EE1902003991EF /* AddEventsView.swift in Sources */,
 				7AA6998729E5F4DB005FEA9F /* VerifyPasswordKey.swift in Sources */,
 				7AA6999629E83027005FEA9F /* HomeView.swift in Sources */,
 				B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */,

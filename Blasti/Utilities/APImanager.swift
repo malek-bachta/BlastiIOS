@@ -90,7 +90,7 @@ class NetworkService {
                     if let jsonData = data as? [String: Any] {
                         do {
                             let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
-                            let result = try JSONDecoder().decode(User.self, from: jsonData)
+                            let result = try JSONDecoder().decode(LogedInUser.self, from: jsonData)
                             
                             let defaults = UserDefaults.standard
                             let encoder = JSONEncoder()

@@ -3,17 +3,26 @@ import PhotosUI
 import UIKit
 import CoreData
 
-struct AddMoviesView: View {
-    @StateObject var mm = MoviesViewModel()
+struct AddEventsView: View {
+    // @StateObject var mm = EventsViewModel()
     
     @Environment(\.presentationMode) private var presentationMode
-    @State private var movieTitle = ""
-    @State private var movieReleaseDate = ""
+    @State private var eventTitle = ""
+    /*************************************/
+    @State var genre: String
+    @State var name: String
+     @State var duration: String
+    @State var language: String
+    @State var Production   : String
+    @State var description: String
+    
+    /*******************************/
+    @State private var eventReleaseDate = ""
     @State private var selectedDate = Date()
     @State private var selectedLanguage: String = ""
-    @State private var movieCover: UIImage? = nil
+    @State private var eventCover: UIImage? = nil
     @State private var isImagePickerDisplayed = false
-    @State private var movieDuration: Double = 0
+    @State private var eventDuration: Double = 0
     
     private var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -29,20 +38,20 @@ struct AddMoviesView: View {
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        Text("Add Movie")
+                        Text("Add Event")
                             .font(.system(size: 35, design: .rounded).weight(.bold))
                             .bold()
                             .foregroundColor(.white)
                             .padding(.bottom, 18)
                         
-                        mm.movieInput(title: "Movie Title", placeholder: "Enter Movie Title", text: $mm.title)
+                        //   mm.eventInput(title: "event Title", placeholder: "Enter event Title", text: $mm.title)
                         
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Genre")
+                            Text("Music")
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                            TextField("Enter Genre", text: $mm.genre)
+                            TextField("Enter Genre" , text: $genre)
                                 .padding()
                                 .background(Color.white.opacity(0.3))
                                 .cornerRadius(8)
@@ -50,11 +59,11 @@ struct AddMoviesView: View {
                         .padding(.horizontal)
                         
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Language")
+                            Text("Release")
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                            Picker(selection: $mm.language, label:
+                              Picker(selection: $language, label:
                                     HStack {
                                 Text("Select Language")
                                     .foregroundColor(.white)
@@ -63,19 +72,19 @@ struct AddMoviesView: View {
                                     .foregroundColor(.white)
                             }
                             ) {
-                                Text("Arabic")
+                                Text("1st Release")
                                     .foregroundColor(.white)
-                                    .tag("Arabic")
-                                Text("French")
+                                    .tag("1st Release")
+                                Text("2nd Release")
                                     .foregroundColor(.white)
-                                    .tag("French")
-                                Text("English")
+                                    .tag("2nd Release")
+                                Text("3rd Release")
                                     .foregroundColor(.white)
-                                    .tag("English")
+                                    .tag("3rd Release")
                             }
                             .pickerStyle(MenuPickerStyle())
                             .padding()
-                            .frame(width: 140, height: 50)
+                            .frame(width: 160, height: 50)
                             .background(Color.white.opacity(0.3))
                             .cornerRadius(8)
                             
@@ -87,7 +96,7 @@ struct AddMoviesView: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                            TextField("Enter Movie Duration (minutes)", value: $mm.duration, formatter: numberFormatter)
+                            TextField("Enter event Duration (minutes)" , value: $duration, formatter: numberFormatter )
                                 .padding()
                                 .keyboardType(.numberPad)
                                 .background(Color.white.opacity(0.3))
@@ -101,10 +110,9 @@ struct AddMoviesView: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                            DatePicker("Enter Movie Date", selection: $selectedDate, displayedComponents: .date)
+                            DatePicker("Enter event Date", selection: $selectedDate, displayedComponents: .date)
                                 .labelsHidden()
-                                .accentColor(.yellow)
-                                .colorMultiply(.yellow)
+                                .accentColor(.white)
                                 .foregroundColor(.white)
                         }
                         .padding(.horizontal)
@@ -113,7 +121,7 @@ struct AddMoviesView: View {
                             Text("Description")
                                 .font(.headline)
                                 .foregroundColor(.white)
-                            TextField("Enter Movie Description", text: $mm.description)
+                            TextField("Enter event Description" , text: $description)
                                 .padding()
                                 .frame(height: 100)
                                 .background(Color.white.opacity(0.3))
@@ -122,11 +130,11 @@ struct AddMoviesView: View {
                         .padding(.horizontal)
                         
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Production")
+                            Text("Organization")
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                            TextField("Enter the writer and the director", text: $mm.Production)
+                            TextField("Enter the writer and the director" , text: $Production)
                                 .padding()
                                 .background(Color.white.opacity(0.3))
                                 .cornerRadius(8)
@@ -138,8 +146,8 @@ struct AddMoviesView: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                            if let movieCover = movieCover {
-                                Image(uiImage: movieCover)
+                            if let eventCover = eventCover {
+                                Image(uiImage: eventCover)
                                     .resizable()
                                     .scaledToFit()
                                     .cornerRadius(8)
@@ -156,14 +164,14 @@ struct AddMoviesView: View {
                         }
                         .padding(.horizontal)
                         .sheet(isPresented: $isImagePickerDisplayed) {
-                            ImagePicker(selectedImage: $movieCover, isShown: $isImagePickerDisplayed)
+                            ImagePicker(selectedImage: $eventCover, isShown: $isImagePickerDisplayed)
                         }
                         
                         Button(action: {
-                            mm.addMovie(title: mm.title, genre: mm.genre, description: mm.description)
+                          /*  mm.addevent(title: mm.title, genre: mm.genre, description: mm.description)*/
                             presentationMode.wrappedValue.dismiss()
                         }) {
-                            Text("Add Movie")
+                            Text("Add event")
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
                                 .padding()
@@ -188,7 +196,8 @@ struct AddMoviesView: View {
     
     struct SwiftUIView_Previews: PreviewProvider {
         static var previews: some View {
-            AddMoviesView()
+            AddEventsView(genre: "", name:"", duration: "", language: "", Production: "", description: "")
         }
     }
 }
+

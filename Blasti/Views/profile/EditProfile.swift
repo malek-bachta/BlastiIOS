@@ -24,7 +24,7 @@ struct EditProfileView: View {
         NavigationView {
            
                 ZStack{
-                    LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
+                    LinearGradient(gradient: Gradient(colors: [.yellow,.black,.yellow,.black, .yellow]), startPoint: .top, endPoint: .bottomTrailing)
                         
                         .ignoresSafeArea()
                    
@@ -85,7 +85,7 @@ struct EditProfileView: View {
                 }
                 .navigationBarItems(trailing: Button(action: saveChanges) {
                     Text("Save")
-                      .colorMultiply(.white)
+                        .foregroundColor(.yellow)
                 })
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Couldn't Save"), message: Text("There was an error saving your changes."), dismissButton: .default(Text("OK")))

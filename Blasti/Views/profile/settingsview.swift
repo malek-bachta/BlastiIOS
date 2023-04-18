@@ -16,11 +16,15 @@ struct SettignsView: View {
     @State var showpasswordDialog = false
     @State var curentPassword = ""
     @State var newPassword = ""
-   // @ObservedObject var viewModel = ProfileViewModel(user: User)
+    @ObservedObject var pvm = ProfileViewModel()
                                             
     @State private var showError = false
     @State private var errorTitle = ""
     @State private var errorMessage = ""
+    
+    
+    @State private var showAlert = false
+
     
     var body: some View {
         NavigationView {
@@ -69,15 +73,26 @@ struct SettignsView: View {
                     }
                     
                     Section {
-                        HStack(spacing: 10) {
-                            Image("logout")
-                                .resizable()
-                                .frame(width: 20, height: 20)
-                            Text("Logout")
-                            Spacer(minLength: 15)
-                            Image(systemName: "chevron.right").foregroundColor(Color.yellow)
+                        Button(action: {
+                            // Show the "Logout" alert
+                            showAlert = true
+                        }) {
+                            HStack(spacing: 10) {
+                                Image("logout")
+                                    .resizable()
+                                    .frame(width: 20, height: 20)
+                                Text("Logout")
+                                Spacer(minLength: 15)
+                                Image(systemName: "chevron.right").foregroundColor(Color.yellow)
+                            }
                         }
                     }
+                    .alert(isPresented: $showAlert) {
+                        Alert(title: Text("Logout"), message: Text("Are you sure you want to logout?"), primaryButton: .destructive(Text("Logout"), action: {
+                            pvm.logout()
+                        }), secondaryButton: .cancel(Text("Cancel")))
+                    }
+
                 }
                 .alert(isPresented: $showError) {
                     Alert(title: Text(errorTitle).foregroundColor(.red), message: Text(errorMessage), dismissButton: .default(Text("OK")))
