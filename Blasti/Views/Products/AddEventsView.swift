@@ -4,17 +4,17 @@ import UIKit
 import CoreData
 
 struct AddEventsView: View {
-    // @StateObject var mm = EventsViewModel()
+     @StateObject var em = EventsViewModel()
     
     @Environment(\.presentationMode) private var presentationMode
     @State private var eventTitle = ""
     /*************************************/
-    @State var genre: String
-    @State var name: String
-     @State var duration: String
-    @State var language: String
-    @State var Production   : String
-    @State var description: String
+    @State var genre = ""
+    @State var name = ""
+     @State var duration = ""
+    @State var language = ""
+    @State var Production = ""
+    @State var description = ""
     
     /*******************************/
     @State private var eventReleaseDate = ""
@@ -55,11 +55,28 @@ struct AddEventsView: View {
                         //   mm.eventInput(title: "event Title", placeholder: "Enter event Title", text: $mm.title)
                         
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Music")
+                            Text("Title")
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                            TextField("Enter Genre" , text: $genre)
+                            TextField("Enter Title" , text: $em.title)
+                                .padding()
+                                .background(Color.white.opacity(0.3))
+                                .cornerRadius(8)
+                            
+                            Text("Event Type")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            TextField("Enter Type" , text: $em.type)
+                                .padding()
+                                .background(Color.white.opacity(0.3))
+                                .cornerRadius(8)
+                            Text("Adress")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            TextField("Enter Adress" , text: $em.adress)
                                 .padding()
                                 .background(Color.white.opacity(0.3))
                                 .cornerRadius(8)
@@ -100,7 +117,7 @@ struct AddEventsView: View {
                         .padding(.horizontal)
                         
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Duration")
+                            Text("Price")
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
@@ -149,37 +166,37 @@ struct AddEventsView: View {
                         }
                         .padding(.horizontal)
                         
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text("Image")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                            
-                            if let eventCover = eventCover {
-                                Image(uiImage: eventCover)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(8)
-                            } else {
-                                Button(action: {
-                                    isImagePickerDisplayed.toggle()
-                                }) {
-                                    Text("Pick the Cover")
-                                        .padding()
-                                        .background(Color.white.opacity(0.3))
-                                        .cornerRadius(8)
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-                        .sheet(isPresented: $isImagePickerDisplayed) {
-                            ImagePicker(selectedImage: $eventCover, isShown: $isImagePickerDisplayed)
-                        }
-                        
+//                        VStack(alignment: .leading, spacing: 15) {
+//                            Text("Image")
+//                                .font(.headline)
+//                                .foregroundColor(.white)
+//                            
+//                            if let eventCover = eventCover {
+//                                Image(uiImage: eventCover)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .cornerRadius(8)
+//                            } else {
+//                                Button(action: {
+//                                    isImagePickerDisplayed.toggle()
+//                                }) {
+//                                    Text("Pick the Cover")
+//                                        .padding()
+//                                        .background(Color.white.opacity(0.3))
+//                                        .cornerRadius(8)
+//                                }
+//                            }
+//                        }
+//                        .padding(.horizontal)
+//                        .sheet(isPresented: $isImagePickerDisplayed) {
+//                            ImagePicker(selectedImage: $eventCover, isShown: $isImagePickerDisplayed)
+//                        }
+//                        
                         Button(action: {
-                          /*  mm.addevent(title: mm.title, genre: mm.genre, description: mm.description)*/
+                            em.addEvent(title: em.title, adress: em.adress, type: em.type)
                             presentationMode.wrappedValue.dismiss()
                         }) {
-                            Text("Add event")
+                            Text("Add Event")
                                 .fontWeight(.bold)
                                 .foregroundColor(.black)
                                 .padding()
@@ -190,14 +207,17 @@ struct AddEventsView: View {
                         .padding(.horizontal)
                     }
                     .padding(.horizontal)
+                    Spacer()
+                        .frame(height: 100)
+
                 }
-                .navigationBarItems(leading: Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Cancel")
-                        .foregroundColor(.yellow)
-                        .offset(x:0,y:-20)
-                })
+//                .navigationBarItems(leading: Button(action: {
+//                    presentationMode.wrappedValue.dismiss()
+//                }) {
+//                    Text("Cancel")
+//                        .foregroundColor(.yellow)
+//                        .offset(x:0,y:-20)
+//                })
             }
         }
         

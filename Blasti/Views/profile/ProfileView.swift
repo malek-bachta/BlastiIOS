@@ -10,128 +10,96 @@ struct ProfileView: View {
     @State var image: UIImage?
     @State private var isPresentingConfirm: Bool = false
     @State private var isPresentingAlert: Bool = false
-    @State private var colors = [Color.yellow, Color.black]
+    @State private var colors = [Color("y"), Color.black]
+   
     @Environment(\.presentationMode) var presentationMode
     
     
     var body: some View {
         NavigationView {
             ZStack {
-                
-                /*LinearGradient(gradient: Gradient(colors: colors), startPoint: .topLeading, endPoint: .bottomTrailing)
-                 .ignoresSafeArea()
-                 
-                 RoundedRectangle(cornerRadius: 100)
-                 .fill(Color.white)
-                 .shadow(radius: 80)
-                 .offset(x:0,y:170)
-                 */
-                
-                /* Button(action: {
-                 // handle button tap
-                 }) {
-                 Image( systemName: "camera.circle.fill")
-                 
-                 .foregroundColor(Color.white)
-                 .frame(width: 20, height: 20)
-                 .font(.system(size: 30))
-                 .offset(x: 65, y:-280)
-                             }*/
-           /* Button(action: {
-                // handle button tap
-            }) {
-                Circle()
-                
-                    .scaledToFit()
-                    .frame(width: 160)
-                    .offset(x: 0, y: -220)
-                    .padding()
-                    .foregroundColor(.white)
-                    .shadow(radius: 8)
-            }
-            Spacer()*/
-            
-            
-            VStack {
-                HStack {
-                    Button(action: {
-                    }) {
-                        
-                        Label("", systemImage: "")
-                            .font(.system(size: 40, design: .rounded).weight(.semibold))
-                            .foregroundColor(.white)
-                            .padding()
+                VStack {
+                    HStack {
+                        Button(action: {
+                        }) {
+                            
+                            Label("", systemImage: "")
+                                .font(.system(size: 40, design: .rounded).weight(.semibold))
+                                .foregroundColor(.white)
+                                .padding()
                         
                     }
                     Spacer()
                     
                     Button(action: {}) {
-                        NavigationLink(destination: SettignsView().navigationBarBackButtonHidden()) {
+                        NavigationLink(destination: SettignsView()) {
                             Label("", systemImage: "gear")
-                                .font(.system(size: 30, design: .rounded).weight(.semibold))
-                                .offset(x:-256,y:93)
-                                .foregroundColor(.black)
-                                .padding()
+                                .font(.system(size: 40, design: .default).weight(.semibold))
+                                .offset(x: 15,y:20)
+                                .foregroundColor(Color("AccentColor"))
+                                
                         }
                     }
                 }
-                .padding(.top, 20)
+              .padding(.top, 20)
                 .padding(.horizontal, 10)
                 
                 Spacer()
             }
             
-            VStack {
-                Spacer()
-                List {
-                    Section(header: Text("Favorites")) {
-                        Button(action: {
-                            // Handle button action
-                        }) {
-                            Label("Movies", systemImage: "film")
-                                .font(.system(size: 20, design: .rounded).weight(.light))
+                VStack {
+                    // Spacer()
+                    List {
+                        Section(header: Text("Favorites")) {
+                            Button(action: {
+                                // Handle button action
+                            }) {
+                                Label("Movies", systemImage: "film")
+                                    .foregroundColor(Color("Color"))
+                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                                
+                            }
+                            Button(action: {
+                                // Handle button action
+                            }) {
+                                Label("Shows", systemImage: "star.circle.fill")
+                                    .foregroundColor(Color("Color"))
+                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                            }
+                            Button(action: {
+                                // Handle button action
+                            }) {
+                                Label("Events", systemImage:"music.mic")
+                                    .foregroundColor(Color("Color"))
+                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                            }
+                            // Add more favorite buttons as needed
+                        }
+                        //  .listRowBackground(Color.Color("y").opacity(0.7))
+                        //.foregroundColor(Color.black)
+                        .font(.system(size: 20, design: .rounded).weight(.bold))
+                        
+                        Section(header: Text("Reservations")
+                        ){
+                            NavigationLink(destination: MovieTicket()) {
+                                Label("Movies", systemImage: "film")
+                                    .foregroundColor(Color("Color"))
+                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                                
+                            }
                             
-                        }
-                        Button(action: {
-                            // Handle button action
-                        }) {
+                            NavigationLink(destination:  ShowTicket()) {
                             Label("Shows", systemImage: "star.circle.fill")
+                                .foregroundColor(Color("Color"))
                                 .font(.system(size: 20, design: .rounded).weight(.light))
                         }
-                        Button(action: {
-                            // Handle button action
-                        }) {
+                            NavigationLink(destination: EventTicket())  {
                             Label("Events", systemImage:"music.mic")
-                                .font(.system(size: 20, design: .rounded).weight(.light))
-                        }
-                        // Add more favorite buttons as needed
-                    }
-                    //  .listRowBackground(Color.yellow.opacity(0.7))
-                    //.foregroundColor(Color.black)
-                    .font(.system(size: 20, design: .rounded).weight(.bold))
-                    
-                    Section(header: Text("Reservations")    //.foregroundColor(.black)
-                    ){
-                        Button(action: {
-                            // Handle button action
-                        }) {
-                            Label("Movies", systemImage: "film")
-                                .font(.system(size: 20, design: .rounded).weight(.light))
-                        }
-                        Button(action: {
-                            // Handle button action
-                        }) {
-                            Label("Shows", systemImage: "star.circle.fill")
-                                .font(.system(size: 20, design: .rounded).weight(.light))
-                        }
-                        Button(action: {
-                            // Handle button action
-                        }) {
-                            Label("Events", systemImage:"music.mic")
+                                .foregroundColor(Color("Color"))
                                 .font(.system(size: 20, design: .rounded).weight(.light))
                         }
                         // Add more reservation buttons as needed
-                    }                          //.listRowBackground(Color.yellow.opacity(0.7))
+                    }                          //.listRowBackground(Color.Color("y").opacity(0.7))
                     //     .foregroundColor(Color.black)
                     .font(.system(size: 20, design: .rounded).weight(.bold))
                     
@@ -141,26 +109,46 @@ struct ProfileView: View {
                 .offset(x: 0, y: 280)
                 .cornerRadius(10)
              //   .shadow(radius: 8)
-                
-                Button(action: {}) {
-                    NavigationLink(destination: AddMoviesView()) {
-                        HStack {
-                            Text("GO PREMIUM")
-                                .font(.system(size: 20, design: .rounded).weight(.semibold))
-                                .foregroundColor(.white)
-                            
-                            Image(systemName: "star.fill")
-                                .font(.system(size: 20, design: .rounded).weight(.semibold))
-                                .foregroundColor(.white)
+                    HStack{
+                        Button(action: {}) {
+                            NavigationLink(destination: AddMoviesView()) {
+                                HStack {
+                                    Text("Add Movie")
+                                        .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                        .foregroundColor(Color("AccentColor"))
+                                    
+                                    Image(systemName: "star.fill")
+                                        .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                        .foregroundColor(Color("AccentColor"))
+                                }
+                                .frame(width: 150, height: 50)
+                                .background(
+                                    LinearGradient(gradient: Gradient(colors: [Color("color1").opacity(0.3),Color("y"), Color("color1").opacity(0.3)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                )
+                                .cornerRadius(10)
+                                .shadow(radius: 10)
+                            }
                         }
-                        .frame(width: 200, height: 50)
-                        .background(
-                            LinearGradient(gradient: Gradient(colors: [Color.yellow, Color.yellow.opacity(0.3)]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                        )
-                        .cornerRadius(10)
-                        .shadow(radius: 10)
+                        Button(action: {}) {
+                            NavigationLink(destination: AddEventsView()) {
+                                HStack {
+                                    Text("Add Event")
+                                        .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                        .foregroundColor(Color("AccentColor"))
+                                    
+                                    Image(systemName: "star.fill")
+                                        .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                        .foregroundColor(Color("AccentColor"))
+                                }
+                                .frame(width: 150, height: 50)
+                                .background(
+                                    LinearGradient(gradient: Gradient(colors: [Color("color1").opacity(0.3),Color("y"), Color("color1").opacity(0.3)]), startPoint: .topLeading, endPoint: .bottomTrailing)
+                                )
+                                .cornerRadius(10)
+                                .shadow(radius: 10)
+                            }
+                        }
                     }
-                }
                 .offset(y: -60) // Move the button up a little
                 
                 
@@ -169,32 +157,33 @@ struct ProfileView: View {
          
             HStack {
                 Text("User Name")
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("AccentColor"))
                     .shadow(radius: 100)
-                    .offset(x: 110, y: -355)
-                    .font(.system(size: 30, design: .rounded).weight(.semibold))
+                    .offset(x: -110, y: -290)
+                    .font(.system(size: 30, design: .rounded).weight(.thin ))
                 
                 
                 
             }
                 Circle()
                     .scaledToFit()
-                    .frame(width: 160)
-                    .offset(x: 110, y: -250)
+                    .frame(width: 125)
+                    .offset(x: 55, y: -300)
                     .shadow(radius: 100)
-                    .foregroundColor(.white)
+                    .foregroundColor(Color("c"))
+                    
                 
             Image("profilemain")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 300)
-                .offset(x: 110, y: -250)
+                .frame(width: 240)
+                .offset(x: 55, y: -300)
                 .padding()
                 .shadow(radius: 100)
-                .foregroundColor(.black)
+                
             
         }
-        .background(Image("bg")
+        .background(Image("pbg")
             .resizable()
             .frame(width: 400, height: 800)
             .offset(x:0,y:-40))

@@ -25,24 +25,24 @@ class MoviesViewModel: ObservableObject {
     @Published var description = ""
     @Published var language = ""
     
-    @Published var image = ""
-    
-    var user:User?
+    @Published var image: UIImage?
+
+//    var user:User?
     @Published var madd : Bool = false
     
     init(){
         self.getMovies()
-        user=getuser()
-        print(user)
+//        user=getuser()
+//        print(user)
     }
     func addMovie(title: String,
 //                  date: String,
                   genre: String,
-                  description: String
+                  description: String,
 //                  duration: String,
 //                  Production: String,
 //                  language:String,
-//                  image: UIImage
+                  image: UIImage?
     ) {
         networkService.AddMovie(title: title,
 //                                date: date,
@@ -51,7 +51,7 @@ class MoviesViewModel: ObservableObject {
 //                                duration: duration,
 //                                Production: Production,
 //                                language: language,
-//                                image: image,
+                                image: image!,
                                 onSuccess: { (title, message) in
             DispatchQueue.main.async {
                 self.madd = true
@@ -65,46 +65,28 @@ class MoviesViewModel: ObservableObject {
     }
     
     
-    func getuser()->User?{
-        let defaults = UserDefaults.standard
-        if let saveduser = defaults.object(forKey: "user") as? Data{
-            let decoder = JSONDecoder()
-            if let loadeduser = try? decoder.decode(User.self, from: saveduser){
-                return loadeduser
-            }
-        }
-        return nil
-    }
+//    func getuser()->User?{
+//        let defaults = UserDefaults.standard
+//        if let saveduser = defaults.object(forKey: "user") as? Data{
+//            let decoder = JSONDecoder()
+//            if let loadeduser = try? decoder.decode(User.self, from: saveduser){
+//                return loadeduser
+//            }
+//        }
+//        return nil
+//    }
+    
+    
     func getMovies() {
-      /*  networkService.getMovies(onSuccess:{ (moviesData) in
-            DispatchQueue.main.async {
-                self.movies = moviesData.map { movieData in
-                    // Assuming the API returns keys like 'id', 'title', and 'imageURL'
-                    let id = movieData["id"] as? Int ?? 0
-                    let title = movieData["title"] as? String ?? ""
-                    let imageURL = movieData["imageURL"] as? String ?? ""
-                    print("Movies fetched: \(self.movies)") // Add this line
-
-                    // Create a Movie object for each movieData
-                    return Movie(id: id, title: title,
-                                 imageURL: imageURL
-                    )
-                }
-            }
-        },onFailure:{ title, message in
-            DispatchQueue.main.async {
-                // You can handle the error here or create a separate property for the error message and update it
-                print("Error: \(title), Message: \(message)")
-            }
-        })*/
         networkService.fetchMovies() { [weak self]  result in
             DispatchQueue.main.async {
                 switch result {
                         case .success(let movies):
                             self?.movies = movies
                             print(movies)
-                            
+                  
                         case .failure(let error):
+                
                             print("error loading movies: \(error)")
                             //self?.state = .error(error.localizedDescription)
                         }
@@ -112,19 +94,19 @@ class MoviesViewModel: ObservableObject {
         }
     
     }
-
-    func movieInput(title: String, placeholder: String, text: Binding<String>) -> some View {
-        VStack(alignment: .leading, spacing: 15) {
-            Text(title)
-                .font(.headline)
-                .foregroundColor(.yellow)
-            
-            TextField(placeholder, text: text)
-                .padding()
-                .background(Color.white.opacity(0.3))
-                .cornerRadius(8)
-                .foregroundColor(.white)
-        }
-        .padding(.horizontal)
-    }
+//
+//    func movieInput(title: String, placeholder: String, text: Binding<String>) -> some View {
+//        VStack(alignment: .leading, spacing: 15) {
+//            Text(title)
+//                .font(.headline)
+//                .foregroundColor(.yellow)
+//            
+//            TextField(placeholder, text: text)
+//                .padding()
+//                .background(Color.white.opacity(0.3))
+//                .cornerRadius(8)
+//                .foregroundColor(.white)
+//        }
+//        .padding(.horizontal)
+//    }
 }

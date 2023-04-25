@@ -14,6 +14,7 @@ struct AddMoviesView: View {
     @State private var movieCover: UIImage? = nil
     @State private var isImagePickerDisplayed = false
     @State private var movieDuration: Double = 0
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     private var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -40,8 +41,19 @@ struct AddMoviesView: View {
                             .foregroundColor(.white)
                             .padding(.bottom, 18)
                             .padding(.top, 80)
-                        
-                        mm.movieInput(title: "Movie Title", placeholder: "Enter Movie Title", text: $mm.title)
+                        VStack(alignment: .leading, spacing: 15) {
+                                   Text("title")
+                                       .font(.headline)
+                                       .foregroundColor(.white)
+                       
+                            TextField("placeholder", text: $mm.title)
+                                       .padding()
+                                       .background(Color.white.opacity(0.3))
+                                       .cornerRadius(8)
+                                       .foregroundColor(.white)
+                               }
+                               .padding(.horizontal)
+//                        mm.movieInput(title: "Movie Title", placeholder: "Enter Movie Title", text: $mm.title)
                         
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Genre")
@@ -126,47 +138,89 @@ struct AddMoviesView: View {
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
-                        
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text("Production")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                            
-                            TextField("Enter the writer and the director", text: $mm.Production)
-                                .padding()
-                                .background(Color.white.opacity(0.3))
-                                .cornerRadius(8)
-                        }
-                        .padding(.horizontal)
-                        
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text("Image")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                            
-                            if let movieCover = movieCover {
-                                Image(uiImage: movieCover)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(8)
-                            } else {
-                                Button(action: {
-                                    isImagePickerDisplayed.toggle()
-                                }) {
-                                    Text("Pick the Cover")
-                                        .padding()
-                                        .background(Color.white.opacity(0.3))
-                                        .cornerRadius(8)
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-                        .sheet(isPresented: $isImagePickerDisplayed) {
-                            ImagePicker(selectedImage: $movieCover, isShown: $isImagePickerDisplayed)
-                        }
-                        
+//
+//                        VStack(alignment: .leading, spacing: 15) {
+//                            Text("Production")
+//                                .font(.headline)
+//                                .foregroundColor(.white)
+//
+//                            TextField("Enter the writer and the director", text: $mm.Production)
+//                                .padding()
+//                                .background(Color.white.opacity(0.3))
+//                                .cornerRadius(8)
+//                        }
+//                        .padding(.horizontal)
+////
+//                        VStack(alignment: .leading, spacing: 15) {
+//                            Text("Image")
+//                                .font(.headline)
+//                                .foregroundColor(.white)
+//
+//                            if let movieCover = movieCover {
+//                                Image(uiImage: movieCover)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .cornerRadius(8)
+//                            } else {
+//                                Button(action: {
+//                                    isImagePickerDisplayed.toggle()
+//                                }) {
+//                                    Text("Pick the Cover")
+//                                        .padding()
+//                                        .background(Color.white.opacity(0.3))
+//                                        .cornerRadius(8)
+//                                }
+//                            }
+//                        }
+//                        .padding(.horizontal)
+//                        .sheet(isPresented: $isImagePickerDisplayed) {
+//                            ImagePicker(selectedImage: $movieCover, isShown: $isImagePickerDisplayed)
+//                        }
+////
+                        VStack(alignment: .leading, spacing: 15){
+                                        if let selectedImage = movieCover {
+                                            Image(uiImage: selectedImage)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .clipShape(Circle())
+                                                .padding()
+                                        } else {
+                                            Button(action: {
+                                                PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                                                    DispatchQueue.main.async {
+                                                        switch status {
+                                                        case .authorized:
+                                                            self.isImagePickerDisplayed = true
+                                                            break
+                                                        case .denied, .restricted:
+                                                            // Handle denied or restricted permission
+                                                            break
+                                                        case .notDetermined:
+                                                            // Handle not determined permission
+                                                            break
+                                                        default:
+                                                            break
+                                                        }
+                                                    }
+                                                }
+                                                // Code to be executed when the button is tapped
+                                                print("Button tapped")
+                                            }) {
+                                                Image(systemName: "photo").resizable().frame(width: 30,height: 30)// Set the icon using an SF Symbol
+                                                    .foregroundColor(.gray)
+                                                Text("Photo").foregroundColor(Color.black)// Set the icon's color
+                                            }
+                                            .sheet(isPresented: $isImagePickerDisplayed) {
+                                                ImagePicker(image: self.$mm.image, sourceType: self.sourceType)
+                                            }
+                                        }
+                                    }
+
                         Button(action: {
-                            mm.addMovie(title: mm.title, genre: mm.genre, description: mm.description)
+                            mm.addMovie(title: mm.title, genre: mm.genre, description: mm.description
+                                        , image: mm.image
+                            )
+                            
                             presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Add Movie")
@@ -178,16 +232,20 @@ struct AddMoviesView: View {
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
+                        
                     }
                     .padding(.horizontal)
+                    Spacer()
+                        .frame(height: 100)
+
                 }
-                .navigationBarItems(leading: Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Cancel")
-                        .foregroundColor(.yellow)
-                        .offset(x:0,y:-20)
-                })
+//                .navigationBarItems(leading: Button(action: {
+//                    presentationMode.wrappedValue.dismiss()
+//                }) {
+//                    Text("Cancel")
+//                        .foregroundColor(.yellow)
+//                        .offset(x:0,y:-20)
+//                })
             }
         }
         

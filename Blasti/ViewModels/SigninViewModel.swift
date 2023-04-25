@@ -18,12 +18,17 @@ class SigninViewModel: ObservableObject {
     @Published var CodeSent : Bool = false
     @Published var currentUser: User?
     
+    var user:User?
+
     @Published var rememberMe = false
 
     init(){
         if(log || UserDefaults.standard.bool(forKey: "RememberMe")){
             log=true
         }
+        
+        user=getuser()
+        print(user)
     }
     
     func signIn(email: String, password: String) {
@@ -77,6 +82,16 @@ class SigninViewModel: ObservableObject {
         return emailPredicate.evaluate(with: email)
     }
     
+    func getuser()->User?{
+        let defaults = UserDefaults.standard
+        if let saveduser = defaults.object(forKey: "user") as? Data{
+            let decoder = JSONDecoder()
+            if let loadeduser = try? decoder.decode(User.self, from: saveduser){
+                return loadeduser
+            }
+        }
+        return nil
+    }
     
 }
 

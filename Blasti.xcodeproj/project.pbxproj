@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2207049B29EF64FA00D215ED /* Events.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207049A29EF64FA00D215ED /* Events.swift */; };
+		2207049D29EF662400D215ED /* EventViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2207049C29EF662400D215ED /* EventViewModel.swift */; };
+		220704A229EF790F00D215ED /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220704A129EF790F00D215ED /* SwiftUIView.swift */; };
+		220704A429EFB75000D215ED /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220704A329EFB75000D215ED /* ImagePicker.swift */; };
+		220704A729EFD45200D215ED /* EventTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220704A629EFD45200D215ED /* EventTicket.swift */; };
+		220704A929EFD47100D215ED /* ShowTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220704A829EFD47100D215ED /* ShowTicket.swift */; };
+		220704AB29EFD47C00D215ED /* MovieTicket.swift in Sources */ = {isa = PBXBuildFile; fileRef = 220704AA29EFD47C00D215ED /* MovieTicket.swift */; };
 		2270425729E8D0270021272D /* EntityType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270425629E8D0270021272D /* EntityType.swift */; };
 		2270425B29E8D08D0021272D /* APIError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2270425A29E8D08D0021272D /* APIError.swift */; };
 		228C176629D6260D00848BFC /* Register.swift in Sources */ = {isa = PBXBuildFile; fileRef = 228C176529D6260D00848BFC /* Register.swift */; };
@@ -41,6 +48,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2207049A29EF64FA00D215ED /* Events.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Events.swift; sourceTree = "<group>"; };
+		2207049C29EF662400D215ED /* EventViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventViewModel.swift; sourceTree = "<group>"; };
+		220704A129EF790F00D215ED /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
+		220704A329EFB75000D215ED /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		220704A629EFD45200D215ED /* EventTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EventTicket.swift; sourceTree = "<group>"; };
+		220704A829EFD47100D215ED /* ShowTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowTicket.swift; sourceTree = "<group>"; };
+		220704AA29EFD47C00D215ED /* MovieTicket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MovieTicket.swift; sourceTree = "<group>"; };
 		2270425629E8D0270021272D /* EntityType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntityType.swift; sourceTree = "<group>"; };
 		2270425A29E8D08D0021272D /* APIError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIError.swift; sourceTree = "<group>"; };
 		228C176529D6260D00848BFC /* Register.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Register.swift; sourceTree = "<group>"; };
@@ -86,6 +100,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		220704A529EFD43000D215ED /* Ticket */ = {
+			isa = PBXGroup;
+			children = (
+				220704A629EFD45200D215ED /* EventTicket.swift */,
+				220704A829EFD47100D215ED /* ShowTicket.swift */,
+				220704AA29EFD47C00D215ED /* MovieTicket.swift */,
+			);
+			path = Ticket;
+			sourceTree = "<group>";
+		};
 		228C176B29D631BA00848BFC /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -94,6 +118,8 @@
 				7AA6998829E6CABF005FEA9F /* ProfileViewModel.swift */,
 				B087253429E77C6700CF5E57 /* Coordinator.swift */,
 				B087253629E7822D00CF5E57 /* MoviesViewModel.swift */,
+				2207049C29EF662400D215ED /* EventViewModel.swift */,
+				220704A329EFB75000D215ED /* ImagePicker.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -175,6 +201,7 @@
 			children = (
 				7AA6999329E82F8E005FEA9F /* HomePageView.swift */,
 				7AA6999529E83027005FEA9F /* HomeView.swift */,
+				220704A129EF790F00D215ED /* SwiftUIView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -186,6 +213,7 @@
 				7AA699A029E8416D005FEA9F /* Movies.swift */,
 				2270425629E8D0270021272D /* EntityType.swift */,
 				2270425A29E8D08D0021272D /* APIError.swift */,
+				2207049A29EF64FA00D215ED /* Events.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -203,6 +231,7 @@
 		B087252B29E765FD00CF5E57 /* Products */ = {
 			isa = PBXGroup;
 			children = (
+				220704A529EFD43000D215ED /* Ticket */,
 				7AA6999029E818AF005FEA9F /* MovieDetailsView.swift */,
 				B087252E29E772DB00CF5E57 /* AddMoviesView.swift */,
 				22E2BC7E29EE18D0003991EF /* AddShowsView.swift */,
@@ -296,21 +325,28 @@
 				B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */,
 				2270425729E8D0270021272D /* EntityType.swift in Sources */,
 				22F05E6129D4D77300615678 /* Persistence.swift in Sources */,
+				220704A729EFD45200D215ED /* EventTicket.swift in Sources */,
 				228C176829D628A800848BFC /* ForgetPasswordView.swift in Sources */,
 				228C176629D6260D00848BFC /* Register.swift in Sources */,
+				220704A929EFD47100D215ED /* ShowTicket.swift in Sources */,
 				7AA6999429E82F8E005FEA9F /* HomePageView.swift in Sources */,
 				22F05E6429D4D77300615678 /* Blasti.xcdatamodeld in Sources */,
+				220704A429EFB75000D215ED /* ImagePicker.swift in Sources */,
+				2207049D29EF662400D215ED /* EventViewModel.swift in Sources */,
 				B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */,
 				22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */,
 				22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */,
 				228C177029D633AC00848BFC /* Login.swift in Sources */,
 				22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */,
 				7AA6999129E818AF005FEA9F /* MovieDetailsView.swift in Sources */,
+				220704AB29EFD47C00D215ED /* MovieTicket.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
 				7AA6998929E6CABF005FEA9F /* ProfileViewModel.swift in Sources */,
 				7AA6999F29E84138005FEA9F /* User.swift in Sources */,
 				22E2BC8129EE1902003991EF /* AddEventsView.swift in Sources */,
+				2207049B29EF64FA00D215ED /* Events.swift in Sources */,
+				220704A229EF790F00D215ED /* SwiftUIView.swift in Sources */,
 				7AA6998729E5F4DB005FEA9F /* VerifyPasswordKey.swift in Sources */,
 				7AA6999629E83027005FEA9F /* HomeView.swift in Sources */,
 				B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */,
@@ -445,6 +481,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Blasti/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Blasti/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -473,6 +511,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Blasti/Preview Content\"";
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Blasti/Info.plist;
+				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

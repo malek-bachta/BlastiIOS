@@ -148,32 +148,32 @@ struct AddShowsView: View {
                         }
                         .padding(.horizontal)
                         
-                        VStack(alignment: .leading, spacing: 15) {
-                            Text("Image")
-                                .font(.headline)
-                                .foregroundColor(.white)
-                            
-                            if let showCover = showCover {
-                                Image(uiImage: showCover)
-                                    .resizable()
-                                    .scaledToFit()
-                                    .cornerRadius(8)
-                            } else {
-                                Button(action: {
-                                    isImagePickerDisplayed.toggle()
-                                }) {
-                                    Text("Pick the Cover")
-                                        .padding()
-                                        .background(Color.white.opacity(0.3))
-                                        .cornerRadius(8)
-                                }
-                            }
-                        }
-                        .padding(.horizontal)
-                        .sheet(isPresented: $isImagePickerDisplayed) {
-                            ImagePicker(selectedImage: $showCover, isShown: $isImagePickerDisplayed)
-                        }
-                        
+//                        VStack(alignment: .leading, spacing: 15) {
+//                            Text("Image")
+//                                .font(.headline)
+//                                .foregroundColor(.white)
+//
+//                            if let showCover = showCover {
+//                                Image(uiImage: showCover)
+//                                    .resizable()
+//                                    .scaledToFit()
+//                                    .cornerRadius(8)
+//                            } else {
+//                                Button(action: {
+//                                    isImagePickerDisplayed.toggle()
+//                                }) {
+//                                    Text("Pick the Cover")
+//                                        .padding()
+//                                        .background(Color.white.opacity(0.3))
+//                                        .cornerRadius(8)
+//                                }
+//                            }
+//                        }
+//                        .padding(.horizontal)
+//                        .sheet(isPresented: $isImagePickerDisplayed) {
+//                            ImagePicker(selectedImage: $showCover, isShown: $isImagePickerDisplayed)
+//                        }
+//
                         Button(action: {
                           /*  mm.addShow(title: mm.title, genre: mm.genre, description: mm.description)*/
                             presentationMode.wrappedValue.dismiss()
