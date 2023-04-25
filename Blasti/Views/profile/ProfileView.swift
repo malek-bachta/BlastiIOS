@@ -16,7 +16,9 @@ struct ProfileView: View {
     
     
     var body: some View {
+        
         NavigationView {
+            
             ZStack {
                 VStack {
                     HStack {
@@ -188,10 +190,12 @@ struct ProfileView: View {
             .frame(width: 400, height: 800)
             .offset(x:0,y:-40))
             
-            //.ignoresSafeArea(.all)
+//            .ignoresSafeArea(.all)
             
     }
+
 }
+
 }
 
 

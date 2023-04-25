@@ -90,9 +90,11 @@ struct SettignsView: View {
                     .alert(isPresented: $showAlert) {
                         Alert(title: Text("Logout"), message: Text("Are you sure you want to logout?"), primaryButton: .destructive(Text("Logout"), action: {
                             pvm.logout()
+                            let loginView = Login()
+                                           UIApplication.shared.windows.first?.rootViewController = UIHostingController(rootView: loginView)
+                                      
                         }), secondaryButton: .cancel(Text("Cancel")))
                     }
-
                 }
                 .alert(isPresented: $showError) {
                     Alert(title: Text(errorTitle).foregroundColor(.red), message: Text(errorMessage), dismissButton: .default(Text("OK")))
