@@ -161,7 +161,7 @@ struct MovieCardView: View {
     var body: some View {
         VStack(alignment: .center) {
             let baseURL = "https://serverblasti.onrender.com/"
-            if let url = URL(string: baseURL+"uploads/posts\(movie.image)") {
+            if let url = URL(string: baseURL+"images/\(movie.image)") {
 
                                         AsyncImage(url:url) { phase in
                                             switch phase {
