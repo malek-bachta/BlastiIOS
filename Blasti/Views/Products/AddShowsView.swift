@@ -33,15 +33,7 @@ struct AddShowsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.yellow,.black,.yellow.opacity(0.9),.black, .yellow]), startPoint: .top, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
-                
-                Rectangle()
-                    .fill(Color.black.opacity(0.5))
-                                   .shadow(radius: 80)
-                                   .frame(width: 400, height: 900)
-                                   .ignoresSafeArea()
-                
+               
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Add Show")
@@ -197,7 +189,10 @@ struct AddShowsView: View {
                         .foregroundColor(.yellow)
                         .offset(x:0,y:-20)
                 })
-            }
+            } .background(Image("splash")
+                .resizable()
+                .ignoresSafeArea()
+                .scaledToFill())
         }
         
     }

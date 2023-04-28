@@ -34,47 +34,7 @@ class NetworkService {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    
-    /*func signIn(email: String, password: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-     let signinURL = "https://serverblasti.onrender.com/api/user/login"
-     AF.request(signinURL, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
-     .validate(statusCode: 200..<401)
-     .validate(contentType: ["application/json", "text/html"]) // Update content types
-     .responseJSON { response in
-     switch response.result {
-     case .success(let data):
-     /*let jsonData = data as? User
-      if let statusCode = response.response?.statusCode{
-      print(jsonData)
-      
-      let defaults = UserDefaults.standard
-      let encoder = JSONEncoder()
-      if let encoded = try? encoder.encode(jsonData){
-      defaults.set(encoded, forKey: "user")
-      }
-      } else {
-      onFailure("Error", "Invalid response format")
-      return
-      }
-      onSuccess("Success", "You are now signed in.")*/
-     if let data = data {
-     let result = try JSONDecoder().decode(User.self, from: DataResponsePublisher(<#T##request: DataRequest##DataRequest#>, queue: <#T##DispatchQueue#>))
-     
-     
-     let defaults = UserDefaults.standard
-     let encoder = JSONEncoder()
-     if let encoded = try? encoder.encode(result){
-     defaults.set(encoded, forKey: "user")
-     print(result)
-     
-     
-     }}
-     case .failure(let error):
-     print(response.result)
-     onFailure("Error", "Network request failed")
-     }
-     }
-     }*/
+  
     func signIn(email: String, password: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
         let signinURL = "https://serverblasti.onrender.com/api/user/login"
         AF.request(signinURL, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
@@ -199,49 +159,7 @@ class NetworkService {
             }
     }
     
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///
-    //    func uploadImage(_ image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
-    //        let baseURL = "https://serverblasti.onrender.com/"
-    //        let url = URL(string: baseURL+"uploads/posts\(image)")!
-    //
-    //        var request = URLRequest(url: url)
-    //        request.httpMethod = "POST"
-    //
-    //        let boundary = UUID().uuidString
-    //        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-    //
-    //        let imageData = image.jpegData(compressionQuality: 0.8)!
-    //
-    //        var data = Data()
-    //        data.append("--\(boundary)\r\n".data(using: .utf8)!)
-    //        data.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpeg\"\r\n".data(using: .utf8)!)
-    //        data.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
-    //        data.append(imageData)
-    //        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-    //
-    //        let task = URLSession.shared.uploadTask(with: request, from: data) { (responseData, response, error) in
-    //            if let error = error {
-    //                completion(.failure(error))
-    //                return
-    //            }
-    //
-    //            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-    //                completion(.failure(NSError(domain: "com.example.error", code: httpResponse.statusCode, userInfo: nil)))
-    //                return
-    //            }
-    //
-    //            if let responseData = responseData, let responseString = String(data: responseData, encoding: .utf8) {
-    //                completion(.success(responseString))
-    //            } else {
-    //                completion(.failure(NSError(domain: "com.example.error", code: 0, userInfo: nil)))
-    //            }
-    //        }
-    //        task.resume()
-    //    }
-
-        
+   
         /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         
@@ -357,72 +275,6 @@ class NetworkService {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
-    
-//    func downloadImage(from url: URL, completion: @escaping (UIImage?, Error?) -> Void) {
-//        URLSession.shared.dataTask(with: url) { (data, response, error) in
-//            guard let data = data, error == nil else {
-//                completion(nil, error)
-//                return
-//            }
-//
-//            DispatchQueue.main.async {
-//                if let image = UIImage(data: data) {
-//                    completion(image, nil)
-//                } else {
-//                    completion(nil, NSError(domain: "error", code: 0, userInfo: nil))
-//                }
-//            }
-//        }.resume()
-//    }
-//
-//
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
-//    func uploadImage(_ image: UIImage, completion: @escaping (Result<String, Error>) -> Void) {
-//        let baseURL = "https://serverblasti.onrender.com/"
-//        let url = URL(string: baseURL+"uploads/posts\(image)")!
-//
-//        var request = URLRequest(url: url)
-//        request.httpMethod = "POST"
-//
-//        let boundary = UUID().uuidString
-//        request.setValue("multipart/form-data; boundary=\(boundary)", forHTTPHeaderField: "Content-Type")
-//
-//        let imageData = image.jpegData(compressionQuality: 0.8)!
-//
-//        var data = Data()
-//        data.append("--\(boundary)\r\n".data(using: .utf8)!)
-//        data.append("Content-Disposition: form-data; name=\"image\"; filename=\"image.jpeg\"\r\n".data(using: .utf8)!)
-//        data.append("Content-Type: image/jpeg\r\n\r\n".data(using: .utf8)!)
-//        data.append(imageData)
-//        data.append("\r\n--\(boundary)--\r\n".data(using: .utf8)!)
-//
-//        let task = URLSession.shared.uploadTask(with: request, from: data) { (responseData, response, error) in
-//            if let error = error {
-//                completion(.failure(error))
-//                return
-//            }
-//
-//            if let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode != 200 {
-//                completion(.failure(NSError(domain: "com.example.error", code: httpResponse.statusCode, userInfo: nil)))
-//                return
-//            }
-//
-//            if let responseData = responseData, let responseString = String(data: responseData, encoding: .utf8) {
-//                completion(.success(responseString))
-//            } else {
-//                completion(.failure(NSError(domain: "com.example.error", code: 0, userInfo: nil)))
-//            }
-//        }
-//        task.resume()
-//    }
-
-    
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     
     

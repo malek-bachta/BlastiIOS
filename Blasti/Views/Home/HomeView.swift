@@ -20,7 +20,8 @@ struct HomeView: View {
         NavigationView {
             ZStack {
                 
-                Color.black.edgesIgnoringSafeArea(.all)
+                //Color.black.edgesIgnoringSafeArea(.all)
+            
                 ForEach(1...50, id: \.self) { i in
                     // Generate a random X and Y coordinate for each dot
                     let randomX = CGFloat.random(in: 0...UIScreen.main.bounds.width)
@@ -29,15 +30,11 @@ struct HomeView: View {
                     // Create a "cool" yellow dot with a size of 20x20 pixels
                     Image(systemName: "circle.fill")
                         .resizable()
-                        .foregroundColor(.yellow)
-                        .frame(width: 20, height: 20)
+                        .foregroundColor(Color("y"))
+                        .frame(width: 50, height: 50)
                         .opacity(0.5)
                         .blur(radius: 2)
-                        .overlay(
-                            Circle()
-                                .strokeBorder(style: StrokeStyle(lineWidth: 1, dash: [5]))
-                                .foregroundColor(.white)
-                        )
+                        
                         .rotationEffect(.degrees(Double.random(in: 0...360)))
                         .position(x: randomX, y: shouldAnimate ? randomY : UIScreen.main.bounds.height + 20)
                         .scaleEffect(CGFloat.random(in: 0.5...1.5))
@@ -48,8 +45,8 @@ struct HomeView: View {
                     HStack {
                         TextField("Search...", text: $searchText)
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
-                            .frame(height: 40)
-                            .background(Color.white.opacity(0.5))
+                            .frame(height: 35)
+                            .background(.black.opacity(0.5))
                             .cornerRadius(20)
                         
                         Button(action: {
@@ -57,106 +54,117 @@ struct HomeView: View {
                         }) {
                             Image(systemName: "bell")
                                 .resizable()
-                                .frame(width: 25, height: 25)
-                                .foregroundColor(Color.white)
+                                .frame(width: 15, height: 15)
+                                .foregroundColor(Color("Color"))
                                 .padding()
-                                .background(Color.white.opacity(0.5))
+                                .background(.black
+                                    .opacity(0.5))
                                 .clipShape(Circle())
                         }
                     }
-                    .padding(.horizontal, 20)
-                    .padding(.top, 10)
+                    .padding(.horizontal, 5)
+                    //   .padding(.top, 2)
                     
-//
+                    //
                     ScrollView(.vertical, showsIndicators: false) {
-       
-                    Text("Movies")
-                        .font(.system(size: 35, design: .rounded).weight(.semibold))
-                        .fontWeight(.bold)
-                        .padding(.top, 20)
-                        .foregroundColor(.white)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                              HStack(spacing: 20) {
-                                  ForEach(moviesViewModel.movies, id: \.self) { movie in
-                                      MovieCardView(movie: movie)
+                        VStack(alignment: .leading) {
+                        Text("Movies")
+                            .font(.system(size: 35, design: .rounded).weight(.semibold))
+                            .fontWeight(.bold)
+                            .padding(.top, 40)
+                            .padding(.horizontal,20)
+                            .foregroundColor(Color("Color"))
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 0) {
+                                ForEach(moviesViewModel.movies, id: \.self) { movie in
+                                    MovieCardView(movie: movie)
+                                    
+                                }
+                            }
                             
-                                     }
-                                  }
-                              
-                              .padding(.horizontal, 20)
-                              .padding(.top, 10)
-                              .onAppear {
-                                  print("Movies in HomeView: \(moviesViewModel.movies)")}
+                          //  .padding(.horizontal, 0)
+                            //  .padding(.top, 10)
+                            .onAppear {
+                                print("Movies in HomeView: \(moviesViewModel.movies)")}
                             
-                          }
-                    
-                    Spacer()
-                    Text("Events")
-                        .font(.system(size: 35, design: .rounded).weight(.semibold))
-                        .fontWeight(.bold)
-                        .padding(.top, 20)
-                        .foregroundColor(.white)
-                    
-                    ScrollView(.horizontal, showsIndicators: false) {
-                              HStack(spacing: 20) {
-                                  ForEach(moviesViewModel.movies, id: \.self) { movie in
-                                      MovieCardView(movie: movie)
-                                  }
-                                  }
-                              
-                              .padding(.horizontal, 20)
-                              .padding(.top, 10)
-                              .onAppear {
-                                  print("Movies in HomeView: \(eventViewModel.events)")}
+                        }
+                        
+                        Spacer()
+                        Text("Events")
+                            .font(.system(size: 35, design: .rounded).weight(.semibold))
+                            .fontWeight(.bold)
+                            .padding(.horizontal,20)
+                         //   .padding(.top, 10)
+                            .foregroundColor(Color("Color"))
+                        
+                        ScrollView(.horizontal, showsIndicators: false) {
+                            HStack(spacing: 5) {
+                                ForEach(moviesViewModel.movies, id: \.self) { movie in
+                                    MovieCardView(movie: movie)
+                                }
+                            }
                             
-                          }
-                    
-                    Spacer()
+                            .padding(.horizontal, 5)
+                           // .padding(.top, 10)
+                            .onAppear {
+                                print("Movies in HomeView: \(eventViewModel.events)")}
+                            
+                        }
+                        
+                        Spacer()
                         
                         Text("Shows")
                             .font(.system(size: 35, design: .rounded).weight(.semibold))
                             .fontWeight(.bold)
-                            .padding(.top, 20)
+                            .padding(.horizontal,20)
+                           // .padding(.top, 10)
                             .foregroundColor(.white)
                         
                         ScrollView(.horizontal, showsIndicators: false) {
-                                  HStack(spacing: 20) {
-                                      ForEach(moviesViewModel.movies, id: \.self) { movie in
-                                          MovieCardView(movie: movie)
-                                      }
-                                      }
-                                  
-                                  .padding(.horizontal, 20)
-                                  .padding(.top, 10)
-                                  .onAppear {
-                                      print("Movies in HomeView: \(moviesViewModel.movies)")}
-                                
-                              }
+                            HStack(spacing: 5) {
+                                ForEach(moviesViewModel.movies, id: \.self) { movie in
+                                    MovieCardView(movie: movie)
+                                }
+                            }
+                            
+                            .padding(.horizontal, 2)
+                          //  .padding(.top, 10)
+                            .onAppear {
+                                print("Movies in HomeView: \(moviesViewModel.movies)")}
+                            
+                        }
                         
                         Spacer()
                         
+                    }
+                    }
                     
-                    }  }
+                }
             }
+           
             .navigationBarTitle("Home", displayMode: .inline)
             .navigationBarHidden(true)
+            .background(Image("stars")
+                .resizable()
+                .offset(x:0,y:-59)
+                //.ignoresSafeArea()
+                .scaledToFill())
+                
+                //.frame(width: 200, height: 200))
             .onAppear {
                 shouldAnimate = true
             }
-             
+            
         }
-        
-        
 
     }
     
-    
 }
-
 struct MovieCardView: View {
-    var movie: Movie
-   
+    let movie: Movie
+    @State var showdetail = false
+
    
     var body: some View {
         VStack(alignment: .center) {
@@ -171,7 +179,7 @@ struct MovieCardView: View {
                                                     .aspectRatio(contentMode: .fill)
                                                     .frame(width: 200, height:250 )
                                                     .clipShape(Rectangle())
-                                                    .cornerRadius(10)
+                                                    .cornerRadius(5)
 
                                                     .clipShape(Rectangle())
 
@@ -179,49 +187,56 @@ struct MovieCardView: View {
                                                 Text(error.localizedDescription)
 
                                             case .empty:
-                                                Rectangle().foregroundColor(Color .gray).padding(.top,10)
+                                                Rectangle().foregroundColor(Color .gray)
                                             @unknown default:
                                                 Text("Unknown error")
                                             }
                                         } } else {
-                                            Text("Invalid URL")
-                                        }
-            
-//
-//            Image("coverr")
-//                .resizable()
-//                .aspectRatio(contentMode: .fill)
-//                .frame(width: 200, height:250 )
-//                .clipShape(Rectangle())
-//                .cornerRadius(10)
-        
-            /* HStack{
-                Button(action: {
+                                            Text("Invalid URL")}
+           
+
+             VStack{
+                 Button(action: {
                 
                 }) {
-                Image( systemName: "heart.fill")
-                
-                .foregroundColor(Color.red)
-                .frame(width: 10, height: 10)
-                .font(.system(size: 30))
-                
-             }}
-             */
-            
+                Image( systemName: "star.fill")
+                        
+                        .shadow(color:.white.opacity(0.7), radius: 5, x: 0, y: 2)
+                        .foregroundColor(Color("y"))
+                .font(.system(size: 25))
+                }.padding(EdgeInsets(top: -250, leading: 150, bottom: 0, trailing: 0))
+             }
+                                        
             Text(movie.title)
+                
                 .foregroundColor(Color.white)
-                .font(.system(size: 20, design: .rounded).weight(.light))
-                
+                .frame(width: 200,height: 50)
+               // .cornerRadius(5)
+                .background(  LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+                .offset(x:0,y:-60)
+             
+                .font(.system(size: 20, design: .rounded).weight(.semibold))
+             
           
-                
-            }
-        .padding(20)
-        .background(Color.white.opacity(0.2))
-        .cornerRadius(30)
-        .shadow(color: .white.opacity(0.5), radius: 5, x: 0, y: 4)
+             
+          
+              }
+       .padding(3)
+     //   .background(Color.white.opacity(0.2))
+        .cornerRadius(5)
+        .shadow(color: Color("rev").opacity(0.3), radius: 5, x: 0, y: 4)
+        .onTapGesture {
+                    showdetail=true
+                    let id = UserDefaults.standard.string(forKey: "id")
+                }.sheet(isPresented: $showdetail){
+                    HotelDetail(movie: movie)
+                }
         
     }
 }
+
+
+
 
 struct EventCardView: View {
     var event: Event
@@ -231,7 +246,7 @@ struct EventCardView: View {
             
             Image("coverr")
                 .resizable()
-                .aspectRatio(contentMode: .fill)
+             //   .aspectRatio(contentMode: .fill)
                 .frame(width: 200, height:250 )
                 .clipShape(Rectangle())
                 .cornerRadius(10)
@@ -256,7 +271,7 @@ struct EventCardView: View {
           
                 
             }
-        .padding(20)
+       // .padding(20)
         .background(Color.white.opacity(0.2))
         .cornerRadius(30)
         .shadow(color: .white.opacity(0.5), radius: 5, x: 0, y: 4)

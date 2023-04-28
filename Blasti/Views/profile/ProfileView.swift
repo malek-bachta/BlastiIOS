@@ -83,23 +83,23 @@ struct ProfileView: View {
                         
                         Section(header: Text("Reservations")
                         ){
-                            NavigationLink(destination: MovieTicket()) {
+                         //   NavigationLink(destination: MovieTicket()) {
                                 Label("Movies", systemImage: "film")
                                     .foregroundColor(Color("Color"))
                                     .font(.system(size: 20, design: .rounded).weight(.light))
                                 
-                            }
+                           // }
                             
-                            NavigationLink(destination:  ShowTicket()) {
+                            //NavigationLink(destination:  ShowTicket()) {
                             Label("Shows", systemImage: "star.circle.fill")
                                 .foregroundColor(Color("Color"))
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                        }
-                            NavigationLink(destination: EventTicket())  {
+                   //     }
+                     //       NavigationLink(destination: EventTicket())  {
                             Label("Events", systemImage:"music.mic")
                                 .foregroundColor(Color("Color"))
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                        }
+                       // }
                         // Add more reservation buttons as needed
                     }                          //.listRowBackground(Color.Color("y").opacity(0.7))
                     //     .foregroundColor(Color.black)
@@ -125,8 +125,8 @@ struct ProfileView: View {
                                 }
                                 .frame(width: 150, height: 50)
                                 .background(
-                                    LinearGradient(gradient: Gradient(colors: [Color("color1").opacity(0.3),Color("y"), Color("color1").opacity(0.3)]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                )
+                                    Color("y").opacity(0.8))
+                                
                                 .cornerRadius(10)
                                 .shadow(radius: 10)
                             }
@@ -143,9 +143,8 @@ struct ProfileView: View {
                                         .foregroundColor(Color("AccentColor"))
                                 }
                                 .frame(width: 150, height: 50)
-                                .background(
-                                    LinearGradient(gradient: Gradient(colors: [Color("color1").opacity(0.3),Color("y"), Color("color1").opacity(0.3)]), startPoint: .topLeading, endPoint: .bottomTrailing)
-                                )
+                                .background(                                  Color("y").opacity(0.8))
+                                
                                 .cornerRadius(10)
                                 .shadow(radius: 10)
                             }
@@ -158,7 +157,7 @@ struct ProfileView: View {
             }
          
             HStack {
-                Text("User Name")
+                Text("Emily Clark")
                     .foregroundColor(Color("AccentColor"))
                     .shadow(radius: 100)
                     .offset(x: -110, y: -290)
@@ -178,8 +177,8 @@ struct ProfileView: View {
             Image("profilemain")
                 .resizable()
                 .scaledToFit()
-                .frame(width: 240)
-                .offset(x: 55, y: -300)
+                .frame(width: 190)
+                .offset(x: 55, y: -317)
                 .padding()
                 .shadow(radius: 100)
                 

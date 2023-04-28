@@ -1,4 +1,5 @@
 import SwiftUI
+import LocalAuthentication
 
 struct Login: View {
     @StateObject var sm = SigninViewModel()
@@ -12,6 +13,11 @@ struct Login: View {
 //    @State private var rememberMe = false
     @State private var isPasswordVisible = false
     
+    @State private var isUnlocked = false
+    @State private var showHomePageView = false
+
+
+
     
     var body: some View {
         NavigationView{
@@ -109,55 +115,71 @@ struct Login: View {
                             }
                             .padding(.bottom, 5)
                             
-                            HStack {
-                                Toggle("", isOn: $sm.rememberMe)
-                                    .toggleStyle(CheckboxToggleStyle())
-                                Text("Remember me")
-                                    .foregroundColor(.white)
+                           
+                        }
+                        HStack {
+                            Toggle("", isOn: $sm.rememberMe)
+                                .toggleStyle(CheckboxToggleStyle())
+                            Text("Remember me")
+                                .foregroundColor(.white)
+                                .font(.system(size: 15, weight: .semibold))
+                            
+                        }.padding( .leading, 55.0)
+                            .padding(.vertical, 5.0)
+                       
+                                               
+                        
+                        HStack{
+                            Button(action: {
+                                if verify() {
+                                    sm.signIn(email: sm.email, password: sm.password)
+                                }
+                            }) {
+                                Text("Login")
+                                    .foregroundColor(.black)
+                                    .padding()
+                                    .frame(width: 200, height: 50)
+                                    .background(Color.yellow)
+                                    .cornerRadius(10)
+                                    .font(.system(size: 20, design: .rounded).weight(.bold))
+                            }
+                            .alert(isPresented: $showAlert) {
+                                Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
+                            }
+                            
+                            
+                            if isUnlocked {
+                                NavigationLink("", destination: HomePage().navigationBarHidden(true), isActive: $showHomePageView)
+                            } else {
+                                Image(systemName: "faceid")
+                                     .resizable()
+                                     .frame(width: 30, height: 30)
+                                     .foregroundColor(.white)
+                                     .onTapGesture {
+                                         authenticateWithBiometrics()
+                                     }
+                            }
+                        }
+                        
+                        HStack{
+                            Text("New Here ?  ")
+                                .foregroundColor(.white)
+                                .font(.system(size: 15, weight: .semibold))
+                            
+                            NavigationLink(destination: Register().navigationBarBackButtonHidden(), label: {
+                                Text("register")
+                                    .foregroundColor(.yellow)
                                     .font(.system(size: 15, weight: .semibold))
-                            }
-                            .padding(.bottom, 10)
-                        }
+                            })
+                        }.padding(.top, 4.0)
                         
-                        NavigationLink(destination: ForgotPasswordView(), label: {
-                            Text("Forget password")
-                                .foregroundColor(.red.opacity(0.8))
-                                .offset(x: 75)
-                                .padding(.bottom, 15)
-                                .font(.system(size: 15, weight: .semibold))
-                        })
-                        
-                        Button(action: {
-                            if verify() {
-                                sm.signIn(email: sm.email, password: sm.password)
-                            }
-                        }) {
-                            Text("Login")
-                                .foregroundColor(.black)
-                                .padding()
-                                .frame(width: 200, height: 50)
-                                .background(Color.yellow)
-                                .cornerRadius(10)
-                                .font(.system(size: 20, design: .rounded).weight(.bold))
-                        }
-                        .padding()
-                        .alert(isPresented: $showAlert) {
-                            Alert(title: Text("Invalid Input"), message: Text(alertMessage), dismissButton: .default(Text("OK")))
-                        }
-                        
-                        Text("New Here ?  ")
-                            .foregroundColor(.white)
-                            .offset(x: -30, y: 33)
-                            .padding(.bottom, 8)
-                            .font(.system(size: 15, weight: .semibold))
-                        
-                        NavigationLink(destination: Register().navigationBarBackButtonHidden(), label: {
-                            Text("register")
-                                .foregroundColor(.yellow)
-                                .offset(x: 45)
-                                .padding(.bottom, 8)
-                                .font(.system(size: 15, weight: .semibold))
-                        })
+                        VStack{
+                            NavigationLink(destination: ForgotPasswordView(), label: {
+                                Text("Forget password")
+                                    .foregroundColor(.red.opacity(0.8))
+                                    .font(.system(size: 15, weight: .semibold))
+                            })
+                        }.padding()
                         
                     }
                 }
@@ -177,6 +199,61 @@ struct Login: View {
         }
         return isValid
     }
+    
+    private func authenticateWithBiometrics() {
+        let context = LAContext()
+        var error: NSError?
+
+
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            print("canEvaluatePolicy returned true")
+            let reason = "Log in with Face ID"
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, error in
+                if success {
+                    print("Authentication successful")
+                    DispatchQueue.main.async {
+                        isUnlocked = true
+                        showHomePageView = true
+                    }
+                } else {
+                    print("Authentication failed: \(error?.localizedDescription ?? "unknown error")")
+                    DispatchQueue.main.async {
+                        let alertController = UIAlertController(title: "Authentication Failed", message: error?.localizedDescription ?? "Please try again", preferredStyle: .alert)
+                        let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+                        alertController.addAction(okAction)
+                    }
+                }
+            }
+        } else {
+            print("canEvaluatePolicy returned false: \(error?.localizedDescription ?? "unknown error")")
+            let alertController = UIAlertController(title: "Face ID Not Available", message: error?.localizedDescription ?? "Your device does not support Face ID", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "OK", style: .default, handler: nil)
+            alertController.addAction(okAction)
+            // Same as above
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     struct ContentView_Previews: PreviewProvider {
         static var previews: some View {

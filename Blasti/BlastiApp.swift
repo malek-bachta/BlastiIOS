@@ -30,8 +30,11 @@ struct SplashScreenView: View {
                         isLoading = false
                     }
                 }
-        } else {
-            Login()
+        } else if UserDefaults.standard.bool(forKey: "RememberMe")  {
+            HomePage()
+        }else{
+            FirstScreen()
+
         }
     }
 }

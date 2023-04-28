@@ -33,22 +33,14 @@ struct AddEventsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.yellow,.black,.yellow.opacity(0.9),.black, .yellow]), startPoint: .top, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
-                
-                Rectangle()
-                    .fill(Color.black.opacity(0.5))
-                                   .shadow(radius: 80)
-                                   .frame(width: 400, height: 900)
-                                   .ignoresSafeArea()
-                
+               
                 
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Add Event")
                             .font(.system(size: 35, design: .rounded).weight(.bold))
                             .bold()
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("Color"))
                             .padding(.bottom, 18)
                             .padding(.top, 80)
                         
@@ -57,28 +49,28 @@ struct AddEventsView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Title")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             TextField("Enter Title" , text: $em.title)
                                 .padding()
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                             
                             Text("Event Type")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             TextField("Enter Type" , text: $em.type)
                                 .padding()
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                             Text("Adress")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             TextField("Enter Adress" , text: $em.adress)
                                 .padding()
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
@@ -98,7 +90,7 @@ struct AddEventsView: View {
                             }
                             ) {
                                 Text("1st Release")
-                                    .foregroundColor(.white)
+                                      .foregroundColor(.white)
                                     .tag("1st Release")
                                 Text("2nd Release")
                                     .foregroundColor(.white)
@@ -110,7 +102,7 @@ struct AddEventsView: View {
                             .pickerStyle(MenuPickerStyle())
                             .padding()
                             .frame(width: 160, height: 50)
-                            .background(Color.white.opacity(0.3))
+                            .background(Color("rev").opacity(0.3))
                             .cornerRadius(8)
                             
                         }
@@ -119,12 +111,12 @@ struct AddEventsView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Price")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             TextField("Enter event Duration (minutes)" , value: $duration, formatter: numberFormatter )
                                 .padding()
                                 .keyboardType(.numberPad)
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .frame(width: 140)
                                 .cornerRadius(8)
                         }
@@ -133,23 +125,23 @@ struct AddEventsView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Date")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             DatePicker("Enter event Date", selection: $selectedDate, displayedComponents: .date)
                                 .labelsHidden()
-                                .accentColor(.white)
-                                .foregroundColor(.white)
+                                .accentColor(Color("y"))
+                                .foregroundColor(Color("rev"))
                         }
                         .padding(.horizontal)
                         
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Description")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             TextField("Enter event Description" , text: $description)
                                 .padding()
                                 .frame(height: 100)
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
@@ -157,11 +149,11 @@ struct AddEventsView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Organization")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             TextField("Enter the writer and the director" , text: $Production)
                                 .padding()
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
@@ -218,7 +210,10 @@ struct AddEventsView: View {
 //                        .foregroundColor(.yellow)
 //                        .offset(x:0,y:-20)
 //                })
-            }
+            } .background(Image("splash")
+                .resizable()
+                .ignoresSafeArea()
+                .scaledToFill())
         }
         
     }

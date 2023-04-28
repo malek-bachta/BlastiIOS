@@ -109,6 +109,7 @@ struct Register: View {
                                 .cornerRadius(10)
                         }
                         .padding(.bottom, 20)
+                        
                         Button(action: {
                             if su.username.isEmpty || su.email.isEmpty || su.password.isEmpty || su.verifPassword.isEmpty {
                                 alertMessage = "Please fill in all fields."
@@ -134,23 +135,22 @@ struct Register: View {
                                 .background(Color.yellow)
                                 .cornerRadius(10)
                         }
-                        
-                        Text("Already have an acount ?  ")
-                            .foregroundColor(.white)
-                            .offset(x:-22, y:33)
-                            .padding(.bottom,8)
-                            .font(.system(size: 15, weight: .semibold))
-                        
-                        NavigationLink(destination: Login().navigationBarBackButtonHidden(), label: {
-                            
-                            Text("Login")
-                                .foregroundColor(.yellow)
-                                .offset(x:89,y:2)
-                                .frame(width: 50,height: 13)
+                        HStack{
+                            Text("Already have an acount ?  ")
+                                .foregroundColor(.white)
                                 .padding(.bottom,8)
                                 .font(.system(size: 15, weight: .semibold))
                             
-                        })
+                            NavigationLink(destination: Login().navigationBarBackButtonHidden(), label: {
+                                
+                                Text("Login")
+                                    .foregroundColor(.yellow)
+                                    .padding(.bottom,8)
+                                    .font(.system(size: 15, weight: .semibold))
+                                
+                            })
+                        }.padding(.top )
+                       
                     }
                     .padding()
                     .alert(isPresented: $showAlert) {
@@ -170,6 +170,8 @@ struct Register: View {
                                         circle3Offset = CGSize(width: -160, height: -390)
                                         circle4Offset = CGSize(width: 200, height: 250)
                                     }
+                    
+                   
 
                 }
             }

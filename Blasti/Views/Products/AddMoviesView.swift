@@ -25,30 +25,23 @@ struct AddMoviesView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                LinearGradient(gradient: Gradient(colors: [.yellow,.black,.yellow.opacity(0.9),.black, .yellow]), startPoint: .top, endPoint: .bottomTrailing)
-                    .ignoresSafeArea()
                 
-                Rectangle()
-                    .fill(Color.black.opacity(0.5))
-                                   .shadow(radius: 80)
-                                   .frame(width: 400, height: 900)
-                                   .ignoresSafeArea()
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
                         Text("Add Movie")
                             .font(.system(size: 35, design: .rounded).weight(.bold))
                             .bold()
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("Color"))
                             .padding(.bottom, 18)
                             .padding(.top, 80)
                         VStack(alignment: .leading, spacing: 15) {
-                                   Text("title")
+                                   Text("Title")
                                        .font(.headline)
-                                       .foregroundColor(.white)
+                                       .foregroundColor(Color("rev"))
                        
                             TextField("placeholder", text: $mm.title)
                                        .padding()
-                                       .background(Color.white.opacity(0.3))
+                                       .background(Color("rev").opacity(0.3))
                                        .cornerRadius(8)
                                        .foregroundColor(.white)
                                }
@@ -58,11 +51,11 @@ struct AddMoviesView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Genre")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             TextField("Enter Genre", text: $mm.genre)
                                 .padding()
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
@@ -94,7 +87,7 @@ struct AddMoviesView: View {
                             .pickerStyle(MenuPickerStyle())
                             .padding()
                             .frame(width: 140, height: 50)
-                            .background(Color.white.opacity(0.3))
+                            .background(Color("rev").opacity(0.3))
                             .cornerRadius(8)
                             
                         }
@@ -103,12 +96,12 @@ struct AddMoviesView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Duration")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             TextField("Enter Movie Duration (minutes)", value: $mm.duration, formatter: numberFormatter)
                                 .padding()
                                 .keyboardType(.numberPad)
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .frame(width: 140)
                                 .cornerRadius(8)
                         }
@@ -117,7 +110,7 @@ struct AddMoviesView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Date")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             DatePicker("Enter Movie Date", selection: $selectedDate, displayedComponents: .date)
                                 .labelsHidden()
@@ -130,11 +123,11 @@ struct AddMoviesView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Description")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             TextField("Enter Movie Description", text: $mm.description)
                                 .padding()
                                 .frame(height: 100)
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
@@ -247,7 +240,10 @@ struct AddMoviesView: View {
 //                        .offset(x:0,y:-20)
 //                })
             }
-        }
+            .background(Image("splash")
+                .resizable()
+                .ignoresSafeArea()
+                .scaledToFill())        }
         
     }
     

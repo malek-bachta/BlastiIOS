@@ -41,6 +41,10 @@
 		7AA699A129E8416D005FEA9F /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA699A029E8416D005FEA9F /* Movies.swift */; };
 		7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59C29DDAF4C0095EADD /* splash.swift */; };
 		7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59F29DDC40E0095EADD /* ProfileView.swift */; };
+		B06CBCC629FB488A000A5539 /* TicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC529FB488A000A5539 /* TicketsView.swift */; };
+		B06CBCC829FB64BF000A5539 /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC729FB64BF000A5539 /* FirstScreen.swift */; };
+		B06CBCCA29FB8196000A5539 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC929FB8196000A5539 /* ReservationView.swift */; };
+		B06CBCD029FBAB7A000A5539 /* Consts.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCCF29FBAB7A000A5539 /* Consts.swift */; };
 		B087252A29E74F4C00CF5E57 /* settingsview.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087252929E74F4C00CF5E57 /* settingsview.swift */; };
 		B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087252E29E772DB00CF5E57 /* AddMoviesView.swift */; };
 		B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253429E77C6700CF5E57 /* Coordinator.swift */; };
@@ -82,6 +86,10 @@
 		7AA699A029E8416D005FEA9F /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		7AAEE59C29DDAF4C0095EADD /* splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splash.swift; sourceTree = "<group>"; };
 		7AAEE59F29DDC40E0095EADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B06CBCC529FB488A000A5539 /* TicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsView.swift; sourceTree = "<group>"; };
+		B06CBCC729FB64BF000A5539 /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
+		B06CBCC929FB8196000A5539 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
+		B06CBCCF29FBAB7A000A5539 /* Consts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Consts.swift; sourceTree = "<group>"; };
 		B087252929E74F4C00CF5E57 /* settingsview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = settingsview.swift; sourceTree = "<group>"; };
 		B087252E29E772DB00CF5E57 /* AddMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviesView.swift; sourceTree = "<group>"; };
 		B087253429E77C6700CF5E57 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
@@ -132,6 +140,7 @@
 				22C455D929DFFC6C001ACFF6 /* Authenfication */,
 				7AAEE59E29DDC3E30095EADD /* profile */,
 				7AAEE59C29DDAF4C0095EADD /* splash.swift */,
+				B06CBCC729FB64BF000A5539 /* FirstScreen.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -140,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				22C455CC29DF7B78001ACFF6 /* APImanager.swift */,
+				B06CBCCF29FBAB7A000A5539 /* Consts.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -221,9 +231,11 @@
 		7AAEE59E29DDC3E30095EADD /* profile */ = {
 			isa = PBXGroup;
 			children = (
+				B06CBCC529FB488A000A5539 /* TicketsView.swift */,
 				7AAEE59F29DDC40E0095EADD /* ProfileView.swift */,
 				22C455D429DFD27A001ACFF6 /* EditProfile.swift */,
 				B087252929E74F4C00CF5E57 /* settingsview.swift */,
+				B06CBCC929FB8196000A5539 /* ReservationView.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -317,6 +329,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B087252A29E74F4C00CF5E57 /* settingsview.swift in Sources */,
+				B06CBCD029FBAB7A000A5539 /* Consts.swift in Sources */,
 				22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */,
 				7AA699A129E8416D005FEA9F /* Movies.swift in Sources */,
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
@@ -334,11 +347,14 @@
 				220704A429EFB75000D215ED /* ImagePicker.swift in Sources */,
 				2207049D29EF662400D215ED /* EventViewModel.swift in Sources */,
 				B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */,
+				B06CBCC629FB488A000A5539 /* TicketsView.swift in Sources */,
 				22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */,
 				22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */,
+				B06CBCCA29FB8196000A5539 /* ReservationView.swift in Sources */,
 				228C177029D633AC00848BFC /* Login.swift in Sources */,
 				22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */,
 				7AA6999129E818AF005FEA9F /* MovieDetailsView.swift in Sources */,
+				B06CBCC829FB64BF000A5539 /* FirstScreen.swift in Sources */,
 				220704AB29EFD47C00D215ED /* MovieTicket.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
@@ -483,6 +499,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Blasti/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "face id";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -514,6 +531,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Blasti/Info.plist;
+				INFOPLIST_KEY_NSFaceIDUsageDescription = "face id";
 				INFOPLIST_KEY_NSPhotoLibraryUsageDescription = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

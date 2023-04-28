@@ -29,7 +29,7 @@ struct HomePage: View {
 
                             }
 
-                            AudioBooksView().tabItem(){
+                            TicketsView().tabItem(){
 
                                 Image(systemName: "ticket.fill")
 
@@ -46,7 +46,6 @@ struct HomePage: View {
                             }
 
         }.accentColor(.yellow)
-        
         
 
     }
