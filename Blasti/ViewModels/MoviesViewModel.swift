@@ -56,7 +56,7 @@ class MoviesViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.madd = true
                 self.AddMovieResult = .success((title, message))
-            }   
+            }
         }, onFailure: { (title, message) in
             DispatchQueue.main.async {
                 self.AddMovieResult = .failure(NSError(domain: title, code: 0, userInfo: [NSLocalizedDescriptionKey: message]))
@@ -100,7 +100,7 @@ class MoviesViewModel: ObservableObject {
 //            Text(title)
 //                .font(.headline)
 //                .foregroundColor(.yellow)
-//            
+//
 //            TextField(placeholder, text: text)
 //                .padding()
 //                .background(Color.white.opacity(0.3))

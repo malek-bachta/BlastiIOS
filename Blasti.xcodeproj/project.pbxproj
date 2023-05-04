@@ -49,6 +49,10 @@
 		B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087252E29E772DB00CF5E57 /* AddMoviesView.swift */; };
 		B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253429E77C6700CF5E57 /* Coordinator.swift */; };
 		B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253629E7822D00CF5E57 /* MoviesViewModel.swift */; };
+		E6E846DF2A04689D0076EE03 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846DE2A04689D0076EE03 /* Ticket.swift */; };
+		E6E846E12A0468FF0076EE03 /* QRGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E02A0468FF0076EE03 /* QRGenView.swift */; };
+		E6E846E32A0469EB0076EE03 /* MyReservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */; };
+		E6E846E52A046B250076EE03 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E42A046B250076EE03 /* QRCodeView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -94,6 +98,10 @@
 		B087252E29E772DB00CF5E57 /* AddMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviesView.swift; sourceTree = "<group>"; };
 		B087253429E77C6700CF5E57 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B087253629E7822D00CF5E57 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
+		E6E846DE2A04689D0076EE03 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		E6E846E02A0468FF0076EE03 /* QRGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenView.swift; sourceTree = "<group>"; };
+		E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationsView.swift; sourceTree = "<group>"; };
+		E6E846E42A046B250076EE03 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +122,7 @@
 				220704A629EFD45200D215ED /* EventTicket.swift */,
 				220704A829EFD47100D215ED /* ShowTicket.swift */,
 				220704AA29EFD47C00D215ED /* MovieTicket.swift */,
+				E6E846E02A0468FF0076EE03 /* QRGenView.swift */,
 			);
 			path = Ticket;
 			sourceTree = "<group>";
@@ -224,6 +233,7 @@
 				2270425629E8D0270021272D /* EntityType.swift */,
 				2270425A29E8D08D0021272D /* APIError.swift */,
 				2207049A29EF64FA00D215ED /* Events.swift */,
+				E6E846DE2A04689D0076EE03 /* Ticket.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -236,6 +246,8 @@
 				22C455D429DFD27A001ACFF6 /* EditProfile.swift */,
 				B087252929E74F4C00CF5E57 /* settingsview.swift */,
 				B06CBCC929FB8196000A5539 /* ReservationView.swift */,
+				E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */,
+				E6E846E42A046B250076EE03 /* QRCodeView.swift */,
 			);
 			path = profile;
 			sourceTree = "<group>";
@@ -331,6 +343,7 @@
 				B087252A29E74F4C00CF5E57 /* settingsview.swift in Sources */,
 				B06CBCD029FBAB7A000A5539 /* Consts.swift in Sources */,
 				22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */,
+				E6E846E12A0468FF0076EE03 /* QRGenView.swift in Sources */,
 				7AA699A129E8416D005FEA9F /* Movies.swift in Sources */,
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
 				22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */,
@@ -348,6 +361,7 @@
 				2207049D29EF662400D215ED /* EventViewModel.swift in Sources */,
 				B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */,
 				B06CBCC629FB488A000A5539 /* TicketsView.swift in Sources */,
+				E6E846E32A0469EB0076EE03 /* MyReservationsView.swift in Sources */,
 				22C455CD29DF7B78001ACFF6 /* APImanager.swift in Sources */,
 				22F05E5829D4D77200615678 /* BlastiApp.swift in Sources */,
 				B06CBCCA29FB8196000A5539 /* ReservationView.swift in Sources */,
@@ -355,6 +369,8 @@
 				22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */,
 				7AA6999129E818AF005FEA9F /* MovieDetailsView.swift in Sources */,
 				B06CBCC829FB64BF000A5539 /* FirstScreen.swift in Sources */,
+				E6E846DF2A04689D0076EE03 /* Ticket.swift in Sources */,
+				E6E846E52A046B250076EE03 /* QRCodeView.swift in Sources */,
 				220704AB29EFD47C00D215ED /* MovieTicket.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
