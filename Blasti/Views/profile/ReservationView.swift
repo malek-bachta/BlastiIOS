@@ -35,7 +35,6 @@ struct ReservationView: View {
                     }.frame(width: 200,height: 50)
                         .colorMultiply(.white)
                         .padding(.trailing,0)
-                    
                     Text("Date")
                         .font(.system(size: 25, design: .rounded).weight(.light))
                     DatePicker(
@@ -45,9 +44,7 @@ struct ReservationView: View {
                     ).frame(width: 200,height: 50)
                         .colorMultiply(.white)
                         .padding(.trailing,50)
-                    
                     Spacer()
-                  
                         }
                 Button(action: {}) {
                     NavigationLink(destination: MyReservationsView()) {
@@ -62,23 +59,16 @@ struct ReservationView: View {
                         }
                         .frame(width: 150, height: 50)
 //                            .offset(x:0,y:-50)
-                        .background(                                  Color("y").opacity(0.8))
+                        .background(Color("y").opacity(0.8))
                         
                         .cornerRadius(10)
                         .shadow(radius: 10)
                     }
-                    
-                    
                 }
                 .padding()
-             
-                
-                
             }
             .navigationBarTitle("Reservation")
         }
-       
-        
     }}
 
 struct ReservationView_Previews: PreviewProvider {

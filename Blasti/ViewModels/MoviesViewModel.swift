@@ -24,7 +24,8 @@ class MoviesViewModel: ObservableObject {
     @Published var Production = ""
     @Published var description = ""
     @Published var language = ""
-    
+    @Published var adress = ""
+
     @Published var image: UIImage?
 
 //    var user:User?
@@ -39,6 +40,7 @@ class MoviesViewModel: ObservableObject {
 //                  date: String,
                   genre: String,
                   description: String,
+                  adress: String,
 //                  duration: String,
 //                  Production: String,
 //                  language:String,
@@ -48,6 +50,7 @@ class MoviesViewModel: ObservableObject {
 //                                date: date,
                                 genre: genre,
                                 description: description,
+                                adress: adress,
 //                                duration: duration,
 //                                Production: Production,
 //                                language: language,

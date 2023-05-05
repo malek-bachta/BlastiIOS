@@ -132,6 +132,18 @@ struct AddMoviesView: View {
                         }
                         .padding(.horizontal)
 //
+                        VStack(alignment: .leading, spacing: 15) {
+                            Text("adress")
+                                .font(.headline)
+                                .foregroundColor(Color("rev"))
+                            
+                            TextField("Enter adress", text: $mm.adress)
+                                .padding()
+                                .background(Color("rev").opacity(0.3))
+                                .cornerRadius(8)
+                        }
+                        .padding(.horizontal)
+                        
 //                        VStack(alignment: .leading, spacing: 15) {
 //                            Text("Production")
 //                                .font(.headline)
@@ -210,7 +222,7 @@ struct AddMoviesView: View {
                                     }
 
                         Button(action: {
-                            mm.addMovie(title: mm.title, genre: mm.genre, description: mm.description
+                            mm.addMovie(title: mm.title, genre: mm.genre, description: mm.description,adress: mm.adress
                                         , image: mm.image
                             )
                             

@@ -8,11 +8,14 @@
 
 import SwiftUI
 import MapKit
+import CoreImage.CIFilterBuiltins
+
 
 struct HotelDetail: View {
     @StateObject var mm = MoviesViewModel()
     
     @State private var region = MKCoordinateRegion()
+    @State private var qrCodeData: String = ""
 
     let movie: Movie
     
@@ -75,7 +78,7 @@ struct HotelDetail: View {
                                 HStack(alignment: .firstTextBaseline, spacing: 3) {
                                     Image(systemName: "star.fill")
                                         .symbolRenderingMode(.multicolor)
-                                    Text("4.55")
+                                    Text("5")
                                         .foregroundColor(.white)
                                 }
                                 .font(.subheadline.weight(.medium))
@@ -109,7 +112,6 @@ struct HotelDetail: View {
                                 .font(.subheadline)
                             }
                         }
-                        .padding(.horizontal, 24)
                         VStack(spacing: 14) {
                             HStack(spacing: 4) {
                                 Text("$49")
@@ -118,17 +120,25 @@ struct HotelDetail: View {
                                 Text("per person")
                                     .foregroundColor(.white)
                             }
-                            Map(coordinateRegion: $region, annotationItems: [movie]) { movie in
-                                        MapPin(coordinate: region.center,tint: .red)
+                        .padding(.horizontal, 24)
+                        Map(coordinateRegion: $region, annotationItems: [movie]) { movie in
+                                    MapPin(coordinate: region.center,tint: .red)
 //                                        MapMarker(coordinate: region.center,tint: .red)
 
-                                    }
-                                    .frame(height: 200)
-                                    .onAppear {
-                                        setRegion()
-                                    }
-                                    
-                                    Spacer()
+                                }
+                                .frame(height: 200)
+                                .onAppear {
+                                    setRegion()
+                                }
+                                
+                                Spacer()
+                       
+                           
+                            QRCodeView(data: qrCodeData)
+                                        .frame(width: 100, height: 100).onAppear {
+                                            qrCodeData = "\(movie.title)\n\(movie.genre)\n\(movie.description)"
+                                        }
+
                             Button(action: {}){
                                 NavigationLink(destination: ReservationView()) {
                                     Text("Reserve")
@@ -153,7 +163,7 @@ struct HotelDetail: View {
     
     private func setRegion() {
            let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(movie.title) { placemarks, error in
+        geocoder.geocodeAddressString(movie.adress) { placemarks, error in
                guard let placemark = placemarks?.first, let location = placemark.location else {
                    return
                }
@@ -162,8 +172,32 @@ struct HotelDetail: View {
        }
 }
 
-//struct HotelDetail_Previews: PreviewProvider {
-//    static var previews: some View {
-//        HotelDetail(movie: Movie)
-//    }
-//}
+
+struct QRCodeView: View {
+    let data: String
+    
+    var body: some View {
+        let filter = CIFilter.qrCodeGenerator()
+        let data = Data(self.data.utf8)
+        filter.setValue(data, forKey: "inputMessage")
+        let ciImage = filter.outputImage
+        
+        let context = CIContext()
+        guard let cgImage = context.createCGImage(ciImage!, from: ciImage!.extent) else {
+            fatalError("Failed to create CGImage from CIImage.")
+        }
+        let uiImage = UIImage(cgImage: cgImage)
+        
+        return Image(uiImage: uiImage)
+            .interpolation(.none)
+            .resizable()
+            .scaledToFit()
+    }
+}
+
+
+struct HotelDetail_Previews: PreviewProvider {
+    static var previews: some View {
+        HotelDetail(movie: Movie(_id: "", title: "tghteghteg", description: "dfgqstgqth", genre: "arfsdgqs", image: "", adress: "beb bhar"))
+    }
+}

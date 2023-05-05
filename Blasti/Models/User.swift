@@ -5,6 +5,8 @@
 //  Created by Siwar Nafti on 5/4/2023.
 //
 
+import Foundation
+
 struct User: Codable{
      var id:String=""
     var username: String=""
@@ -16,7 +18,8 @@ struct User: Codable{
     var codeVerif: String=""
     var codeForget: String=""
     var verified: String=""
-  
+    
+    
 }
 
 

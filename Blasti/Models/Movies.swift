@@ -12,6 +12,8 @@ struct Movie: Codable,Hashable ,Identifiable{
     let description: String
     let genre: String
     let image: String
+    let adress: String
+
     var id : String {_id}
 
    

@@ -4,9 +4,11 @@ import Combine
 class ProfileViewModel: ObservableObject {
     @Published var pro:String?
     @Published var user = LogedInUser()
-    
+    private let networkService = NetworkService()
+
     init() {
         user = getuser() ?? LogedInUser()
+        
     }
     
     func logout() {
@@ -41,5 +43,60 @@ class ProfileViewModel: ObservableObject {
         
         return nil
     }
+    
+    
+   
+//    func sendAdminRoleRequest(adminEmail: String) {
+//        networkService.sendAdminRoleRequest(adminEmail: adminEmail, onSuccess: {
+//            DispatchQueue.main.async {
+//                // handle success
+//                print("Admin role request sent")
+//            }
+//        }, onFailure: { (title, message) in
+//            DispatchQueue.main.async {
+//                // handle failure
+//                print("Error sending admin role request: \(message)")
+//            }
+//        })
+//    }
+    func saveuser(user:LogedInUser){
+        let defaults = UserDefaults.standard
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            defaults.set(encoded, forKey: "user")
+        }
+    }
+    
+    
+    func sendAdminRoleInvitation(email: String) {
+        networkService.sendAdminRoleInvitation(email: email, onSuccess: { u in
+            self.saveuser(user: u )
+
+        }, onFailure: { error in
+            print("Error sending admin role request: \(error)")
+        })
+        user = getuser()!
+    }
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
 
 }

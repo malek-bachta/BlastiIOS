@@ -35,7 +35,7 @@ class NetworkService {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
   
-    func signIn(email: String, password: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
+    func signIn(email: String, password: String, onSuccess: @escaping (_ user : LogedInUser) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
         let signinURL = "https://serverblasti.onrender.com/api/user/login"
         AF.request(signinURL, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
@@ -57,7 +57,7 @@ class NetworkService {
                             if let encoded = try? encoder.encode(result) {
                                 defaults.set(encoded, forKey: "user")
                                 print("User saved: \(result)")
-                                onSuccess("Success", "You are now signed in.")
+                                onSuccess(result)
                             }
                         } catch {
                             print("Error during JSON decoding: \(error)")
@@ -168,6 +168,7 @@ class NetworkService {
     func AddMovie(title: String,
                   genre: String,
                   description: String,
+                  adress: String,
                   image: UIImage,
                   onSuccess: @escaping (_ title: String, _ message: String) -> Void,
                   onFailure: @escaping (_ title: String, _ message: String) -> Void) {
@@ -180,6 +181,8 @@ class NetworkService {
             multipartFormData.append(title.data(using: .utf8)!, withName: "title")
             multipartFormData.append(genre.data(using: .utf8)!, withName: "genre")
             multipartFormData.append(description.data(using: .utf8)!, withName: "description")
+            multipartFormData.append(adress.data(using: .utf8)!, withName: "adress")
+
             
                         if let imageData = image.jpegData(compressionQuality: 0.5) {
                             multipartFormData.append(imageData, withName: "image", fileName: "image.jpeg", mimeType: "image/jpeg")
@@ -404,6 +407,92 @@ class NetworkService {
     }
     
     
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+//    func sendAdminRoleRequest(adminEmail: String, onSuccess: @escaping () -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
+//        let sendAdminRoleRequestURL = "https://serverblasti.onrender.com/api/user/mrigel"
+//        AF.request(sendAdminRoleRequestURL, method: .post, parameters: ["adminEmail": adminEmail], encoding: JSONEncoding.default)
+//            .validate(statusCode: 200..<401)
+//            .validate(contentType: ["application/json", "text/html"])
+//            .responseJSON { response in
+//                print("Response: \(response)")
+//                
+//                switch response.result {
+//                case .success(let data):
+//                    print("Data: \(data)")
+//                    
+//                    if let jsonData = data as? [String: Any], let message = jsonData["message"] as? String {
+//                        if message == "Email sent" {
+//                            print("Admin role request sent")
+//                            onSuccess()
+//                        } else {
+//                            print("Error sending admin role request")
+//                            onFailure("Error", "Error sending admin role request")
+//                        }
+//                    } else {
+//                        print("Data is not a JSON dictionary or missing message")
+//                        onFailure("Error", "Invalid response format")
+//                    }
+//                case .failure(let error):
+//                    print("Error: \(error)")
+//                    print("Response result: \(response.result)")
+//                    onFailure("Error", "Network request failed")
+//                }
+//            }
+//    }
+
+
+    func sendAdminRoleInvitation(email: String, onSuccess: @escaping (LogedInUser) -> Void, onFailure: @escaping (_ error: Error) -> Void) {
+        let url = "https://serverblasti.onrender.com/api/user/mrigel"
+        print(url)
+
+        let parameters: [String: Any] = ["email": email]
+        
+        AF.request(url, method: .post, parameters: parameters)
+            .validate(statusCode: 200..<300)
+            .responseJSON { response in
+                print(response.result)
+                switch response.result {
+                case .success(let data):
+                    if let jsonData = data as? [LogedInUser] {
+                        do {
+                            let jsonData = try JSONSerialization.data(withJSONObject: jsonData, options: [])
+                            let user = try JSONDecoder().decode(LogedInUser.self, from: jsonData)
+                            print(user)
+                            onSuccess(user)
+                            
+                        } catch {
+                            onFailure(error)
+                        }
+                    }
+                case .failure(let error):
+                    onFailure(error)
+                }
+            }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 

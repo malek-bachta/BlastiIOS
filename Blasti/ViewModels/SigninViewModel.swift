@@ -32,13 +32,14 @@ class SigninViewModel: ObservableObject {
     }
     
     func signIn(email: String, password: String) {
-        networkService.signIn(email: email, password: password, onSuccess: { (title, message) in
+        networkService.signIn(email: email, password: password, onSuccess: { (user) in
+            
             DispatchQueue.main.async {
                 self.log = true
                 if(self.rememberMe){
+                    self.saveuser(user: user)
                     UserDefaults.standard.set(self.rememberMe, forKey: "RememberMe")
                 }
-                self.signinResult = .success((title, message))
                 self.currentUser = User(id: "", username: "", email: email, password: password, role: "", avatar: "", bio: "", codeVerif: "", codeForget: "", verified: "")
             }
         }, onFailure: { (title, message) in
@@ -82,6 +83,7 @@ class SigninViewModel: ObservableObject {
         return emailPredicate.evaluate(with: email)
     }
     
+    
     func getuser()->User?{
         let defaults = UserDefaults.standard
         if let saveduser = defaults.object(forKey: "user") as? Data{
@@ -92,6 +94,17 @@ class SigninViewModel: ObservableObject {
         }
         return nil
     }
+    
+    func saveuser(user:LogedInUser){
+        let defaults = UserDefaults.standard
+        let encoder = JSONEncoder()
+        if let encoded = try? encoder.encode(user) {
+            defaults.set(encoded, forKey: "user")
+        }
+    }
+
+
+
     
 }
 

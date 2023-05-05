@@ -181,7 +181,7 @@ struct Register: View {
 
 func isValidPassword(password: String) -> Bool {
     // Use regular expression to validate password format
-    let passwordRegex = "^(?=.*[a-z])(?=.*[A-Z])(?=.*\\d)(?=.*[@$!%*?&])[A-Za-z\\d@$!%*?&]{8,}$"
+    let passwordRegex = "^(?=.*[a-zA-Z])(?=.*\\d)[a-zA-Z\\d]{6,}$"
     let passwordPredicate = NSPredicate(format:"SELF MATCHES %@", passwordRegex)
     return passwordPredicate.evaluate(with: password)
 }
