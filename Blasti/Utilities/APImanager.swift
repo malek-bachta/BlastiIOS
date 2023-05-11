@@ -11,7 +11,7 @@ import UIKit
 class NetworkService {
     
     func signUp(email: String, password: String, username: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-        let signupURL = "https://serverblasti.onrender.com/api/user/register"
+        let signupURL = baseUrl+"api/user/register"
         AF.request(signupURL, method: .post, parameters: ["email": email, "password": password, "username": username], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
             .validate(contentType: ["application/json"])
@@ -36,7 +36,7 @@ class NetworkService {
     
   
     func signIn(email: String, password: String, onSuccess: @escaping (_ user : LogedInUser) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-        let signinURL = "https://serverblasti.onrender.com/api/user/login"
+        let signinURL = baseUrl+"api/user/login"
         AF.request(signinURL, method: .post, parameters: ["email": email, "password": password], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
             .validate(contentType: ["application/json", "text/html"])
@@ -83,7 +83,7 @@ class NetworkService {
     
     
     func sendCodeForgot(email: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-        let sendCodeForgotURL = "https://serverblasti.onrender.com/api/user/sendCodeForgot"
+        let sendCodeForgotURL = baseUrl+"api/user/sendCodeForgot"
         AF.request(sendCodeForgotURL, method: .post, parameters: ["email": email], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
             .validate(contentType: ["application/json", "text/html"])
@@ -109,7 +109,7 @@ class NetworkService {
     
     
     func verifyCodeForgot(email: String, codeForget: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-        let verifyCodeForgotURL = "https://serverblasti.onrender.com/api/user/verifyCodeForgot"
+        let verifyCodeForgotURL = baseUrl+"api/user/verifyCodeForgot"
         AF.request(verifyCodeForgotURL, method: .post, parameters: ["email": email, "codeForget": codeForget], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
             .validate(contentType: ["application/json", "text/html"])
@@ -139,7 +139,7 @@ class NetworkService {
     
     
     func editProfile(email: String, password: String, username: String, onSuccess: @escaping (_ title: String, _ message: String) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-        let editProfileURL = "https://serverblasti.onrender.com/api/user/editProfile" // Update URL
+        let editProfileURL = baseUrl+"api/user/editProfile" // Update URL
         AF.request(editProfileURL, method: .post, parameters: ["email": email, "password": password, "username": username], encoding: JSONEncoding.default)
             .validate(statusCode: 200..<401)
             .validate(contentType: ["application/json"])
@@ -173,7 +173,7 @@ class NetworkService {
                   onSuccess: @escaping (_ title: String, _ message: String) -> Void,
                   onFailure: @escaping (_ title: String, _ message: String) -> Void) {
         
-        let AddMovieURL = "https://serverblasti.onrender.com/api/movies/add"
+        let AddMovieURL = baseUrl+"api/movies/add"
         
         let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
         
@@ -213,7 +213,7 @@ class NetworkService {
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
     func getMovies(onSuccess: @escaping (_ movies: [[String: Any]]) -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-        let getAllMoviesURL = "https://serverblasti.onrender.com/api/movies/all"
+        let getAllMoviesURL = baseUrl+"api/movies/all"
         
         AF.request(getAllMoviesURL)
             .validate(statusCode: 200..<401)
@@ -240,39 +240,39 @@ class NetworkService {
     
     
     
-    func fetchMovies( completion: @escaping(Result<[Movie],APIError>) -> Void) {
-        let url = URL(string : "https://serverblasti.onrender.com/api/movies/all")
-        //createURL(for:   .movie, page: nil, limit: nil)
-        fetch(type: [Movie].self, url: url, completion: completion)
-        
-    }
-    
-    func fetch<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
-        
-        guard let url = url else {
-            let error = APIError.badURL
-            completion(Result.failure(error))
-            return
+        func fetchMovies( completion: @escaping(Result<[Movie],APIError>) -> Void) {
+            let url = URL(string : baseUrl+"api/movies/all")
+            //createURL(for:   .movie, page: nil, limit: nil)
+            fetch(type: [Movie].self, url: url, completion: completion)
+            
         }
         
-        URLSession.shared.dataTask(with: url) { data, response, error in
+        func fetch<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
             
-            if let error = error as? URLError {
-                completion(Result.failure(APIError.urlSession(error)))
-            } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
-                completion(Result.failure(APIError.badResponse(response.statusCode)))
-            } else if let data = data {
-                
-                do {
-                    let result = try JSONDecoder().decode(type, from: data)
-                    completion(Result.success(result))
-                } catch {
-                    completion(Result.failure(.decoding(error as? DecodingError)))
-                }
+            guard let url = url else {
+                let error = APIError.badURL
+                completion(Result.failure(error))
+                return
             }
-        }.resume()
-    }
-    
+            
+            URLSession.shared.dataTask(with: url) { data, response, error in
+                
+                if let error = error as? URLError {
+                    completion(Result.failure(APIError.urlSession(error)))
+                } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                    completion(Result.failure(APIError.badResponse(response.statusCode)))
+                } else if let data = data {
+                    
+                    do {
+                        let result = try JSONDecoder().decode(type, from: data)
+                        completion(Result.success(result))
+                    } catch {
+                        completion(Result.failure(.decoding(error as? DecodingError)))
+                    }
+                }
+            }.resume()
+        }
+        
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -283,7 +283,7 @@ class NetworkService {
     
     func createURL(for type: EntityType, page: Int?, limit: Int?) -> URL? {
         
-        let baseURL = "https://serverblasti.onrender.com/api/movies/all"
+        let baseURL = baseUrl+"api/movies/all"
         var queryItems = [
             //URLQueryItem(name: "term", value: searchTerm),
             URLQueryItem(name: "entity", value: type.rawValue)]
@@ -313,7 +313,7 @@ class NetworkService {
                   onSuccess: @escaping (_ title: String, _ message: String) -> Void,
                   onFailure: @escaping (_ title: String, _ message: String) -> Void) {
         
-        let AddEventURL = "https://serverblasti.onrender.com/api/events/add"
+        let AddEventURL = baseUrl+"api/events/add"
         
         let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
         
@@ -356,7 +356,7 @@ class NetworkService {
     
 
     func fetchEvents( completion: @escaping(Result<[Event],APIError>) -> Void) {
-        let url = URL(string : "https://serverblasti.onrender.com/api/events/all")
+        let url = URL(string : baseUrl+"api/events/all")
 //        createURL(for:   .movie, page: nil, limit: nil)
         fetche(type: [Event].self, url: url, completion: completion)
     }
@@ -390,7 +390,7 @@ class NetworkService {
 
     func createURLe(for type: EntityType, page: Int?, limit: Int?) -> URL? {
 
-        let baseURL = "https://serverblasti.onrender.com/api/events/all"
+        let baseURL = baseUrl+"api/events/all"
         var queryItems = [
             //URLQueryItem(name: "term", value: searchTerm),
             URLQueryItem(name: "entity", value: type.rawValue)]
@@ -447,7 +447,7 @@ class NetworkService {
 
 
     func sendAdminRoleInvitation(email: String, onSuccess: @escaping (LogedInUser) -> Void, onFailure: @escaping (_ error: Error) -> Void) {
-        let url = "https://serverblasti.onrender.com/api/user/mrigel"
+        let url = baseUrl+"api/user/mrigel"
         print(url)
 
         let parameters: [String: Any] = ["email": email]
@@ -476,9 +476,75 @@ class NetworkService {
     }
 
 
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
 
 
 
+    
+    
+    func fetchPlaces(id:String ,completion: @escaping ([Movie]?) -> Void) {
+        
+        
+        AF.request(baseUrl+"api/favorite/FavoritefindByUser/"+id).responseDecodable(of: [Movie].self) { response in
+            switch response.result {
+            case .success(let movies):
+                completion(movies)
+//                self.movies=movies
+                print(movies)
+            case .failure(let error):
+                print(error.localizedDescription)
+                completion(nil)
+            }
+        }
+    }
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    
+    
+    func addFavorite(request: FavoriteM, completion: @escaping (Result<MessageResponse, Error>) -> ()) -> DataRequest {
+        let url = baseUrl+"api/favoriteMovie/Add"
+        
+        do {
+            let encodedRequest = try JSONEncoder().encode(request)
+            var urlRequest = try URLRequest(url: url, method: .post)
+            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            urlRequest.httpBody = encodedRequest
+            
+            return AF.request(urlRequest)
+                .validate(statusCode: 200..<500)
+                .validate(contentType: ["application/json"])
+                .responseData { response in
+                    switch response.result {
+                        case .success(let data):
+                            do {
+                                
+                                let messageResponse = try JSONDecoder().decode(MessageResponse.self, from: data)
+                                completion(.success(messageResponse))
+                                print(messageResponse)
+                               
+                            } catch {
+                                print(error)
+                                completion(.failure(error))
+                            }
+                        case .failure(let error):
+                            print(error)
+                            completion(.failure(error))
+                    }
+                }
+        } catch {
+            print(error)
+            completion(.failure(error))
+        }
+        return AF.request(url)
+    }
+
+    
 
 
 

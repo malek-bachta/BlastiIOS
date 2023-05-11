@@ -49,7 +49,7 @@
 		B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087252E29E772DB00CF5E57 /* AddMoviesView.swift */; };
 		B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253429E77C6700CF5E57 /* Coordinator.swift */; };
 		B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253629E7822D00CF5E57 /* MoviesViewModel.swift */; };
-		E6E846DF2A04689D0076EE03 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846DE2A04689D0076EE03 /* Ticket.swift */; };
+		E6E846DF2A04689D0076EE03 /* FavoriteM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846DE2A04689D0076EE03 /* FavoriteM.swift */; };
 		E6E846E12A0468FF0076EE03 /* QRGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E02A0468FF0076EE03 /* QRGenView.swift */; };
 		E6E846E32A0469EB0076EE03 /* MyReservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */; };
 		E6E846E52A046B250076EE03 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E42A046B250076EE03 /* QRCodeView.swift */; };
@@ -98,7 +98,7 @@
 		B087252E29E772DB00CF5E57 /* AddMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviesView.swift; sourceTree = "<group>"; };
 		B087253429E77C6700CF5E57 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B087253629E7822D00CF5E57 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
-		E6E846DE2A04689D0076EE03 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
+		E6E846DE2A04689D0076EE03 /* FavoriteM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteM.swift; sourceTree = "<group>"; };
 		E6E846E02A0468FF0076EE03 /* QRGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenView.swift; sourceTree = "<group>"; };
 		E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationsView.swift; sourceTree = "<group>"; };
 		E6E846E42A046B250076EE03 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
@@ -233,7 +233,7 @@
 				2270425629E8D0270021272D /* EntityType.swift */,
 				2270425A29E8D08D0021272D /* APIError.swift */,
 				2207049A29EF64FA00D215ED /* Events.swift */,
-				E6E846DE2A04689D0076EE03 /* Ticket.swift */,
+				E6E846DE2A04689D0076EE03 /* FavoriteM.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -369,7 +369,7 @@
 				22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */,
 				7AA6999129E818AF005FEA9F /* MovieDetailsView.swift in Sources */,
 				B06CBCC829FB64BF000A5539 /* FirstScreen.swift in Sources */,
-				E6E846DF2A04689D0076EE03 /* Ticket.swift in Sources */,
+				E6E846DF2A04689D0076EE03 /* FavoriteM.swift in Sources */,
 				E6E846E52A046B250076EE03 /* QRCodeView.swift in Sources */,
 				220704AB29EFD47C00D215ED /* MovieTicket.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
