@@ -1,0 +1,96 @@
+/* 
+  Localizable.strings
+  Blasti
+
+  Created by Apple Esprit on 11/5/2023.
+  
+*/
+
+/*****************  INTERFACES d'Authentification   *****************/
+
+
+"Login"="Se Connecter";
+"Email"="Adresse Mail";
+"Enter Your Email"="Entrer votre adresse mail";
+"Register"="S'inscrire";
+"Enter Your password"="Entrez votre mot de passe";
+"Password"="Mot de passe";
+"Remember me"="Se souvenir de moi";
+"New Here?"="Nouveau ici?";
+"Forget Password"="Mot de passe oublié";
+"Please fill in all fields."="Veuillez remplir tous les champs";
+"Please enter a valid email address."="Veuillez saisir une adresse e-mail valide";
+"Sign Up"="S'inscrire";
+"Password must contain At least 8 characters in length, one uppercase letter,  one lowercase letter, one number one special character (e.g. !, @, #, $, %, ^, &, *)"="Le mot de passe doit contenir au moins 8 caractères, une lettre majuscule, une lettre minuscule, un chiffre et un caractère spécial (par exemple !, @, #, $, %, ^, &, *).";
+"Passwords do not match."= "Les mots de passe ne correspondent pas.";
+"Verify your Password"="Verifier votre mot de passe";
+
+"Verify Password"="Vérifier le mot de passe";
+"Enter a Valid Email"="Entrez une adresse e-mail valide";
+"Username"="Nom d'utilisateur";
+"Forgot Password"="Mot de passe oublié";
+"Enter your email"="Entrez votre adresse e-mail";
+"Send Key"="Envoyer la clé";
+"Password Reset"="Réinitialisation du mot de passe";
+"An email with instructions to reset your password has been sent to"="Un e-mail contenant des instructions pour réinitialiser votre mot de passe a été envoyé à";
+"Change Password"="Changer le mot de passe";
+"Current Password"="Mot de passe actuel";
+"New Password"="Nouveau mot de passe";
+"Confirm New Password"="Confirmez le nouveau mot de passe";
+"Save"="Enregistrer";
+"There was an error saving your changes."="Une erreur est survenue lors de l'enregistrement de vos modifications.";
+"Verify"="Vérifier";
+"Search..."="Recherche...";
+"Home"="Accueil";
+"Categories"="Catégories";
+"Profile"="Profil";
+
+
+/*************************** Produits ****************************/
+
+"Add Movie"="Ajouter un film";
+"Title"="Titre";
+"Enter Genre"="Entrer le genre";
+"Language"="Langue";
+"Select Language"="Sélectionner la langue";
+"Arabic"="Arabe";
+"French"="Français";
+"English"="Anglais";
+"Duration"="Durée";
+"Enter Movie Duration (minutes)"="Entrez la durée du film (minutes)";
+"Enter Movie Date"="Entrer la date du film";
+"Enter Movie Description"="Entrer la description du film";
+"Address"="Adresse";
+
+/***************************** PROFIL *************************/
+
+"Favorites"="Favoris";
+"Movies"="Films";
+"Shows"="Spectacles";
+"Events"="Événements";
+"Request Admin"="Demander l'accès admin";
+"Are you sure you want to request admin access?"="Êtes-vous sûr de vouloir demander l'accès admin ?";
+"Edit Profile"="Modifier le profil";
+"Name"="Nom";
+"Change name"="Changer le nom";
+"Enable notifications"="Activer les notifications";
+"Account"="Compte";
+"Change username"="Changer le nom d'utilisateur";
+"About us"="À propos de nous";
+"Logout"="Déconnexion";
+"Settings"="Paramètres";
+
+/***************************** RÉSERVATION ET BILLETS *************************/
+
+"Number of Tickets"="Nombre de billets";
+"Done"="Terminé";
+"Accepted"="Acceptée";
+"Declined"="Refusée";
+"Loading.."="En cours de traitement..";
+
+"WELCOME"="BIENVENUE";
+
+"register"="s'identifier";
+"Welcome to Admin Menu"="Bienvenue au Menu Admin";
+"Add Show"="Ajouter un Spectacle";
+"Add Event"="Ajouter un  Événement";

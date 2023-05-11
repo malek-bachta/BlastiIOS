@@ -12,9 +12,11 @@ struct Login: View {
     @State private var isHomeActive = false
 //    @State private var rememberMe = false
     @State private var isPasswordVisible = false
-    
+    @StateObject var viewRouter = ViewRouter()
+
     @State private var isUnlocked = false
     @State private var showHomePageView = false
+    
 
 
 
@@ -22,7 +24,7 @@ struct Login: View {
     var body: some View {
         NavigationView{
             if (sm.log){
-                HomePage()
+                HomePage(viewRouter: ViewRouter())
             }else{
                 
                 ZStack {
@@ -36,36 +38,37 @@ struct Login: View {
                         .offset(x: -125, y: -380)
                     
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 200, height: 200)
                         .offset(x: 110, y: 90)
                     Circle()
-                        .fill(Color.yellow.opacity(0.25))
+                        .fill(Color("y").opacity(0.25))
                         .frame(width: 150, height: 150)
                         .offset(x: 200, y: 300)
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 100, height: 100)
                         .offset(x: -200, y: -300)
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 200, height: 200)
                         .offset(x: -150, y: -100)
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 350, height: 350)
                         .offset(x: 200, y: -200)
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 400, height: 400)
                         .offset(x: -150, y: 300)
                     VStack{
-                        Text("Login")
+                        Text( LocalizedStringKey ("Login"))
                             .font(.system(size: 35, design: .rounded).weight(.bold))
                             .font(.largeTitle)
                             .bold()
                             .foregroundColor(.white)
                             .padding(.bottom,18)
+              
                         VStack(alignment: .leading, spacing: 10){
                             Text("Email")
                                 .font(.system(size: 20, design: .rounded).weight(.light))
@@ -139,7 +142,7 @@ struct Login: View {
                                     .foregroundColor(.black)
                                     .padding()
                                     .frame(width: 200, height: 50)
-                                    .background(Color.yellow)
+                                    .background(Color("y"))
                                     .cornerRadius(10)
                                     .font(.system(size: 20, design: .rounded).weight(.bold))
                             }
@@ -149,7 +152,7 @@ struct Login: View {
                             
                             
                             if isUnlocked {
-                                NavigationLink("", destination: HomePage().navigationBarHidden(true), isActive: $showHomePageView)
+                                NavigationLink("", destination: HomePage(viewRouter: ViewRouter()).navigationBarHidden(true), isActive: $showHomePageView)
                             } else {
                                 Image(systemName: "faceid")
                                      .resizable()
@@ -232,24 +235,6 @@ struct Login: View {
             // Same as above
         }
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

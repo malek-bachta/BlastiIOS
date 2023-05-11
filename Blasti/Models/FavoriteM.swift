@@ -8,9 +8,8 @@
 import Foundation
 import UIKit
 struct FavoriteM: Codable,Hashable {
-    var id:String=""
-   var idMovie: String=""
-    
+    var idMovie: String
+    var idUser: String
 }
 
 struct MessageResponse: Decodable {

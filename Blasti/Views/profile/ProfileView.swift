@@ -59,6 +59,8 @@ struct ProfileView: View {
                     List {
                         Section(header: Text("Favorites")) {
                             Button(action: {
+                          
+//                                FavouritesView()
                                 // Handle button action
                             }) {
                                 Label("Movies", systemImage: "film")
@@ -73,8 +75,7 @@ struct ProfileView: View {
                                     .foregroundColor(Color("Color"))
                                     .font(.system(size: 20, design: .rounded).weight(.light))
                             }
-                            Button(action: {
-                                // Handle button action
+                            Button(action: {                                      // Handle button action
                             }) {
                                 Label("Events", systemImage:"music.mic")
                                     .foregroundColor(Color("Color"))
@@ -88,12 +89,12 @@ struct ProfileView: View {
                         
                         Section(header: Text("Reservations")
                         ){
-                            //   NavigationLink(destination: MovieTicket()) {
+                            NavigationLink(destination:                             MyReservationsView()) {
                             Label("Movies", systemImage: "film")
                                 .foregroundColor(Color("Color"))
                                 .font(.system(size: 20, design: .rounded).weight(.light))
                             
-                            // }
+                             }
                             
                             //NavigationLink(destination:  ShowTicket()) {
                             Label("Shows", systemImage: "star.circle.fill")
@@ -113,7 +114,7 @@ struct ProfileView: View {
                     }
                     .listStyle(.inset)
                     .frame(width: 395, height: 750)
-                    .offset(x: 0, y: 280)
+                    .offset(x: 0, y: 250)
                     .cornerRadius(10)
                     //   .shadow(radius: 8)
                     HStack{
@@ -121,9 +122,9 @@ struct ProfileView: View {
                         if pvm.user.role == "Admin"
                         {
                             Button(action: {}) {
-                                NavigationLink(destination: AddMoviesView()) {
+                                NavigationLink(destination: AdminView()) {
                                     HStack {
-                                        Text("Add Movie")
+                                        Text("Admin Menu")
                                             .font(.system(size: 20, design: .rounded).weight(.semibold))
                                             .foregroundColor(Color("AccentColor"))
                                         
@@ -181,7 +182,7 @@ struct ProfileView: View {
                         
                         
                     }
-                    .offset(y: -60) // Move the button up a little
+                    .offset(y: -80) // Move the button up a little
                     .alert(isPresented: $shouldShowAlert) {
                         Alert(title: Text("Request Admin"), message: Text("Are you sure you want to request admin access?"), primaryButton: .default(Text("Yes"), action: {
                             pvm.sendAdminRoleInvitation(email: pvm.user.email)
@@ -228,12 +229,6 @@ struct ProfileView: View {
             //            .ignoresSafeArea(.all)
             
         }
-
-
-
-
-
-
         
     }
     

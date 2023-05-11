@@ -12,13 +12,17 @@ import CoreImage.CIFilterBuiltins
 
 
 struct HotelDetail: View {
-    @StateObject var mm = MoviesViewModel()
+    @ObservedObject var mm = MoviesViewModel()
+    @ObservedObject var fvm = FavoriteMViewModel()
+
+    @State var added=false
     
+    var movie : Movie
+    let VerifFavorite: Bool
+
     @State private var region = MKCoordinateRegion()
     @State private var qrCodeData: String = ""
 
-    let movie: Movie
-    
     var body: some View {
         NavigationView(){
             ZStack(alignment: .center) {
@@ -27,7 +31,7 @@ struct HotelDetail: View {
                 ScrollView {
                     
                     VStack {
-                        ZStack(alignment: .top) {
+                        ZStack() {
                             
                             if let url = URL(string: baseUrl+"images/\(movie.image)") {
                                                 
@@ -52,18 +56,59 @@ struct HotelDetail: View {
                                 } } else {
                                     Text("Invalid URL")
                                 }
-                            HStack {
-                                Image(systemName: "arrow.backward")
-                                    .font(.title3)
-                                    .padding(11)
-                                    .background {
-                                        Circle()
-                                            .fill(Color("y").opacity(0.7))
+                            if(VerifFavorite){
+                                Button(action: {
+                                    let request = FavoriteM(idMovie: movie._id, idUser: mm.user!.id)
+                                    fvm.addFavoriteM(request: request) { result in
+                                        switch result {
+                                        case .success(let response):
+                                            // Action si la connexion est réussie
+                                            print(response)
+                                            added.self = true
+                                            fvm.movies.append(movie)
+                                            //   self.redirectToHomePage = true // Set redirectToHomePage to true
+                                        case .failure(let error):
+                                            // Action si la connexion échoue
+                                            print(error)
+                                        }
+                                        print(request)
                                     }
-                                Spacer()
+                                }) {
+                                        Image(systemName: "heart.fill")
+                                            .foregroundColor(added ? Color.red:Color.white)
+                                            .padding(10)
+                                            .font(.system(size: 40))
+                                }
+                                .padding(10)
+                            }else{
+                                Button(action: {
+                                    let request = FavoriteM(idMovie: movie._id, idUser: mm.user!.id)
+                                    fvm.deleteFavorite(request: request) { result in
+                                        switch result {
+                                        case .success(let response):
+                                            // Action si la connexion est réussie
+                                            print(response)
+                                            added.self=false
+                                            fvm.movies.remove(at: fvm.movies.index(of: movie)!)
+                                            //   self.redirectToHomePage = true // Set redirectToHomePage to true
+                                        case .failure(let error):
+                                            // Action si la connexion échoue
+                                            print(error)
+                                        }
+                                        print(request)
+                                    }
+                              
+                                }) {
+                                    Image(systemName: "heart.fill")
+                                        .foregroundColor(added ? Color.white:Color.red)
+                                        .padding(10)
+                                        .font(.system(size: 40))
+                                    
+                                }
+                                
                             }
-                            .padding()
-                            .padding(.top, 44)
+                         
+                        
                         }
                         .frame(width: 390, height: 320)
                         .clipped()
@@ -196,8 +241,8 @@ struct QRCodeView: View {
 }
 
 
-struct HotelDetail_Previews: PreviewProvider {
-    static var previews: some View {
-        HotelDetail(movie: Movie(_id: "", title: "tghteghteg", description: "dfgqstgqth", genre: "arfsdgqs", image: "", adress: "beb bhar"))
-    }
-}
+//struct HotelDetail_Previews: PreviewProvider {
+//    static var previews: some View {
+//        HotelDetail(VerifFavorite : true,movie: Movie(_id: "", title: "tghteghteg", description: "dfgqstgqth", genre: "arfsdgqs", image: "", adress: "beb bhar"))
+//    }
+//}

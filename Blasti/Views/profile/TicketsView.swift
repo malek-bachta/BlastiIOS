@@ -47,8 +47,8 @@ struct TicketsView: View {
                                 .font(.system(size: 20, design: .rounded).weight(.light))
                         }
                         // Add more reservation buttons as needed
-                    }                          //.listRowBackground(Color.Color("y").opacity(0.7))
-                    //     .foregroundColor(Color.black)
+                    }                          .listRowBackground(Color("y").opacity(0.2))
+                       .foregroundColor(Color("rev"))
                     .font(.system(size: 20, design: .rounded).weight(.bold))
                     
                 }
@@ -57,9 +57,7 @@ struct TicketsView: View {
                 .offset(x: 0, y: 0)
                 .cornerRadius(10)
              //   .shadow(radius: 8)
-                   
-                
-                
+                                   
             }
          
     

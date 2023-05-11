@@ -164,6 +164,7 @@ struct HomeView: View {
 struct MovieCardView: View {
     let movie: Movie
     @State var showdetail = false
+    @State private var VerifFavorite = false
 
    
     var body: some View {
@@ -229,7 +230,7 @@ struct MovieCardView: View {
                     showdetail=true
                     let id = UserDefaults.standard.string(forKey: "id")
                 }.sheet(isPresented: $showdetail){
-                    HotelDetail(movie: movie)
+                    HotelDetail(movie: movie, VerifFavorite: VerifFavorite)
                 }
         
     }

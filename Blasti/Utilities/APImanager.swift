@@ -420,11 +420,11 @@ class NetworkService {
 //            .validate(contentType: ["application/json", "text/html"])
 //            .responseJSON { response in
 //                print("Response: \(response)")
-//                
+//
 //                switch response.result {
 //                case .success(let data):
 //                    print("Data: \(data)")
-//                    
+//
 //                    if let jsonData = data as? [String: Any], let message = jsonData["message"] as? String {
 //                        if message == "Email sent" {
 //                            print("Admin role request sent")
@@ -478,14 +478,8 @@ class NetworkService {
 
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    
-    
 
-
-
-    
-    
-    func fetchPlaces(id:String ,completion: @escaping ([Movie]?) -> Void) {
+    func fetchFavMovies(id:String ,completion: @escaping ([Movie]?) -> Void) {
         
         
         AF.request(baseUrl+"api/favorite/FavoritefindByUser/"+id).responseDecodable(of: [Movie].self) { response in
@@ -505,59 +499,7 @@ class NetworkService {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    
-    
-    func addFavorite(request: FavoriteM, completion: @escaping (Result<MessageResponse, Error>) -> ()) -> DataRequest {
-        let url = baseUrl+"api/favoriteMovie/Add"
-        
-        do {
-            let encodedRequest = try JSONEncoder().encode(request)
-            var urlRequest = try URLRequest(url: url, method: .post)
-            urlRequest.setValue("application/json", forHTTPHeaderField: "Content-Type")
-            urlRequest.httpBody = encodedRequest
-            
-            return AF.request(urlRequest)
-                .validate(statusCode: 200..<500)
-                .validate(contentType: ["application/json"])
-                .responseData { response in
-                    switch response.result {
-                        case .success(let data):
-                            do {
-                                
-                                let messageResponse = try JSONDecoder().decode(MessageResponse.self, from: data)
-                                completion(.success(messageResponse))
-                                print(messageResponse)
-                               
-                            } catch {
-                                print(error)
-                                completion(.failure(error))
-                            }
-                        case .failure(let error):
-                            print(error)
-                            completion(.failure(error))
-                    }
-                }
-        } catch {
-            print(error)
-            completion(.failure(error))
-        }
-        return AF.request(url)
-    }
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
+   
 
 }
 

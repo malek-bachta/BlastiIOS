@@ -1,0 +1,96 @@
+/* 
+  Localizable.strings
+  Blasti
+
+  Created by Apple Esprit on 11/5/2023.
+  
+*/
+
+/*****************  Authentification INTERFACES  *****************/
+"Login"="Login";
+"Email"="Email";
+"Enter Your Email"="Enter Your Email";
+"Register"="Register";
+"Enter Your password"="Enter Your password";
+"Password"="Password";
+"Remember Me"="Remember Me";
+"New Here?"="New Here?";
+"Forget Password"="Forget Password";
+"Please fill in all fields."="Please fill in all fields";
+"Please enter a valid email address."="Please enter a valid email address";
+"Sign Up"="Sign Up";
+"Password must contain At least 8 characters in length, one uppercase letter,  one lowercase letter, one number one special character (e.g. !, @, #, $, %, ^, &, *)"="Password must contain At least 8 characters in length, one uppercase letter,  one lowercase letter, one number one special character (e.g. !, @, #, $, %, ^, &, *)";
+"Passwords do not match."= "Passwords do not match.";
+"Verify your Password"="Verify your Password";
+
+"Verify Password"="Verify Password";
+"Enter a Valid Email"="Enter a Valid Email";
+"Username"="Username";
+"Forgot Password"="Forgot Password";
+"Enter your email"="Enter your email";
+"Send Key"="Send Key";
+"Password Reset"="Password Reset";
+"An email with instructions to reset your password has been sent to"="An email with instructions to reset your password has been sent to";
+"Change Password"="Change Password";
+"Current Password"="Current Password";
+"New Password"="New Password";
+"Confirm New Password"="Confirm New Password";
+"Save"="Save";
+"There was an error saving your changes."="There was an error saving your changes.";
+"Verify"="Verify";
+"Search..."="Search...";
+"Home"="Home";
+"Categories"="Categories";
+"Profile"="Profile";
+
+/*************************** Products ****************************/
+
+"Add Movie"="Add Movie";
+"Title"="Title";
+"Enter Genre"="Enter Genre";
+"Language"="Language";
+"Select Language"="Select Language";
+"Arabic"="Arabic";
+"French"="French";
+"English"="English";
+"Duration"="Duration";
+"Enter Movie Duration (minutes)"="Enter Movie Duration (minutes)";
+"Enter Movie Date"="Enter Movie Date";
+"Enter Movie Description"="Enter Movie Description";
+"Address"="Address";
+
+/***************************** PROFILE *************************/
+
+"Favorites"="Favorites";
+"Movies"="Movies";
+"Shows"="Shows";
+"Events"="Events";
+"Request Admin"="Request Admin";
+"Are you sure you want to request admin access?"="Are you sure you want to request admin access?";
+"Edit Profile"="Edit Profile";
+"Name"="Name";
+"Change name"="Change name";
+"Enable notifications"="Enable notifications";
+"Account"="Account";
+"Change username"="Change username";
+"About us"="About us";
+"Logout"="Logout";
+"Settings"="Settings";
+
+/***************************** RESERVATION AND TICKETS *************************/
+
+"Number of Tickets"="Number of Tickets";
+"Done"="Done";
+"Accepted"="Accepted";
+"Declined"="Declined";
+"Loading.."="Loading..";
+
+
+"WELCOME"="WELCOME";
+
+"register"="register";
+"Welcome to Admin Menu"="Welcome to Admin Menu";
+"Add Show"="Add Show";
+
+"Add Event"="Add Event";
+

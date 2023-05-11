@@ -18,7 +18,7 @@ class SigninViewModel: ObservableObject {
     @Published var CodeSent : Bool = false
     @Published var currentUser: User?
     
-    var user:User?
+    var user:LogedInUser?
 
     @Published var rememberMe = false
 
@@ -26,7 +26,7 @@ class SigninViewModel: ObservableObject {
         if(log || UserDefaults.standard.bool(forKey: "RememberMe")){
             log=true
         }
-        
+        print("here")
         user=getuser()
         print(user)
     }
@@ -37,8 +37,13 @@ class SigninViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.log = true
                 if(self.rememberMe){
+                    print("userlogedin")
+                    print(user)
+                    
                     self.saveuser(user: user)
                     UserDefaults.standard.set(self.rememberMe, forKey: "RememberMe")
+                    UserDefaults.standard.set(user.id, forKey: "id")
+                    
                 }
                 self.currentUser = User(id: "", username: "", email: email, password: password, role: "", avatar: "", bio: "", codeVerif: "", codeForget: "", verified: "")
             }
@@ -84,11 +89,11 @@ class SigninViewModel: ObservableObject {
     }
     
     
-    func getuser()->User?{
+    func getuser()->LogedInUser?{
         let defaults = UserDefaults.standard
         if let saveduser = defaults.object(forKey: "user") as? Data{
             let decoder = JSONDecoder()
-            if let loadeduser = try? decoder.decode(User.self, from: saveduser){
+            if let loadeduser = try? decoder.decode(LogedInUser.self, from: saveduser){
                 return loadeduser
             }
         }

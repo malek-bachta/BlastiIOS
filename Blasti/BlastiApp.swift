@@ -20,6 +20,7 @@ struct BlastiApp: App {
 }
 
 struct SplashScreenView: View {
+    @StateObject var viewRouter = ViewRouter()
     @State private var isLoading = true
 
     var body: some View {
@@ -31,7 +32,7 @@ struct SplashScreenView: View {
                     }
                 }
         } else if UserDefaults.standard.bool(forKey: "RememberMe")  {
-            HomePage()
+            HomePage(viewRouter: viewRouter)
         }else{
             FirstScreen()
 

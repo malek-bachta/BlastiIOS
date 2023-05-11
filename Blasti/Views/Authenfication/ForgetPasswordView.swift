@@ -21,19 +21,19 @@ struct ForgotPasswordView: View {
                         .ignoresSafeArea()
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 300, height: 300)
                         .offset(x: -150, y: -100)
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 300, height: 300)
                         .offset(x: 150, y: 200)
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 100, height: 100)
                         .offset(x: -50, y: 100)
                     Circle()
-                        .fill(Color.yellow.opacity(0.1))
+                        .fill(Color("y").opacity(0.1))
                         .frame(width: 50, height: 50)
                         .offset(x: 100, y: -150)
 
@@ -76,7 +76,7 @@ struct ForgotPasswordView: View {
                                     .font(.system(size: 20, design: .rounded).weight(.light))
                                     .font(.largeTitle)
                                     .bold()
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("y"))
                             }
                         }
                     }

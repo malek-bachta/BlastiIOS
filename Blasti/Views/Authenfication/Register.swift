@@ -35,31 +35,31 @@ struct Register: View {
                     Color.black
                         .ignoresSafeArea()
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 300, height: 300)
                         .offset(x: -150, y: -100)
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 350, height: 350)
                         .offset(x: 200, y: -200)
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 150, height: 500)
                         .offset(x: -160, y: -390)
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 150, height: 500)
                         .offset(x: 200, y: 250)
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.1))
+                        .fill(Color("y").opacity(0.1))
                         .frame(width: 400, height: 400)
                         .offset(x: -150, y: 300)
                         .animation(Animation.easeInOut(duration: 3).repeatForever(autoreverses: true))
@@ -132,7 +132,7 @@ struct Register: View {
                                 .foregroundColor(.black)
                                 .padding()
                                 .frame(width: 200, height: 50)
-                                .background(Color.yellow)
+                                .background(Color("y"))
                                 .cornerRadius(10)
                         }
                         HStack{
@@ -144,7 +144,7 @@ struct Register: View {
                             NavigationLink(destination: Login().navigationBarBackButtonHidden(), label: {
                                 
                                 Text("Login")
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("y"))
                                     .padding(.bottom,8)
                                     .font(.system(size: 15, weight: .semibold))
                                 

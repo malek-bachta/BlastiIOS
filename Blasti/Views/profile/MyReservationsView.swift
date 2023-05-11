@@ -22,7 +22,7 @@ struct MyReservationsView: View {
         Reservation(name: "Movie Avatar 2",  isAccepted: "Declined"),
         Reservation(name: "Birdhouse Event Dj Groove Music",  isAccepted: "Declined"),
         Reservation(name: "Interstellar",  isAccepted: "Loading.."),
-        Reservation(name: "qqqqqq+",  isAccepted: "Event Cancelled"),
+        Reservation(name: "LGBTQ+",  isAccepted: "Event Cancelled"),
     ]
     func getColor(for status: String) -> Color {
                     switch status {
@@ -40,8 +40,6 @@ struct MyReservationsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-//                Color.black.edgesIgnoringSafeArea(.all)
-        
                 
                 VStack {
                    
@@ -66,10 +64,6 @@ struct MyReservationsView: View {
              .listStyle(.plain)
              .background(Image("splash"))
              .navigationTitle("Reservations")
-            
-//             LinearGradient(gradient: Gradient(colors: [Color.white, Color.gray]), startPoint: .top, endPoint: .bottom)
-//
-//                 .edgesIgnoringSafeArea(.all)
             } .background(Image("splash"))
      }
  }

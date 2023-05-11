@@ -38,10 +38,10 @@ struct FirstScreen: View {
                                 Text("Login")
                                     .foregroundColor(.black)
                                     .padding()
-                                    .frame(width: 130, height: 50)
+                                    .frame(width: 150, height: 50)
                                     .background(Color("y").opacity(0.9))
                                     .cornerRadius(8)
-                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                                    .font(.system(size: 15, design: .rounded).weight(.light))
                             }
                         }
                         .padding(.leading, 270.0)
@@ -55,7 +55,7 @@ struct FirstScreen: View {
                                     .frame(width: 150, height: 50)
                                     .background(Color("y").opacity(0.8))
                                     .cornerRadius(8)
-                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                                    .font(.system(size: 15, design: .rounded).weight(.light))
                             }
                         }
                         .padding(.leading, 250.0)

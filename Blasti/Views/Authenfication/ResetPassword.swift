@@ -22,32 +22,32 @@ struct ResetPassword: View {
                         .ignoresSafeArea()
                    
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 100, height: 100)
                         .offset(x: 110, y: 90)
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.25))
+                        .fill(Color("y").opacity(0.25))
                         .frame(width: 150, height: 150)
                         .offset(x: 200, y: 300)
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.3))
+                        .fill(Color("y").opacity(0.3))
                         .frame(width: 100, height: 100)
                         .offset(x: -200, y: -300)
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.2))
+                        .fill(Color("y").opacity(0.2))
                         .frame(width: 200, height: 200)
                         .offset(x: -150, y: -100)
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 350, height: 350)
                         .offset(x: 200, y: -200)
 
                     Circle()
-                        .fill(Color.yellow.opacity(0.15))
+                        .fill(Color("y").opacity(0.15))
                         .frame(width: 400, height: 400)
                         .offset(x: -150, y: 300)
                         .shadow(radius: 80)
@@ -84,7 +84,7 @@ struct ResetPassword: View {
                         .font(.system(size: 20, design: .rounded).weight(.light))
                         .font(.largeTitle)
                         .bold()
-                        .foregroundColor(.yellow)
+                        .foregroundColor(Color("y"))
                         
                 })
                 .alert(isPresented: $showingAlert) {

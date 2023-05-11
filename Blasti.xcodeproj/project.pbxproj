@@ -41,6 +41,13 @@
 		7AA699A129E8416D005FEA9F /* Movies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AA699A029E8416D005FEA9F /* Movies.swift */; };
 		7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59C29DDAF4C0095EADD /* splash.swift */; };
 		7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7AAEE59F29DDC40E0095EADD /* ProfileView.swift */; };
+		B035B98B2A0C61EC0071D95E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = B035B98D2A0C61EC0071D95E /* Localizable.strings */; };
+		B035B9902A0C78320071D95E /* Favorites.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035B98F2A0C78320071D95E /* Favorites.swift */; };
+		B035B9922A0C7C320071D95E /* FavouritesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035B9912A0C7C320071D95E /* FavouritesView.swift */; };
+		B035B9942A0C82AE0071D95E /* database.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035B9932A0C82AE0071D95E /* database.swift */; };
+		B035B9962A0C83F10071D95E /* FavoritesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035B9952A0C83F10071D95E /* FavoritesViewModel.swift */; };
+		B035B9982A0C9DD30071D95E /* ViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035B9972A0C9DD30071D95E /* ViewRouter.swift */; };
+		B035B99C2A0CC48F0071D95E /* AdminView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B035B99B2A0CC48F0071D95E /* AdminView.swift */; };
 		B06CBCC629FB488A000A5539 /* TicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC529FB488A000A5539 /* TicketsView.swift */; };
 		B06CBCC829FB64BF000A5539 /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC729FB64BF000A5539 /* FirstScreen.swift */; };
 		B06CBCCA29FB8196000A5539 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC929FB8196000A5539 /* ReservationView.swift */; };
@@ -49,7 +56,9 @@
 		B087252F29E772DB00CF5E57 /* AddMoviesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087252E29E772DB00CF5E57 /* AddMoviesView.swift */; };
 		B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253429E77C6700CF5E57 /* Coordinator.swift */; };
 		B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B087253629E7822D00CF5E57 /* MoviesViewModel.swift */; };
-		E6E846DF2A04689D0076EE03 /* FavoriteM.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846DE2A04689D0076EE03 /* FavoriteM.swift */; };
+		B0C076ED2A0CDDA100BC8B66 /* FavoriteM.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C076EC2A0CDDA100BC8B66 /* FavoriteM.swift */; };
+		B0C076EF2A0CDDDA00BC8B66 /* FavoriteMViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B0C076EE2A0CDDDA00BC8B66 /* FavoriteMViewModel.swift */; };
+		E6E846DF2A04689D0076EE03 /* Ticket.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846DE2A04689D0076EE03 /* Ticket.swift */; };
 		E6E846E12A0468FF0076EE03 /* QRGenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E02A0468FF0076EE03 /* QRGenView.swift */; };
 		E6E846E32A0469EB0076EE03 /* MyReservationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */; };
 		E6E846E52A046B250076EE03 /* QRCodeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E6E846E42A046B250076EE03 /* QRCodeView.swift */; };
@@ -90,6 +99,14 @@
 		7AA699A029E8416D005FEA9F /* Movies.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Movies.swift; sourceTree = "<group>"; };
 		7AAEE59C29DDAF4C0095EADD /* splash.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = splash.swift; sourceTree = "<group>"; };
 		7AAEE59F29DDC40E0095EADD /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		B035B98C2A0C61EC0071D95E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B035B98E2A0C62140071D95E /* fr */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = fr; path = fr.lproj/Localizable.strings; sourceTree = "<group>"; };
+		B035B98F2A0C78320071D95E /* Favorites.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Favorites.swift; sourceTree = "<group>"; };
+		B035B9912A0C7C320071D95E /* FavouritesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavouritesView.swift; sourceTree = "<group>"; };
+		B035B9932A0C82AE0071D95E /* database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = database.swift; sourceTree = "<group>"; };
+		B035B9952A0C83F10071D95E /* FavoritesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewModel.swift; sourceTree = "<group>"; };
+		B035B9972A0C9DD30071D95E /* ViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewRouter.swift; sourceTree = "<group>"; };
+		B035B99B2A0CC48F0071D95E /* AdminView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdminView.swift; sourceTree = "<group>"; };
 		B06CBCC529FB488A000A5539 /* TicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsView.swift; sourceTree = "<group>"; };
 		B06CBCC729FB64BF000A5539 /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
 		B06CBCC929FB8196000A5539 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
@@ -98,7 +115,9 @@
 		B087252E29E772DB00CF5E57 /* AddMoviesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMoviesView.swift; sourceTree = "<group>"; };
 		B087253429E77C6700CF5E57 /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		B087253629E7822D00CF5E57 /* MoviesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoviesViewModel.swift; sourceTree = "<group>"; };
-		E6E846DE2A04689D0076EE03 /* FavoriteM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteM.swift; sourceTree = "<group>"; };
+		B0C076EC2A0CDDA100BC8B66 /* FavoriteM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteM.swift; sourceTree = "<group>"; };
+		B0C076EE2A0CDDDA00BC8B66 /* FavoriteMViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteMViewModel.swift; sourceTree = "<group>"; };
+		E6E846DE2A04689D0076EE03 /* Ticket.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ticket.swift; sourceTree = "<group>"; };
 		E6E846E02A0468FF0076EE03 /* QRGenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRGenView.swift; sourceTree = "<group>"; };
 		E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyReservationsView.swift; sourceTree = "<group>"; };
 		E6E846E42A046B250076EE03 /* QRCodeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRCodeView.swift; sourceTree = "<group>"; };
@@ -137,6 +156,8 @@
 				B087253629E7822D00CF5E57 /* MoviesViewModel.swift */,
 				2207049C29EF662400D215ED /* EventViewModel.swift */,
 				220704A329EFB75000D215ED /* ImagePicker.swift */,
+				B035B9952A0C83F10071D95E /* FavoritesViewModel.swift */,
+				B0C076EE2A0CDDDA00BC8B66 /* FavoriteMViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -157,6 +178,7 @@
 		22C455CB29DF7B55001ACFF6 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				B035B9882A0C61960071D95E /* Localizations */,
 				22C455CC29DF7B78001ACFF6 /* APImanager.swift */,
 				B06CBCCF29FBAB7A000A5539 /* Consts.swift */,
 			);
@@ -221,6 +243,8 @@
 				7AA6999329E82F8E005FEA9F /* HomePageView.swift */,
 				7AA6999529E83027005FEA9F /* HomeView.swift */,
 				220704A129EF790F00D215ED /* SwiftUIView.swift */,
+				B035B9972A0C9DD30071D95E /* ViewRouter.swift */,
+				B035B99B2A0CC48F0071D95E /* AdminView.swift */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -233,7 +257,10 @@
 				2270425629E8D0270021272D /* EntityType.swift */,
 				2270425A29E8D08D0021272D /* APIError.swift */,
 				2207049A29EF64FA00D215ED /* Events.swift */,
-				E6E846DE2A04689D0076EE03 /* FavoriteM.swift */,
+				E6E846DE2A04689D0076EE03 /* Ticket.swift */,
+				B035B98F2A0C78320071D95E /* Favorites.swift */,
+				B035B9932A0C82AE0071D95E /* database.swift */,
+				B0C076EC2A0CDDA100BC8B66 /* FavoriteM.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -248,8 +275,17 @@
 				B06CBCC929FB8196000A5539 /* ReservationView.swift */,
 				E6E846E22A0469EB0076EE03 /* MyReservationsView.swift */,
 				E6E846E42A046B250076EE03 /* QRCodeView.swift */,
+				B035B9912A0C7C320071D95E /* FavouritesView.swift */,
 			);
 			path = profile;
+			sourceTree = "<group>";
+		};
+		B035B9882A0C61960071D95E /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				B035B98D2A0C61EC0071D95E /* Localizable.strings */,
+			);
+			path = Localizations;
 			sourceTree = "<group>";
 		};
 		B087252B29E765FD00CF5E57 /* Products */ = {
@@ -309,6 +345,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 22F05E4B29D4D77200615678;
 			packageReferences = (
@@ -329,6 +366,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				22F05E5F29D4D77300615678 /* Preview Assets.xcassets in Resources */,
+				B035B98B2A0C61EC0071D95E /* Localizable.strings in Resources */,
 				22F05E5C29D4D77300615678 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -341,12 +379,15 @@
 			buildActionMask = 2147483647;
 			files = (
 				B087252A29E74F4C00CF5E57 /* settingsview.swift in Sources */,
+				B035B99C2A0CC48F0071D95E /* AdminView.swift in Sources */,
 				B06CBCD029FBAB7A000A5539 /* Consts.swift in Sources */,
 				22C455D129DFC7FB001ACFF6 /* SigninViewModel.swift in Sources */,
 				E6E846E12A0468FF0076EE03 /* QRGenView.swift in Sources */,
 				7AA699A129E8416D005FEA9F /* Movies.swift in Sources */,
+				B035B9902A0C78320071D95E /* Favorites.swift in Sources */,
 				7AAEE5A029DDC40E0095EADD /* ProfileView.swift in Sources */,
 				22C455DB29DFFC9A001ACFF6 /* ResetPassword.swift in Sources */,
+				B0C076ED2A0CDDA100BC8B66 /* FavoriteM.swift in Sources */,
 				22E2BC7F29EE18D0003991EF /* AddShowsView.swift in Sources */,
 				B087253729E7822D00CF5E57 /* MoviesViewModel.swift in Sources */,
 				2270425729E8D0270021272D /* EntityType.swift in Sources */,
@@ -367,14 +408,19 @@
 				B06CBCCA29FB8196000A5539 /* ReservationView.swift in Sources */,
 				228C177029D633AC00848BFC /* Login.swift in Sources */,
 				22C455D529DFD27A001ACFF6 /* EditProfile.swift in Sources */,
+				B035B9922A0C7C320071D95E /* FavouritesView.swift in Sources */,
 				7AA6999129E818AF005FEA9F /* MovieDetailsView.swift in Sources */,
 				B06CBCC829FB64BF000A5539 /* FirstScreen.swift in Sources */,
-				E6E846DF2A04689D0076EE03 /* FavoriteM.swift in Sources */,
+				E6E846DF2A04689D0076EE03 /* Ticket.swift in Sources */,
+				B035B9942A0C82AE0071D95E /* database.swift in Sources */,
+				B0C076EF2A0CDDDA00BC8B66 /* FavoriteMViewModel.swift in Sources */,
 				E6E846E52A046B250076EE03 /* QRCodeView.swift in Sources */,
 				220704AB29EFD47C00D215ED /* MovieTicket.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
+				B035B9962A0C83F10071D95E /* FavoritesViewModel.swift in Sources */,
 				7AA6998929E6CABF005FEA9F /* ProfileViewModel.swift in Sources */,
+				B035B9982A0C9DD30071D95E /* ViewRouter.swift in Sources */,
 				7AA6999F29E84138005FEA9F /* User.swift in Sources */,
 				22E2BC8129EE1902003991EF /* AddEventsView.swift in Sources */,
 				2207049B29EF64FA00D215ED /* Events.swift in Sources */,
@@ -388,11 +434,24 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXVariantGroup section */
+		B035B98D2A0C61EC0071D95E /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B035B98C2A0C61EC0071D95E /* en */,
+				B035B98E2A0C62140071D95E /* fr */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
 /* Begin XCBuildConfiguration section */
 		22F05E6529D4D77300615678 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";
@@ -453,6 +512,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++20";

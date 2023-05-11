@@ -133,7 +133,7 @@ struct AddMoviesView: View {
                         .padding(.horizontal)
 //
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("adress")
+                            Text("Address")
                                 .font(.headline)
                                 .foregroundColor(Color("rev"))
                             
