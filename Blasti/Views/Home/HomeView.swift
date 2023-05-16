@@ -100,8 +100,8 @@ struct HomeView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 5) {
-                                ForEach(moviesViewModel.movies, id: \.self) { movie in
-                                    MovieCardView(movie: movie)
+                                ForEach(eventViewModel.events, id: \.self) { event in
+                                    EventCardView(event: event)
                                 }
                             }
                             
@@ -166,11 +166,11 @@ struct MovieCardView: View {
     @State var showdetail = false
     @State private var VerifFavorite = false
 
-   
+
     var body: some View {
         VStack(alignment: .center) {
-            let baseURL = "https://serverblasti.onrender.com/"
-            if let url = URL(string: baseURL+"images/\(movie.image)") {
+//            let baseURL = "https://serverblasti.onrender.com/"
+            if let url = URL(string: baseUrl+"images/\(movie.image)") {
 
                                         AsyncImage(url:url) { phase in
                                             switch phase {
@@ -194,33 +194,33 @@ struct MovieCardView: View {
                                             }
                                         } } else {
                                             Text("Invalid URL")}
-           
+
 
              VStack{
                  Button(action: {
-                
+
                 }) {
                 Image( systemName: "star.fill")
-                        
+
                         .shadow(color:.white.opacity(0.7), radius: 5, x: 0, y: 2)
                         .foregroundColor(Color("y"))
                 .font(.system(size: 25))
                 }.padding(EdgeInsets(top: -250, leading: 150, bottom: 0, trailing: 0))
              }
-                                        
+
             Text(movie.title)
-                
+
                 .foregroundColor(Color.white)
                 .frame(width: 200,height: 50)
                // .cornerRadius(5)
                 .background(  LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
                 .offset(x:0,y:-60)
-             
+
                 .font(.system(size: 20, design: .rounded).weight(.semibold))
-             
-          
-             
-          
+
+
+
+
               }
        .padding(3)
      //   .background(Color.white.opacity(0.2))
@@ -232,7 +232,7 @@ struct MovieCardView: View {
                 }.sheet(isPresented: $showdetail){
                     HotelDetail(movie: movie, VerifFavorite: VerifFavorite)
                 }
-        
+
     }
 }
 
@@ -244,33 +244,39 @@ struct EventCardView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-            
-            Image("coverr")
-                .resizable()
-             //   .aspectRatio(contentMode: .fill)
-                .frame(width: 200, height:250 )
-                .clipShape(Rectangle())
-                .cornerRadius(10)
-            /* HStack{
-                Button(action: {
-                
-                }) {
-                Image( systemName: "heart.fill")
-                
-                .foregroundColor(Color.red)
-                .frame(width: 10, height: 10)
-                .font(.system(size: 30))
-                
-             }}
-             */
-            
-            
+
+            if let url = URL(string: baseUrl+"images/\(event.image)") {
+
+                                        AsyncImage(url:url) { phase in
+                                            switch phase {
+                                            case .success(let image):
+                                                image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                    .frame(width: 200, height:250 )
+                                                    .clipShape(Rectangle())
+                                                    .cornerRadius(5)
+
+                                                    .clipShape(Rectangle())
+
+                                            case .failure(let error):
+                                                Text(error.localizedDescription)
+
+                                            case .empty:
+                                                Rectangle().foregroundColor(Color .gray)
+                                            @unknown default:
+                                                Text("Unknown error")
+                                            }
+                                        } } else {
+                                            Text("Invalid URL")}
+
+
             Text(event.title)
                 .foregroundColor(Color.white)
                 .font(.system(size: 20, design: .rounded).weight(.light))
-                
-          
-                
+
+
+
             }
        // .padding(20)
         .background(Color.white.opacity(0.2))

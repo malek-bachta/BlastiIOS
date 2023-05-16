@@ -57,7 +57,9 @@ struct HotelDetail: View {
                                     Text("Invalid URL")
                                 }
                             if(VerifFavorite){
+                               
                                 Button(action: {
+                                    print("aaaaaaaaaaa",VerifFavorite)
                                     let request = FavoriteM(idMovie: movie._id, idUser: mm.user!.id)
                                     fvm.addFavoriteM(request: request) { result in
                                         switch result {

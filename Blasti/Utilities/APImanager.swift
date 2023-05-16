@@ -309,7 +309,7 @@ class NetworkService {
     func AddEvent(title: String,
                   adress: String,
                   type: String,
-                  //                  image: UIImage,
+                  image: UIImage,
                   onSuccess: @escaping (_ title: String, _ message: String) -> Void,
                   onFailure: @escaping (_ title: String, _ message: String) -> Void) {
         
@@ -322,9 +322,9 @@ class NetworkService {
             multipartFormData.append(adress.data(using: .utf8)!, withName: "adress")
             multipartFormData.append(type.data(using: .utf8)!, withName: "type")
             
-            //            if let imageData = image.jpegData(compressionQuality: 0.5) {
-            //                multipartFormData.append(imageData, withName: "image", fileName: "image.jpeg", mimeType: "image/jpeg")
-            //            }
+            if let imageData = image.jpegData(compressionQuality: 0.5) {
+                multipartFormData.append(imageData, withName: "image", fileName: "image.jpeg", mimeType: "image/jpeg")
+            }
             
         }, to: AddEventURL, usingThreshold: MultipartFormData.encodingMemoryThreshold, method: .post, headers: headers)
         .validate(statusCode: 200..<401)

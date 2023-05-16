@@ -140,24 +140,24 @@ struct ProfileView: View {
                                     .shadow(radius: 10)
                                 }
                             }
-//                            Button(action: {}) {
-//                                NavigationLink(destination: AddEventsView()) {
-//                                    HStack {
-//                                        Text("Add Event")
-//                                            .font(.system(size: 20, design: .rounded).weight(.semibold))
-//                                            .foregroundColor(Color("AccentColor"))
-//
-//                                        Image(systemName: "star.fill")
-//                                            .font(.system(size: 20, design: .rounded).weight(.semibold))
-//                                            .foregroundColor(Color("AccentColor"))
-//                                    }
-//                                    .frame(width: 150, height: 50)
-//                                    .background(                                  Color("y").opacity(0.8))
-//
-//                                    .cornerRadius(10)
-//                                    .shadow(radius: 10)
-//                                }
-//                            }
+                            Button(action: {}) {
+                                NavigationLink(destination: AddEventsView()) {
+                                    HStack {
+                                        Text("Add Event")
+                                            .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                            .foregroundColor(Color("AccentColor"))
+
+                                        Image(systemName: "star.fill")
+                                            .font(.system(size: 20, design: .rounded).weight(.semibold))
+                                            .foregroundColor(Color("AccentColor"))
+                                    }
+                                    .frame(width: 150, height: 50)
+                                    .background(                                  Color("y").opacity(0.8))
+
+                                    .cornerRadius(10)
+                                    .shadow(radius: 10)
+                                }
+                            }
                         }else{
                             Button(action: {
                                 shouldShowAlert = true

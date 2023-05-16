@@ -23,6 +23,7 @@ struct AddEventsView: View {
     @State private var eventCover: UIImage? = nil
     @State private var isImagePickerDisplayed = false
     @State private var eventDuration: Double = 0
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     private var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -158,34 +159,53 @@ struct AddEventsView: View {
                         }
                         .padding(.horizontal)
                         
-//                        VStack(alignment: .leading, spacing: 15) {
-//                            Text("Image")
-//                                .font(.headline)
-//                                .foregroundColor(.white)
-//                            
-//                            if let eventCover = eventCover {
-//                                Image(uiImage: eventCover)
-//                                    .resizable()
-//                                    .scaledToFit()
-//                                    .cornerRadius(8)
-//                            } else {
-//                                Button(action: {
-//                                    isImagePickerDisplayed.toggle()
-//                                }) {
-//                                    Text("Pick the Cover")
-//                                        .padding()
-//                                        .background(Color.white.opacity(0.3))
-//                                        .cornerRadius(8)
-//                                }
-//                            }
-//                        }
-//                        .padding(.horizontal)
-//                        .sheet(isPresented: $isImagePickerDisplayed) {
-//                            ImagePicker(selectedImage: $eventCover, isShown: $isImagePickerDisplayed)
-//                        }
-//                        
+                        VStack(alignment: .leading, spacing: 15) {
+                            Text("Image")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                            
+                            if let eventCover = eventCover {
+                                Image(uiImage: eventCover)
+                                    .resizable()
+                                    .scaledToFit()
+                                    .cornerRadius(8)
+                            } else {
+                                Button(action: {
+                                    PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                                        DispatchQueue.main.async {
+                                            switch status {
+                                            case .authorized:
+                                                self.isImagePickerDisplayed = true
+                                                break
+                                            case .denied, .restricted:
+                                                // Handle denied or restricted permission
+                                                break
+                                            case .notDetermined:
+                                                // Handle not determined permission
+                                                break
+                                            default:
+                                                break
+                                            }
+                                        }
+                                    }
+                                    // Code to be executed when the button is tapped
+                                    print("Button tapped")
+                                }) {
+                                    Image(systemName: "photo").resizable().frame(width: 30,height: 30)// Set the icon using an SF Symbol
+                                        .foregroundColor(.gray)
+                                    Text("Photo").foregroundColor(Color.black)// Set the icon's color
+                                }
+                                .sheet(isPresented: $isImagePickerDisplayed) {
+                                    ImagePicker(image: self.$em.image, sourceType: self.sourceType)
+                                }
+                            }
+                        }
+                        .padding(.horizontal)
+                        
+                        }
+                        
                         Button(action: {
-                            em.addEvent(title: em.title, adress: em.adress, type: em.type)
+                            em.addEvent(title: em.title, adress: em.adress, type: em.type, image: em.image)
                             presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Add Event")
@@ -223,5 +243,5 @@ struct AddEventsView: View {
             AddEventsView(genre: "", name:"", duration: "", language: "", Production: "", description: "")
         }
     }
-}
+
 

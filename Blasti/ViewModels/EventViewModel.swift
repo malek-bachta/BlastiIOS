@@ -18,10 +18,11 @@ class EventsViewModel: ObservableObject {
 
     private let networkService = NetworkService()
     @Published var title = ""
-    @Published var adress = ""
     @Published var type = ""
-    
-    @Published var image = ""
+    @Published var adress = ""
+
+    @Published var image: UIImage?
+
     
     @Published var eadd : Bool = false
     
@@ -30,11 +31,14 @@ class EventsViewModel: ObservableObject {
     }
     func addEvent(title: String,
                   adress: String,
-                  type: String
+                  type: String,
+                  image: UIImage?
+
     ) {
         networkService.AddEvent(title: title,
                                 adress: adress,
                                 type: type,
+                                image: image!,
                                 onSuccess: { (title, message) in
             DispatchQueue.main.async {
                 self.eadd = true

@@ -6,4 +6,5 @@
 //
 
 import Foundation
-let baseUrl = "https://serverblasti.onrender.com/"
+//let baseUrl = "https://serverblasti.onrender.com/"
+let baseUrl = "http://localhost:9090/"
