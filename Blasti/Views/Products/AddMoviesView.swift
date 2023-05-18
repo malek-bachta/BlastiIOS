@@ -114,8 +114,8 @@ struct AddMoviesView: View {
                             
                             DatePicker("Enter Movie Date", selection: $selectedDate, displayedComponents: .date)
                                 .labelsHidden()
-                                .accentColor(.yellow)
-                                .colorMultiply(.yellow)
+                                .accentColor(Color("y"))
+                                .colorMultiply(Color("y"))
                                 .foregroundColor(.white)
                         }
                         .padding(.horizontal)
@@ -233,7 +233,7 @@ struct AddMoviesView: View {
                                 .foregroundColor(.black)
                                 .padding()
                                 .frame(maxWidth: .infinity)
-                                .background(Color.yellow)
+                                .background(Color("y"))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)

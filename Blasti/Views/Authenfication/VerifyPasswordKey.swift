@@ -12,7 +12,7 @@ struct VerifyPasswordKey: View {
 
     @State var passwordKey = ""
     @State var showingAlert = false
-    @State private var colors = [Color.black, Color.yellow]
+    @State private var colors = [Color.black, Color("y")]
 
     var body: some View {
         NavigationView {
@@ -64,7 +64,7 @@ struct VerifyPasswordKey: View {
                             .keyboardType(.numberPad)
                     }
                     .padding(20)
-                    .background(Color.white.opacity(0.4))
+                    .background(Color("rev").opacity(0.4))
                     .cornerRadius(10)
                     .shadow(radius: 40)
                     .frame(width: 350, height: 100)
@@ -78,7 +78,7 @@ struct VerifyPasswordKey: View {
                     .font(.system(size: 20, design: .rounded).weight(.light))
                     .font(.largeTitle)
                     .bold()
-                    .foregroundColor(.yellow)
+                    .foregroundColor(Color("y"))
 
             })
             .alert(isPresented: $showingAlert) {

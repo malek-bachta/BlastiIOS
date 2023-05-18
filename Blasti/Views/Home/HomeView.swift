@@ -11,7 +11,7 @@ struct HomeView: View {
     @State private var searchText = ""
     @ObservedObject private var moviesViewModel = MoviesViewModel()
     @ObservedObject private var eventViewModel = EventsViewModel()
-
+    @State private var filteredMovies: [Movie] = []
     @State private var shouldAnimate = false
 
 
@@ -19,9 +19,6 @@ struct HomeView: View {
     var body: some View {
         NavigationView {
             ZStack {
-                
-                //Color.black.edgesIgnoringSafeArea(.all)
-            
                 ForEach(1...50, id: \.self) { i in
                     // Generate a random X and Y coordinate for each dot
                     let randomX = CGFloat.random(in: 0...UIScreen.main.bounds.width)
@@ -43,7 +40,14 @@ struct HomeView: View {
                 
                 VStack {
                     HStack {
-                        TextField("Search...", text: $searchText)
+                        TextField("Search...", text: $searchText, onEditingChanged: { isEditing in
+                            if !isEditing {
+                                filteredMovies = moviesViewModel.movies.filter { movie in
+                                    movie.title.localizedCaseInsensitiveContains(searchText)
+                                }
+                            }
+                        })
+
                             .padding(EdgeInsets(top: 0, leading: 10, bottom: 0, trailing: 0))
                             .frame(height: 35)
                             .background(.black.opacity(0.5))
@@ -63,32 +67,30 @@ struct HomeView: View {
                         }
                     }
                     .padding(.horizontal, 5)
-                    //   .padding(.top, 2)
                     
-                    //
-                    ScrollView(.vertical, showsIndicators: false) {
+                   
+                        ScrollView(.vertical, showsIndicators: false) {
                         VStack(alignment: .leading) {
-                        Text("Movies")
-                            .font(.system(size: 35, design: .rounded).weight(.semibold))
-                            .fontWeight(.bold)
-                            .padding(.top, 40)
-                            .padding(.horizontal,20)
-                            .foregroundColor(Color("Color"))
-                        
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 0) {
-                                ForEach(moviesViewModel.movies, id: \.self) { movie in
-                                    MovieCardView(movie: movie)
+                            Text("Movies")
+                                .font(.system(size: 35, design: .rounded).weight(.semibold))
+                                .fontWeight(.bold)
+                                .padding(.top, 40)
+                                .padding(.horizontal,20)
+                                .foregroundColor(Color("Color"))
+                            
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 0) {
+                                    ForEach(searchText.isEmpty ? moviesViewModel.movies : filteredMovies, id: \.self) { movie in
+                                        MovieCardView(movie: movie)
+                                    }
                                     
-                                }
+                                    .padding(.horizontal, 0)
+                                    .onAppear {
+                                        print("Movies in HomeView: \(moviesViewModel.movies)")
+                                    }
+                                                  }
+                                
                             }
-                            
-                          //  .padding(.horizontal, 0)
-                            //  .padding(.top, 10)
-                            .onAppear {
-                                print("Movies in HomeView: \(moviesViewModel.movies)")}
-                            
-                        }
                         
                         Spacer()
                         Text("Events")
@@ -119,11 +121,11 @@ struct HomeView: View {
                             .fontWeight(.bold)
                             .padding(.horizontal,20)
                            // .padding(.top, 10)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("rev"))
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 5) {
-                                ForEach(moviesViewModel.movies, id: \.self) { movie in
+                                ForEach(searchText.isEmpty ? moviesViewModel.movies : filteredMovies, id: \.self) { movie in
                                     MovieCardView(movie: movie)
                                 }
                             }

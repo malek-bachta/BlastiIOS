@@ -18,13 +18,13 @@ struct EditProfileView: View {
     @State var newPassword: String = ""
     @State var confirmNewPassword: String = ""
     @State var showingAlert = false
-    @State private var colors = [Color.black, Color.yellow]
+    @State private var colors = [Color.black, Color("y")]
     
     var body: some View {
         NavigationView {
            
                 ZStack{
-                    LinearGradient(gradient: Gradient(colors: [.yellow,Color("c1"),.yellow.opacity(0.9),Color("c1"),.yellow]), startPoint: .top, endPoint: .bottomTrailing)
+                    LinearGradient(gradient: Gradient(colors: [Color("y"),Color("c1"),Color("y").opacity(0.9),Color("c1"),Color("y")]), startPoint: .top, endPoint: .bottomTrailing)
                         .ignoresSafeArea()
                     
                     Rectangle()
@@ -100,7 +100,7 @@ struct EditProfileView: View {
                     epVM.updateprofil(user: epVM.user)
                 }) {
                     Text("Save")
-                        .foregroundColor(.yellow)
+                        .foregroundColor(Color("y"))
                 })
                 .alert(isPresented: $showingAlert) {
                     Alert(title: Text("Couldn't Save"), message: Text("There was an error saving your changes."), dismissButton: .default(Text("OK")))

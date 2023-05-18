@@ -52,7 +52,7 @@ struct ForgotPasswordView: View {
 
                             TextField("Email", text: $sm.email)
                                 .padding()
-                                .background(Color.white.opacity(0.4))
+                                .background(Color("rev").opacity(0.4))
                                 .frame(width: 300, height: 50)
                                 .cornerRadius(10)
                                 .padding(.bottom, 20)

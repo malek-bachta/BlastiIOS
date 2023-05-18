@@ -86,7 +86,6 @@ class MoviesViewModel: ObservableObject {
                 switch result {
                         case .success(let movies):
                             self?.movies = movies
-                            print(movies)
                   
                         case .failure(let error):
                 

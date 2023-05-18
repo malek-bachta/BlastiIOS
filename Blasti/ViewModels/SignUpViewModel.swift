@@ -25,6 +25,12 @@ class SignupViewModel: ObservableObject {
             DispatchQueue.main.async {
                 self.sig = true
                 self.signupResult = .success((title, message))
+                self.validateAccount(email: email){
+                    result in
+                    print("aaaaaaaaaaaaaaa")
+                    print(result)
+                    
+                }
             }
         }, onFailure: { (title, message) in
             DispatchQueue.main.async {
@@ -44,6 +50,23 @@ class SignupViewModel: ObservableObject {
                 }
             })
         }
+    
+    func validateAccount(email:String, completion: @escaping (Result<String, APIError>) -> Void) {
+           guard let url = URL(string: baseUrl+"api/user/SendConfirmEmail") else {
+               completion(.failure(.badURL))
+               return
+           }
+        var request = URLRequest(url: url)
+           request.httpMethod = "POST"
+           request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+           request.httpBody = try? JSONEncoder().encode(ConfirmRequest(email: email))
+           
+           URLSession.shared.dataTask(with: request) { (data, response, error) in }.resume()
+           
+       }
+    func logPressed() {
+        print("Button pressed.")
+    }
     
     
 }

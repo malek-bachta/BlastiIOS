@@ -26,7 +26,7 @@ struct HotelDetail: View {
     var body: some View {
         NavigationView(){
             ZStack(alignment: .center) {
-                LinearGradient(gradient: Gradient(colors: [.black, .yellow.opacity(0.7)]), startPoint: .top, endPoint: .bottomTrailing)
+                LinearGradient(gradient: Gradient(colors: [Color("c1"), Color("y").opacity(0.7)]), startPoint: .top, endPoint: .bottomTrailing)
                     .ignoresSafeArea()
                 ScrollView {
                     
@@ -130,7 +130,7 @@ struct HotelDetail: View {
                                 }
                                 .font(.subheadline.weight(.medium))
                             }
-                            Text("East NY")
+                            Text(movie.adress)
                                 .foregroundColor(.white)
                                 .font(.callout.weight(.medium))
                             Text(movie.description)
@@ -141,7 +141,7 @@ struct HotelDetail: View {
                         .padding(.horizontal, 24)
                         .padding(.top, 12)
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("HIGHLIGHTS")
+                            Text(movie.genre)
                             
                                 .kerning(2.0)
                                 .font(.system(size: 12, weight: .medium, design: .default))
@@ -150,7 +150,7 @@ struct HotelDetail: View {
                                 HStack(spacing: 9) {
                                     Image(systemName: "heart.fill")
                                         .foregroundColor(.red)
-                                        .frame(width: 20)
+                                        .frame(width: 10)
                                         .clipped()
                                     Text("Amazing!!")
                                     Spacer()
@@ -192,7 +192,7 @@ struct HotelDetail: View {
                                         .font(.title3.weight(.medium))
                                         .padding(.vertical, 12)
                                         .padding(.horizontal, 24)
-                                        .background(.yellow)
+                                        .background(Color("y"))
                                         .foregroundColor(.white)
                                         .shadow(radius: 20)
                                         .mask {
@@ -228,7 +228,7 @@ struct QRCodeView: View {
         let data = Data(self.data.utf8)
         filter.setValue(data, forKey: "inputMessage")
         let ciImage = filter.outputImage
-         
+        
         let context = CIContext()
         guard let cgImage = context.createCGImage(ciImage!, from: ciImage!.extent) else {
             fatalError("Failed to create CGImage from CIImage.")

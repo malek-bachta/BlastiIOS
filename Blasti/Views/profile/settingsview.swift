@@ -35,7 +35,7 @@ struct SettignsView: View {
                         Toggle(isOn: $notifEnabled) {
                             Text("Enable notifications")
                         }
-                        .toggleStyle(SwitchToggleStyle(tint: !notifEnabled ? Color.gray : Color.yellow))
+                        .toggleStyle(SwitchToggleStyle(tint: !notifEnabled ? Color.gray : Color("y")))
                     }
                     
                     Section(header: Text("Account")) {
@@ -48,7 +48,7 @@ struct SettignsView: View {
 
                         })
                         
-                        NavigationLink(destination: EditProfileView(), label: {
+                        NavigationLink(destination: ChangePasswordView(), label: {
                             HStack {
                                 Text("Change password")
                                     .foregroundColor(Color("settings"))
@@ -75,7 +75,7 @@ struct SettignsView: View {
                                     .foregroundColor(Color("settings"))
 
                                 Spacer(minLength: 15)
-                                Image(systemName: "chevron.right").foregroundColor(Color.yellow)
+                                Image(systemName: "chevron.right").foregroundColor(Color("y"))
                             }
                         }
                     }

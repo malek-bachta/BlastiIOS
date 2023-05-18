@@ -171,7 +171,7 @@ struct Login: View {
                             
                             NavigationLink(destination: Register().navigationBarBackButtonHidden(), label: {
                                 Text("register")
-                                    .foregroundColor(.yellow)
+                                    .foregroundColor(Color("y"))
                                     .font(.system(size: 15, weight: .semibold))
                             })
                         }.padding(.top, 4.0)
@@ -257,7 +257,7 @@ struct CheckboxToggleStyle: ToggleStyle {
             Spacer()
             
             RoundedRectangle(cornerRadius: 5)
-                .fill(configuration.isOn ? Color.yellow : Color.white.opacity(0.3))
+                .fill(configuration.isOn ? Color("y") : Color.white.opacity(0.3))
                 .frame(width: 25, height: 25)
                 .overlay(
                     Image(systemName: configuration.isOn ? "checkmark" : "")

@@ -13,7 +13,7 @@ struct ResetPassword: View {
         @State var newPassword = ""
         @State var confirmNewPassword = ""
         @State var showingAlert = false
-        @State private var colors = [Color.black, Color.yellow]
+        @State private var colors = [Color.black, Color("y")]
 
         var body: some View {
             NavigationView {
@@ -62,7 +62,7 @@ struct ResetPassword: View {
                           
                         VStack {
                             Text("Change Password")
-                                .foregroundColor(.black)
+                                .foregroundColor(Color("rev"))
                                 .font(.system(size: 15, design: .rounded).weight(.semibold))
                                 //.padding(.bottom, 10)
                             SecureField("Current Password", text: $currentPassword)
@@ -70,7 +70,7 @@ struct ResetPassword: View {
                             SecureField("Confirm New Password", text: $confirmNewPassword)
                         }
                         .padding(20)
-                        .background(Color.white.opacity(0.4))
+                        .background(Color("rev").opacity(0.2))
                         .cornerRadius(10)
                         .shadow(radius: 40)
                         .frame(width: 350, height: 200)
