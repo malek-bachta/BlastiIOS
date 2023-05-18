@@ -17,7 +17,7 @@ struct ForgotPasswordView: View {
                 VerifyPasswordKey()
             } else {
                 ZStack {
-                    Color.black
+                    Color("c1")
                         .ignoresSafeArea()
 
                     Circle()
@@ -42,13 +42,13 @@ struct ForgotPasswordView: View {
                             .font(.system(size: 30, design: .rounded).weight(.bold))
                             .font(.largeTitle)
                             .fontWeight(.bold)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("rev"))
                             .padding(.bottom, 30)
 
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Enter your email")
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
 
                             TextField("Email", text: $sm.email)
                                 .padding()

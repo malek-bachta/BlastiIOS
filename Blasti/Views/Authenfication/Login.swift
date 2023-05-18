@@ -10,7 +10,6 @@ struct Login: View {
     @State private var showAlert = false
     @State private var isLoading = false
     @State private var isHomeActive = false
-//    @State private var rememberMe = false
     @State private var isPasswordVisible = false
     @StateObject var viewRouter = ViewRouter()
 
@@ -29,7 +28,7 @@ struct Login: View {
                 
                 ZStack {
                     
-                    Color.black
+                    Color("c1")
                         .ignoresSafeArea()
                     Image("logohori")
                         .resizable()
@@ -66,17 +65,17 @@ struct Login: View {
                             .font(.system(size: 35, design: .rounded).weight(.bold))
                             .font(.largeTitle)
                             .bold()
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("rev"))
                             .padding(.bottom,18)
               
                         VStack(alignment: .leading, spacing: 10){
                             Text("Email")
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             TextField("Enter Your Email", text: $sm.email)
                                 .padding()
                                 .frame(width: 300, height: 50)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                                 .background(Color.white.opacity(0.4))
                                 .cornerRadius(10)
                                 .border(.red, width: CGFloat(WrongEmail))
@@ -84,14 +83,14 @@ struct Login: View {
                             
                             Text("Password")
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
                             ZStack(alignment: .trailing) {
                                 if isPasswordVisible {
                                     TextField("Enter Your Password", text: $sm.password)
                                         .padding()
                                         .frame(width: 300, height: 50)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color("rev"))
                                         .background(Color.white.opacity(0.4))
                                         .cornerRadius(10)
                                         .border(.red, width: CGFloat(Wrongpassword))
@@ -100,7 +99,7 @@ struct Login: View {
                                     SecureField("Enter Your Password", text: $sm.password)
                                         .padding()
                                         .frame(width: 300, height: 50)
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color("rev"))
                                         .background(Color.white.opacity(0.4))
                                         .cornerRadius(10)
                                         .border(.red, width: CGFloat(Wrongpassword))
@@ -112,7 +111,7 @@ struct Login: View {
                                     }
                                 }) {
                                     Image(systemName: isPasswordVisible ? "eye.slash.fill" : "eye.fill")
-                                        .foregroundColor(.white)
+                                        .foregroundColor(Color("rev"))
                                 }
                                 .padding(.trailing, 10)
                             }
@@ -123,8 +122,9 @@ struct Login: View {
                         HStack {
                             Toggle("", isOn: $sm.rememberMe)
                                 .toggleStyle(CheckboxToggleStyle())
+                          
                             Text("Remember me")
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                                 .font(.system(size: 15, weight: .semibold))
                             
                         }.padding( .leading, 55.0)
@@ -157,7 +157,7 @@ struct Login: View {
                                 Image(systemName: "faceid")
                                      .resizable()
                                      .frame(width: 30, height: 30)
-                                     .foregroundColor(.white)
+                                     .foregroundColor(Color("rev"))
                                      .onTapGesture {
                                          authenticateWithBiometrics()
                                      }
@@ -166,7 +166,7 @@ struct Login: View {
                         
                         HStack{
                             Text("New Here ?  ")
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                                 .font(.system(size: 15, weight: .semibold))
                             
                             NavigationLink(destination: Register().navigationBarBackButtonHidden(), label: {
@@ -196,12 +196,13 @@ struct Login: View {
         if sm.email.isEmpty || sm.password.isEmpty {
             alertMessage = "Please fill in all fields."
             showAlert = true
-        } else if !isValidEmail(email: sm.email) {
+        } else if (!sm.email.isValidEmail) {
             alertMessage = "Please enter a valid email address."
             showAlert = true
         }
         return isValid
     }
+    
     
     private func authenticateWithBiometrics() {
         let context = LAContext()

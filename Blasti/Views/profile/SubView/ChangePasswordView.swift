@@ -7,16 +7,16 @@
 
 import Foundation
 import SwiftUI
-struct EditProfileView: View {
+struct ChangePasswordView: View {
     
       
-    
-    @State var name: String
-    @State var email: String
-    @State var bio: String
-    @State var currentPassword: String
-    @State var newPassword: String
-    @State var confirmNewPassword: String
+    @ObservedObject var epVM = EditProfileViewModel()
+    @State var name: String = ""
+    @State var email: String = ""
+    @State var bio: String = ""
+    @State var currentPassword: String = ""
+    @State var newPassword: String = ""
+    @State var confirmNewPassword: String = ""
     @State var showingAlert = false
     @State private var colors = [Color.black, Color.yellow]
     
@@ -24,7 +24,7 @@ struct EditProfileView: View {
         NavigationView {
            
                 ZStack{
-                    LinearGradient(gradient: Gradient(colors: [.yellow,.black,.yellow.opacity(0.9),.black, .yellow]), startPoint: .top, endPoint: .bottomTrailing)
+                    LinearGradient(gradient: Gradient(colors: [.yellow,Color("c1"),.yellow.opacity(0.9),Color("c1"),.yellow]), startPoint: .top, endPoint: .bottomTrailing)
                         .ignoresSafeArea()
                     
                     Rectangle()
@@ -33,45 +33,20 @@ struct EditProfileView: View {
                                        .frame(width: 400, height: 900)
                                        .ignoresSafeArea()
                     
-                    VStack (alignment: .leading, spacing: 5){
+                    VStack (alignment: .center, spacing: 5){
                         
-                            Text("Edit Profile")
+                            Text("Password")
                                 .font(.system(size: 30, design: .rounded).weight(.bold))
                                 
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                                 .padding()
-                        VStack (alignment: .leading, spacing: 10){
-                            Text("Name")
-                                .padding()
-                            
-                                .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
-                            TextField("Change name", text: $name)
-                                .padding()
-                                .foregroundColor(.white)
-                                .background(Color.white.opacity(0.4))
-                                .frame(width: 350, height: 50)
-                                .cornerRadius(10)
-                            
-                                        
-                            Text("Email")
-                                .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
-                                .padding()
-                            TextField("", text: $email)
-                                .padding()
-                                .background(Color.white.opacity(0.4))
-                                .frame(width: 350, height: 50)
-                                .cornerRadius(10)
-                            
-                                .foregroundColor(.white)
-                           }
+                       
                         
                             VStack() {
                                 Text("Change Password")
-                                                                    .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                                 .font(.system(size: 20, design: .rounded).weight(.semibold))
-                               
+
                                     //.padding(.bottom, 10)
                                 SecureField("Current Password", text: $currentPassword)
                                 SecureField("New Password", text: $newPassword)
@@ -84,10 +59,19 @@ struct EditProfileView: View {
                             .frame(width: 350, height: 200)
                             
                         }
+                    
 
                     
                 }
-                .navigationBarItems(trailing: Button(action: saveChanges) {
+                .navigationBarItems(trailing: Button(action: {
+                    if (!(name.isEmpty)) {
+                        epVM.user.username  = name
+                    }
+                    if !(email.isEmpty) {
+                        epVM.user.email = email
+                    }
+                    epVM.updateprofil(user: epVM.user)
+                }) {
                     Text("Save")
                         .foregroundColor(.yellow)
                 })
@@ -116,8 +100,10 @@ struct EditProfileView: View {
     }
 }
 
-struct EditProfileView_Previews: PreviewProvider {
+struct ChangePasswordView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(name: "John Doe", email: "john.doe@example.com", bio: "Hello, world!", currentPassword: "", newPassword: "", confirmNewPassword: "")
+        ChangePasswordView(name: "John Doe", email: "john.doe@example.com", bio: "Hello, world!", currentPassword: "", newPassword: "", confirmNewPassword: "")
     }
 }
+
+

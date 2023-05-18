@@ -32,5 +32,26 @@ struct LogedInUser: Codable{
     var bio: String=""
     var token: String=""
   
+    
+    func getuser() -> LogedInUser? {
+        let defaults = UserDefaults.standard
+        
+        if let savedUser = defaults.object(forKey: "user") as? Data {
+            let decoder = JSONDecoder()
+            
+            if let loadedUser = try? decoder.decode(LogedInUser.self, from: savedUser) {
+                return loadedUser
+            }
+        }
+        
+        return nil
+    }
+   
 }
 
+struct UserChangePassword:Codable{
+    var oldPassword:String=""
+    var newPassword:String=""
+    var email: String = ""
+    
+}

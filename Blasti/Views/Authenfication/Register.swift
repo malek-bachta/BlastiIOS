@@ -32,7 +32,7 @@ struct Register: View {
             }else{
                 ZStack {
                     
-                    Color.black
+                    Color("c1")
                         .ignoresSafeArea()
                     Circle()
                         .fill(Color("y").opacity(0.2))
@@ -69,11 +69,11 @@ struct Register: View {
                       
                         Text("Sign Up")
                             .font(.system(size: 35, design: .rounded).weight(.bold))
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("rev"))
                             .padding(.top, -100)
                         VStack(alignment: .leading, spacing: 10) {
                             Text("Username")
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                                 .font(.system(size: 20, design: .rounded).weight(.light))
                             TextField("Enter Your Username", text: $su.username)
                                 .padding()
@@ -82,7 +82,7 @@ struct Register: View {
                                 .cornerRadius(10)
                             Text("Email")
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             TextField("Enter a Valid Email", text: $su.email)
                                 .padding()
                                 .background(Color.white.opacity(0.4))
@@ -93,7 +93,7 @@ struct Register: View {
                                 .textContentType(.emailAddress)
                             Text("Password")
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             SecureField("Enter Your password", text: $su.password)
                                 .padding()
                                 .background(Color.white.opacity(0.4))
@@ -101,7 +101,7 @@ struct Register: View {
                                 .cornerRadius(10)
                             Text("Verify Password")
                                 .font(.system(size: 20, design: .rounded).weight(.light))
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             SecureField("Verify your Password", text: $su.verifPassword)
                                 .padding()
                                 .background(Color.white.opacity(0.4))
@@ -117,7 +117,7 @@ struct Register: View {
                             } else if su.password != su.verifPassword {
                                 alertMessage = "Passwords do not match."
                                 showAlert = true
-                            }else if !isValidEmail(email: su.email) {
+                            }else if (!su.email.isValidEmail) {
                                 alertMessage = "Please enter a valid email address."
                                 showAlert = true
                             }else if !isValidPassword(password: su.password){
@@ -137,7 +137,7 @@ struct Register: View {
                         }
                         HStack{
                             Text("Already have an acount ?  ")
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                                 .padding(.bottom,8)
                                 .font(.system(size: 15, weight: .semibold))
                             
@@ -186,11 +186,12 @@ func isValidPassword(password: String) -> Bool {
     return passwordPredicate.evaluate(with: password)
 }
 
-func isValidEmail(email: String) -> Bool {
-    // Use regular expression to validate email address format
-    let emailRegex = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
-    let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegex)
-    return emailPredicate.evaluate(with: email)
+extension String {
+    var isValidEmail: Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}"
+        let emailPredicate = NSPredicate(format:"SELF MATCHES %@", emailRegEx)
+        return emailPredicate.evaluate(with: self)
+    }
 }
 
 private let itemFormatter: DateFormatter = {

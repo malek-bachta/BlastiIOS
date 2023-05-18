@@ -30,7 +30,7 @@ struct SettignsView: View {
         NavigationView {
            
                 
-                Form {
+                List {
                     Section(header: Text("NOTIFICATIONS")) {
                         Toggle(isOn: $notifEnabled) {
                             Text("Enable notifications")
@@ -39,49 +39,41 @@ struct SettignsView: View {
                     }
                     
                     Section(header: Text("Account")) {
-                        Button(action: {
-                            // Show the "Change username" dialog
-                            showUsernameDialog = true
-                        }) {
+                        NavigationLink(destination: EditProfileView(), label: {
                             HStack {
-                                Text("Change username")
-                                    .foregroundColor(Color.black)
+                                Text("Edit profile")
+                                    .foregroundColor(Color("settings"))
                                 Spacer(minLength: 15)
-                                Image(systemName: "chevron.right").foregroundColor(Color.yellow)
                             }
-                        }
+
+                        })
                         
-                        Button(action: {
-                            
-                            showpasswordDialog = true
-                        }) {
+                        NavigationLink(destination: EditProfileView(), label: {
                             HStack {
-                                Text("Change Password")
-                                    .foregroundColor(Color.black)
+                                Text("Change password")
+                                    .foregroundColor(Color("settings"))
                                 Spacer(minLength: 15)
-                                Image(systemName: "chevron.right").foregroundColor(Color.yellow)
                             }
-                        }
+
+                        })
+                        
+                       
                     }
-                    
-                    Section {
-                        HStack {
-                            Text("About us")
-                            Spacer(minLength: 15)
-                            Image(systemName: "chevron.right").foregroundColor(Color.yellow)
-                        }
-                    }
-                    
+
                     Section {
                         Button(action: {
                             // Show the "Logout" alert
                             showAlert = true
                         }) {
                             HStack(spacing: 10) {
-                                Image("logout")
-                                    .resizable()
-                                    .frame(width: 20, height: 20)
+//                                Image("logout")
+//                                    .resizable()
+//                                    .frame(width: 20, height: 20)
+//                                    .foregroundColor(Color("c"))
+
                                 Text("Logout")
+                                    .foregroundColor(Color("settings"))
+
                                 Spacer(minLength: 15)
                                 Image(systemName: "chevron.right").foregroundColor(Color.yellow)
                             }

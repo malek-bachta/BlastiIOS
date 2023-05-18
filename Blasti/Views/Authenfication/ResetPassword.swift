@@ -18,7 +18,7 @@ struct ResetPassword: View {
         var body: some View {
             NavigationView {
                 ZStack {
-                    Color.black
+                    Color("c1")
                         .ignoresSafeArea()
                    
                     Circle()
@@ -55,7 +55,7 @@ struct ResetPassword: View {
 
                     VStack {
                         Text("Reset Password")
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("rev"))
                             .font(.system(size: 30, design: .rounded).weight(.semibold))
                             .font(.largeTitle)
                             .bold()

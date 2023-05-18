@@ -27,6 +27,8 @@ struct ProfileView: View {
             ZStack {
                 VStack {
                     HStack {
+                        
+                        
                         Button(action: {
                         }) {
                             
@@ -55,6 +57,7 @@ struct ProfileView: View {
                 }
                 
                 VStack {
+                    
                     // Spacer()
                     List {
                         Section(header: Text("Favorites")) {
@@ -203,28 +206,30 @@ struct ProfileView: View {
                     
                     
                 }
-                Circle()
-                    .scaledToFit()
-                    .frame(width: 125)
-                    .offset(x: 55, y: -300)
-                    .shadow(radius: 100)
-                    .foregroundColor(Color("c"))
                 
-                
-                Image("profilemain")
-                    .resizable()
-                    .scaledToFit()
-                    .frame(width: 190)
-                    .offset(x: 55, y: -317)
-                    .padding()
-                    .shadow(radius: 100)
-                
-                
+                    Circle()
+                        .scaledToFit()
+                        .frame(width: 125)
+                        .offset(x: 55, y: -300)
+                        .shadow(radius: 100)
+                        .foregroundColor(Color("c"))
+                    
+                    
+                    Image("profilemain")
+                        .resizable()
+                        .scaledToFit()
+                        .frame(width: 190)
+                        .offset(x: 55, y: -317)
+                        .padding()
+                        .shadow(radius: 100)
+                    
+              
             }
             .background(Image("pbg"	)
                 .resizable()
                 .frame(width: 400, height: 800)
                 .offset(x:0,y:-40))
+               
             
             //            .ignoresSafeArea(.all)
             

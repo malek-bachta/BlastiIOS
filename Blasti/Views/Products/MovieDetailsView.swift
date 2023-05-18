@@ -228,7 +228,7 @@ struct QRCodeView: View {
         let data = Data(self.data.utf8)
         filter.setValue(data, forKey: "inputMessage")
         let ciImage = filter.outputImage
-        
+         
         let context = CIContext()
         guard let cgImage = context.createCGImage(ciImage!, from: ciImage!.extent) else {
             fatalError("Failed to create CGImage from CIImage.")

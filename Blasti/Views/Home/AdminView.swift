@@ -18,7 +18,7 @@ struct AdminView: View {
                     List {
                         Section(header: Text("Welcome to Admin Menu")
                         ){
-                            NavigationLink(destination:                             AddMoviesView()) {
+                            NavigationLink(destination:AddMoviesView()) {
                                 Label("Add Movie", systemImage: "film")
                                     .foregroundColor(Color("Color"))
                                     .font(.system(size: 20, design: .rounded).weight(.light))
@@ -30,13 +30,13 @@ struct AdminView: View {
                                 .foregroundColor(Color("Color"))
                                 .font(.system(size: 20, design: .rounded).weight(.light))
                             //     }
-                            //       NavigationLink(destination: EventTicket())  {
-                            Label("Add Event", systemImage:"music.mic")
-                                .foregroundColor(Color("Color"))
-                                .font(.system(size: 20, design: .rounded).weight(.light))
-                            // }
+                            NavigationLink(destination: AddEventsView())  {
+                                Label("Add Event", systemImage:"music.mic")
+                                    .foregroundColor(Color("Color"))
+                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                            }
                             // Add more reservation buttons as needed
-                        }                          //.listRowBackground(Color.Color("y").opacity(0.7))
+                        }                         //.listRowBackground(Color.Color("y").opacity(0.7))
                         //     .foregroundColor(Color.black)
                         .font(.system(size: 20, design: .rounded).weight(.bold))
                         
@@ -56,16 +56,16 @@ struct AdminView: View {
                 .frame(width: 400, height: 800)
                 .offset(x:0,y:-40))
             
-                        .ignoresSafeArea(.all)
+            .ignoresSafeArea(.all)
             
             
             
         }
-        }
-       
-    
-
     }
+    
+    
+    
+}
 
 struct AdminView_Previews: PreviewProvider {
     static var previews: some View {

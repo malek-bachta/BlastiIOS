@@ -17,7 +17,7 @@ struct VerifyPasswordKey: View {
     var body: some View {
         NavigationView {
             ZStack {
-                Color.black
+                Color("c1")
                     .ignoresSafeArea()
 
                 Circle()
@@ -54,7 +54,7 @@ struct VerifyPasswordKey: View {
 
                 VStack {
                     Text("Verify Password Key")
-                        .foregroundColor(.white)
+                        .foregroundColor(Color("rev"))
                         .font(.system(size: 30, design: .rounded).weight(.semibold))
                         .font(.largeTitle)
                         .bold()

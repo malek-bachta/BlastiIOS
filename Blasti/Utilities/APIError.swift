@@ -14,6 +14,8 @@ enum APIError: Error, CustomStringConvertible {
     case badResponse(Int)
     case decoding(DecodingError?)
     case unknown
+    case ivalidlogin
+    case invalidCredentials
     
     var description: String {
         switch self {
@@ -27,6 +29,10 @@ enum APIError: Error, CustomStringConvertible {
                 return "decoding error: \(decodingError)"
             case .unknown:
                 return "unknown error"
+        case .ivalidlogin:
+            return "login error"
+        case .invalidCredentials:
+            return "invalidCredentials error"
         }
     }
     
@@ -40,6 +46,11 @@ enum APIError: Error, CustomStringConvertible {
                 return "something went wrong"
             case .decoding(let decodingError):
                 return decodingError?.localizedDescription ?? "something went wrong"
+        case .ivalidlogin:
+            return "ThePasswordDoesNotMeetTheRequiredComplexityRules"
+        case .invalidCredentials:
+            return "invalidCredentials error"
+      
         }
     }
 }
