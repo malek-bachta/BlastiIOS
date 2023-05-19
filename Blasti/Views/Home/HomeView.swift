@@ -11,7 +11,11 @@ struct HomeView: View {
     @State private var searchText = ""
     @ObservedObject private var moviesViewModel = MoviesViewModel()
     @ObservedObject private var eventViewModel = EventsViewModel()
+    @ObservedObject private var svm = ShowsViewModel()
+
     @State private var filteredMovies: [Movie] = []
+    @State private var filteredEvents: [Event] = []
+    @State private var filteredShows: [Show] = []
     @State private var shouldAnimate = false
 
 
@@ -45,6 +49,7 @@ struct HomeView: View {
                                 filteredMovies = moviesViewModel.movies.filter { movie in
                                     movie.title.localizedCaseInsensitiveContains(searchText)
                                 }
+                                
                             }
                         })
 
@@ -125,8 +130,8 @@ struct HomeView: View {
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 5) {
-                                ForEach(searchText.isEmpty ? moviesViewModel.movies : filteredMovies, id: \.self) { movie in
-                                    MovieCardView(movie: movie)
+                                ForEach(svm.shows, id: \.self) { show in
+                                    ShowCardView(show: show)
                                 }
                             }
                             
@@ -169,8 +174,8 @@ struct MovieCardView: View {
     let movie: Movie
     @State var showdetail = false
     @State private var VerifFavorite = false
-
-
+    @StateObject var fvm = FavoriteMViewModel()
+    
     var body: some View {
         VStack(alignment: .center) {
             if let url = URL(string: baseUrl+"images/\(movie.image)") {
@@ -232,14 +237,78 @@ struct MovieCardView: View {
         .onTapGesture {
                     showdetail=true
                     let id = UserDefaults.standard.string(forKey: "id")
+            let favoriteM = FavoriteM(idMovie: movie.id, idUser: getuser()!.id )
+            VerifFavorite = fvm.verfi(request: favoriteM)
                 }.sheet(isPresented: $showdetail){
-                    HotelDetail(movie: movie, VerifFavorite: VerifFavorite)
+                   
+                    HotelDetail(fvm: fvm,movie: movie,  VerifFavorite: VerifFavorite)
                 }
 
     }
 }
 
 
+
+struct ShowCardView: View {
+    var show: Show
+
+    var body: some View {
+        VStack(alignment: .center) {
+
+            if let url = URL(string: baseUrl+"images/\(show.image)") {
+
+                                        AsyncImage(url:url) { phase in
+                                            switch phase {
+                                            case .success(let image):
+                                                image
+                                                    .resizable()
+                                                    .aspectRatio(contentMode: .fill)
+                                                    .frame(width: 200, height:250 )
+                                                    .clipShape(Rectangle())
+                                                    .cornerRadius(5)
+
+                                                    .clipShape(Rectangle())
+
+                                            case .failure(let error):
+                                                Text(error.localizedDescription)
+
+                                            case .empty:
+                                                Rectangle().foregroundColor(Color .gray)
+                                            @unknown default:
+                                                Text("Unknown error")
+                                            }
+                                        } } else {
+                                            Text("Invalid URL")}
+            VStack{
+                Button(action: {
+
+               }) {
+               Image( systemName: "star.fill")
+
+                       .shadow(color:.white.opacity(0.7), radius: 5, x: 0, y: 2)
+                       .foregroundColor(Color("y"))
+               .font(.system(size: 25))
+               }.padding(EdgeInsets(top: -250, leading: 150, bottom: 0, trailing: 0))
+            }
+
+            Text(show.title)
+                .foregroundColor(Color.white)
+                .frame(width: 200,height: 50)
+               // .cornerRadius(5)
+                .background(  LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+                .offset(x:0,y:-60)
+
+                .font(.system(size: 20, design: .rounded).weight(.semibold))
+
+
+
+            }
+        .padding(3)
+      //   .background(Color.white.opacity(0.2))
+         .cornerRadius(5)
+         .shadow(color: Color("rev").opacity(0.3), radius: 5, x: 0, y: 4)
+    }
+}
 
 
 struct EventCardView: View {
@@ -309,3 +378,16 @@ struct HomeView_Previews: PreviewProvider {
     }
 }
 
+func getuser() -> LogedInUser? {
+    let defaults = UserDefaults.standard
+    
+    if let savedUser = defaults.object(forKey: "user") as? Data {
+        let decoder = JSONDecoder()
+        
+        if let loadedUser = try? decoder.decode(LogedInUser.self, from: savedUser) {
+            return loadedUser
+        }
+    }
+    
+    return nil
+}

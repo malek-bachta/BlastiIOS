@@ -25,11 +25,11 @@ struct AdminView: View {
                                 
                             }
                             
-                            //NavigationLink(destination:  ShowTicket()) {
-                            Label("Add Show", systemImage: "star.circle.fill")
-                                .foregroundColor(Color("Color"))
-                                .font(.system(size: 20, design: .rounded).weight(.light))
-                            //     }
+                            NavigationLink(destination:  AddShowsView()) {
+                                Label("Add Show", systemImage: "star.circle.fill")
+                                    .foregroundColor(Color("Color"))
+                                    .font(.system(size: 20, design: .rounded).weight(.light))
+                            }
                             NavigationLink(destination: AddEventsView())  {
                                 Label("Add Event", systemImage:"music.mic")
                                     .foregroundColor(Color("Color"))

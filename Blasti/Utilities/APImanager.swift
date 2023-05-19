@@ -411,39 +411,6 @@ class NetworkService {
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-    
-    
-//    func sendAdminRoleRequest(adminEmail: String, onSuccess: @escaping () -> Void, onFailure: @escaping (_ title: String, _ message: String) -> Void) {
-//        let sendAdminRoleRequestURL = "https://serverblasti.onrender.com/api/user/mrigel"
-//        AF.request(sendAdminRoleRequestURL, method: .post, parameters: ["adminEmail": adminEmail], encoding: JSONEncoding.default)
-//            .validate(statusCode: 200..<401)
-//            .validate(contentType: ["application/json", "text/html"])
-//            .responseJSON { response in
-//                print("Response: \(response)")
-//
-//                switch response.result {
-//                case .success(let data):
-//                    print("Data: \(data)")
-//
-//                    if let jsonData = data as? [String: Any], let message = jsonData["message"] as? String {
-//                        if message == "Email sent" {
-//                            print("Admin role request sent")
-//                            onSuccess()
-//                        } else {
-//                            print("Error sending admin role request")
-//                            onFailure("Error", "Error sending admin role request")
-//                        }
-//                    } else {
-//                        print("Data is not a JSON dictionary or missing message")
-//                        onFailure("Error", "Invalid response format")
-//                    }
-//                case .failure(let error):
-//                    print("Error: \(error)")
-//                    print("Response result: \(response.result)")
-//                    onFailure("Error", "Network request failed")
-//                }
-//            }
-//    }
 
 
     func sendAdminRoleInvitation(email: String, onSuccess: @escaping (LogedInUser) -> Void, onFailure: @escaping (_ error: Error) -> Void) {
@@ -495,11 +462,115 @@ class NetworkService {
         }
     }
     
+
+   
+    
+    
+    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    func AddShow(title: String,
+                  place: String,
+                  genre: String,
+                  description: String,
+                  image: UIImage,
+                  onSuccess: @escaping (_ title: String, _ message: String) -> Void,
+                  onFailure: @escaping (_ title: String, _ message: String) -> Void) {
+        
+        let AddEventURL = baseUrl+"api/shows/add"
+        
+        let headers: HTTPHeaders = ["Content-type": "multipart/form-data"]
+        
+        AF.upload(multipartFormData: { multipartFormData in
+            multipartFormData.append(title.data(using: .utf8)!, withName: "title")
+            multipartFormData.append(place.data(using: .utf8)!, withName: "place")
+            multipartFormData.append(genre.data(using: .utf8)!, withName: "genre")
+            multipartFormData.append(description.data(using: .utf8)!, withName: "description")
+
+            if let imageData = image.jpegData(compressionQuality: 0.5) {
+                multipartFormData.append(imageData, withName: "image", fileName: "image.jpeg", mimeType: "image/jpeg")
+            }
+            
+        }, to: AddEventURL, usingThreshold: MultipartFormData.encodingMemoryThreshold, method: .post, headers: headers)
+        .validate(statusCode: 200..<401)
+        .validate(contentType: ["application/json"])
+        .responseJSON { response in
+            switch response.result {
+            case .success(let data):
+                guard let jsonData = data as? [String: Any],
+                      let statusCode = response.response?.statusCode else {
+                    onFailure("Error", "Invalid response format")
+                    return
+                }
+                onSuccess("congrats", "the event is added succesfully.")
+            case .failure(let error):
+                print(error)
+                onFailure("Error", "Network request failed")
+            }
+        }
+    }
+    
+    
+    
+    
+    
     
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     
-   
+    
+
+    func fetchShows( completion: @escaping(Result<[Show],APIError>) -> Void) {
+        let url = URL(string : baseUrl+"api/shows/all")
+//        createURL(for:   .movie, page: nil, limit: nil)
+        fetche(type: [Show].self, url: url, completion: completion)
+    }
+
+    func fetchs<T: Decodable>(type: T.Type, url: URL?, completion: @escaping(Result<T,APIError>) -> Void) {
+
+        guard let url = url else {
+            let error = APIError.badURL
+            completion(Result.failure(error))
+            return
+        }
+
+        URLSession.shared.dataTask(with: url) { data, response, error in
+
+            if let error = error as? URLError {
+                completion(Result.failure(APIError.urlSession(error)))
+            } else if let response = response as? HTTPURLResponse, !(200...299).contains(response.statusCode) {
+                completion(Result.failure(APIError.badResponse(response.statusCode)))
+            } else if let data = data {
+
+                do {
+                    let result = try JSONDecoder().decode(type, from: data)
+                    completion(Result.success(result))
+                } catch {
+                    completion(Result.failure(.decoding(error as? DecodingError)))
+                }
+            }
+        }.resume()
+    }
+
+
+    func createURLs(for type: EntityType, page: Int?, limit: Int?) -> URL? {
+
+        let baseURL = baseUrl+"api/shows/all"
+        var queryItems = [
+            //URLQueryItem(name: "term", value: searchTerm),
+            URLQueryItem(name: "entity", value: type.rawValue)]
+
+        if let page = page, let limit = limit {
+            let offset = page * limit
+            queryItems.append(URLQueryItem(name: "limit", value: String(limit)))
+            queryItems.append(URLQueryItem(name: "offset", value: String(offset)))
+        }
+
+        var components = URLComponents(string: baseURL)
+        components?.queryItems = queryItems
+        return components?.url
+    }
+    
+    
 
 }
 

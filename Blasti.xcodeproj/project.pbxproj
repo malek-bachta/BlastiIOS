@@ -54,6 +54,8 @@
 		B03F554B2A16D7C80084A7EC /* ResquestHandler in Resources */ = {isa = PBXBuildFile; fileRef = B03F554A2A16D7C80084A7EC /* ResquestHandler */; };
 		B03F554F2A16D9830084A7EC /* ConfirmResquest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F554E2A16D9830084A7EC /* ConfirmResquest.swift */; };
 		B03F55512A1704670084A7EC /* ForgotRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F55502A1704670084A7EC /* ForgotRequest.swift */; };
+		B03F55532A17563D0084A7EC /* Shows.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F55522A17563D0084A7EC /* Shows.swift */; };
+		B03F55552A1759720084A7EC /* ShowsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B03F55542A1759720084A7EC /* ShowsViewModel.swift */; };
 		B06CBCC629FB488A000A5539 /* TicketsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC529FB488A000A5539 /* TicketsView.swift */; };
 		B06CBCC829FB64BF000A5539 /* FirstScreen.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC729FB64BF000A5539 /* FirstScreen.swift */; };
 		B06CBCCA29FB8196000A5539 /* ReservationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B06CBCC929FB8196000A5539 /* ReservationView.swift */; };
@@ -119,6 +121,8 @@
 		B03F554A2A16D7C80084A7EC /* ResquestHandler */ = {isa = PBXFileReference; lastKnownFileType = folder; path = ResquestHandler; sourceTree = "<group>"; };
 		B03F554E2A16D9830084A7EC /* ConfirmResquest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmResquest.swift; sourceTree = "<group>"; };
 		B03F55502A1704670084A7EC /* ForgotRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotRequest.swift; sourceTree = "<group>"; };
+		B03F55522A17563D0084A7EC /* Shows.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shows.swift; sourceTree = "<group>"; };
+		B03F55542A1759720084A7EC /* ShowsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowsViewModel.swift; sourceTree = "<group>"; };
 		B06CBCC529FB488A000A5539 /* TicketsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TicketsView.swift; sourceTree = "<group>"; };
 		B06CBCC729FB64BF000A5539 /* FirstScreen.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstScreen.swift; sourceTree = "<group>"; };
 		B06CBCC929FB8196000A5539 /* ReservationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReservationView.swift; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				B035B9952A0C83F10071D95E /* FavoritesViewModel.swift */,
 				B0C076EE2A0CDDDA00BC8B66 /* FavoriteMViewModel.swift */,
 				7A2DAD312A152AF300775B92 /* EditProfileViewModel.swift */,
+				B03F55542A1759720084A7EC /* ShowsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -287,6 +292,7 @@
 				B035B9932A0C82AE0071D95E /* database.swift */,
 				B0C076EC2A0CDDA100BC8B66 /* FavoriteM.swift */,
 				7A2DAD332A1579C500775B92 /* File.swift */,
+				B03F55522A17563D0084A7EC /* Shows.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -454,6 +460,7 @@
 				B0C076EF2A0CDDDA00BC8B66 /* FavoriteMViewModel.swift in Sources */,
 				E6E846E52A046B250076EE03 /* QRCodeView.swift in Sources */,
 				220704AB29EFD47C00D215ED /* MovieTicket.swift in Sources */,
+				B03F55552A1759720084A7EC /* ShowsViewModel.swift in Sources */,
 				22C455CF29DF8446001ACFF6 /* SignUpViewModel.swift in Sources */,
 				7AAEE59D29DDAF4C0095EADD /* splash.swift in Sources */,
 				7A2DAD322A152AF300775B92 /* EditProfileViewModel.swift in Sources */,
@@ -468,6 +475,7 @@
 				7A2DAD362A163DD500775B92 /* ChangePasswordView.swift in Sources */,
 				7AA6999629E83027005FEA9F /* HomeView.swift in Sources */,
 				B087253529E77C6700CF5E57 /* Coordinator.swift in Sources */,
+				B03F55532A17563D0084A7EC /* Shows.swift in Sources */,
 				2270425B29E8D08D0021272D /* APIError.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

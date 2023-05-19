@@ -13,7 +13,7 @@ import CoreImage.CIFilterBuiltins
 
 struct HotelDetail: View {
     @ObservedObject var mm = MoviesViewModel()
-    @ObservedObject var fvm = FavoriteMViewModel()
+    @ObservedObject var fvm : FavoriteMViewModel
 
     @State var added=false
     
@@ -56,7 +56,11 @@ struct HotelDetail: View {
                                 } } else {
                                     Text("Invalid URL")
                                 }
-                            if(VerifFavorite){
+                            
+                                            
+                                            // Add a Spacer to push the heart button to the bottom corner
+                                            Spacer()
+                            if(VerifFavorite == false){
                                
                                 Button(action: {
                                     print("aaaaaaaaaaa",VerifFavorite)
@@ -82,6 +86,9 @@ struct HotelDetail: View {
                                             .font(.system(size: 40))
                                 }
                                 .padding(10)
+                                .alignmentGuide(HorizontalAlignment.center) { _ in
+                                                    100 // Align the button to the center horizontally
+                                                }
                             }else{
                                 Button(action: {
                                     let request = FavoriteM(idMovie: movie._id, idUser: mm.user!.id)
@@ -106,6 +113,10 @@ struct HotelDetail: View {
                                         .padding(10)
                                         .font(.system(size: 40))
                                     
+                                }
+                                .padding(.bottom, 10)
+                                .alignmentGuide(HorizontalAlignment.center) { _ in
+                                    0 // Align the button to the center horizontally
                                 }
                                 
                             }

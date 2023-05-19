@@ -10,13 +10,47 @@ import Alamofire
 class FavoriteMViewModel: ObservableObject {
     @Published var movies: [Movie] = []
     var mvm = MoviesViewModel()
-   
+    @Published var verof:Bool=false
+    
     
     init() {
         
         fetchFavMovies(id: mvm.getuser()!.id)
     }
+    func verfi(request: FavoriteM)->Bool{
+        print("malek ja lhna")
+        verifFavorite(request: request) { result in
+            switch result {
+                
+            case .success(let response):
+                // Action si la connexion est réussie
+                print(response)
+                self.verof = true
+                //   self.redirectToHomePage = true // Set redirectToHomePage to true
+            case .failure(let error):
+                // Action si la connexion échoue
+                print(error)
+            }
+            print(request)
+        }
+        return verof
+    }
     
+    
+//    func verif(idMovie:String , idUser:String){
+//        verifFavorite(request: FavoriteM(idMovie: idMovie, idUser: idUser), onSuccess: { (title, message) in
+//            DispatchQueue.main.async {
+//                self.verof = true
+//
+//                }
+//            }
+//        }, onFailure: { (title, message) in
+//            DispatchQueue.main.async {
+//
+//            }
+//        })
+//    }
+//
     func fetchFavMovies(id:String) {
         
         
@@ -100,7 +134,7 @@ class FavoriteMViewModel: ObservableObject {
                                 let messageResponse = try JSONDecoder().decode(MessageResponse.self, from: data)
                                 completion(.success(messageResponse))
                                 print(messageResponse)
-                               
+                                
                             } catch {
                                 print(error)
                                 completion(.failure(error))
@@ -125,7 +159,7 @@ class FavoriteMViewModel: ObservableObject {
     
     
     func deleteFavorite(request: FavoriteM, completion: @escaping (Result<MessageResponse, Error>) -> ()) -> DataRequest {
-        let url = baseUrl+"api/favorite/delete"
+        let url = baseUrl+"api/favoriteMovie/delete"
         
         do {
             let encodedRequest = try JSONEncoder().encode(request)

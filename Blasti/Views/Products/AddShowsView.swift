@@ -4,25 +4,17 @@ import UIKit
 import CoreData
 
 struct AddShowsView: View {
-    // @StateObject var mm = ShowsViewModel()
+    @StateObject var svm = ShowsViewModel()
     
     @Environment(\.presentationMode) private var presentationMode
     @State private var showTitle = ""
-    /*************************************/
-    @State var genre: String
-    @State var name: String
-     @State var duration: String
-    @State var language: String
-    @State var Production   : String
-    @State var description: String
-    
-    /*******************************/
     @State private var showReleaseDate = ""
     @State private var selectedDate = Date()
     @State private var selectedLanguage: String = ""
     @State private var showCover: UIImage? = nil
     @State private var isImagePickerDisplayed = false
     @State private var showDuration: Double = 0
+    @State private var sourceType: UIImagePickerController.SourceType = .photoLibrary
     
     private var numberFormatter: NumberFormatter {
         let formatter = NumberFormatter()
@@ -33,26 +25,37 @@ struct AddShowsView: View {
     var body: some View {
         NavigationView {
             ZStack {
-               
+                
                 ScrollView {
                     VStack(alignment: .leading, spacing: 20) {
-                        Text("Add Show")
+                        Text("Add Movie")
                             .font(.system(size: 35, design: .rounded).weight(.bold))
                             .bold()
-                            .foregroundColor(.white)
+                            .foregroundColor(Color("Color"))
                             .padding(.bottom, 18)
                             .padding(.top, 80)
-                        
-                        //   mm.showInput(title: "Show Title", placeholder: "Enter Show Title", text: $mm.title)
+                        VStack(alignment: .leading, spacing: 15) {
+                                   Text("Title")
+                                       .font(.headline)
+                                       .foregroundColor(Color("rev"))
+                       
+                            TextField("placeholder", text: $svm.title)
+                                       .padding()
+                                       .background(Color("rev").opacity(0.3))
+                                       .cornerRadius(8)
+                                       .foregroundColor(.white)
+                               }
+                               .padding(.horizontal)
+//                        mm.movieInput(title: "Movie Title", placeholder: "Enter Movie Title", text: $mm.title)
                         
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Genre")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
-                            TextField("Enter Genre" , text: $genre)
+                            TextField("Enter Genre", text: $svm.genre)
                                 .padding()
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
@@ -62,7 +65,7 @@ struct AddShowsView: View {
                                 .font(.headline)
                                 .foregroundColor(.white)
                             
-                              Picker(selection: $language, label:
+                            Picker(selection: $svm.language, label:
                                     HStack {
                                 Text("Select Language")
                                     .foregroundColor(.white)
@@ -84,7 +87,7 @@ struct AddShowsView: View {
                             .pickerStyle(MenuPickerStyle())
                             .padding()
                             .frame(width: 140, height: 50)
-                            .background(Color.white.opacity(0.3))
+                            .background(Color("rev").opacity(0.3))
                             .cornerRadius(8)
                             
                         }
@@ -93,12 +96,12 @@ struct AddShowsView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Duration")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
-                            TextField("Enter Show Duration (minutes)" , value: $duration, formatter: numberFormatter )
+                            TextField("Enter Movie Duration (minutes)", value: $svm.duration, formatter: numberFormatter)
                                 .padding()
                                 .keyboardType(.numberPad)
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .frame(width: 140)
                                 .cornerRadius(8)
                         }
@@ -107,11 +110,12 @@ struct AddShowsView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Date")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
-                            DatePicker("Enter Show Date", selection: $selectedDate, displayedComponents: .date)
+                            DatePicker("Enter Movie Date", selection: $selectedDate, displayedComponents: .date)
                                 .labelsHidden()
-                                .accentColor(.white)
+                                .accentColor(Color("y"))
+                                .colorMultiply(Color("y"))
                                 .foregroundColor(.white)
                         }
                         .padding(.horizontal)
@@ -119,34 +123,46 @@ struct AddShowsView: View {
                         VStack(alignment: .leading, spacing: 15) {
                             Text("Description")
                                 .font(.headline)
-                                .foregroundColor(.white)
-                            TextField("Enter Show Description" , text: $description)
+                                .foregroundColor(Color("rev"))
+                            TextField("Enter Movie Description", text: $svm.description)
                                 .padding()
                                 .frame(height: 100)
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
-                        
+//
                         VStack(alignment: .leading, spacing: 15) {
-                            Text("Production")
+                            Text("Address")
                                 .font(.headline)
-                                .foregroundColor(.white)
+                                .foregroundColor(Color("rev"))
                             
-                            TextField("Enter the writer and the director" , text: $Production)
+                            TextField("Enter adress", text: $svm.place)
                                 .padding()
-                                .background(Color.white.opacity(0.3))
+                                .background(Color("rev").opacity(0.3))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
                         
 //                        VStack(alignment: .leading, spacing: 15) {
+//                            Text("Production")
+//                                .font(.headline)
+//                                .foregroundColor(.white)
+//
+//                            TextField("Enter the writer and the director", text: $mm.Production)
+//                                .padding()
+//                                .background(Color.white.opacity(0.3))
+//                                .cornerRadius(8)
+//                        }
+//                        .padding(.horizontal)
+////
+//                        VStack(alignment: .leading, spacing: 15) {
 //                            Text("Image")
 //                                .font(.headline)
 //                                .foregroundColor(.white)
 //
-//                            if let showCover = showCover {
-//                                Image(uiImage: showCover)
+//                            if let movieCover = movieCover {
+//                                Image(uiImage: movieCover)
 //                                    .resizable()
 //                                    .scaledToFit()
 //                                    .cornerRadius(8)
@@ -163,11 +179,52 @@ struct AddShowsView: View {
 //                        }
 //                        .padding(.horizontal)
 //                        .sheet(isPresented: $isImagePickerDisplayed) {
-//                            ImagePicker(selectedImage: $showCover, isShown: $isImagePickerDisplayed)
+//                            ImagePicker(selectedImage: $movieCover, isShown: $isImagePickerDisplayed)
 //                        }
-//
+////
+                        VStack(alignment: .leading, spacing: 15){
+                                        if let selectedImage = showCover {
+                                            Image(uiImage: selectedImage)
+                                                .resizable()
+                                                .scaledToFit()
+                                                .clipShape(Circle())
+                                                .padding()
+                                        } else {
+                                            Button(action: {
+                                                PHPhotoLibrary.requestAuthorization(for: .readWrite) { status in
+                                                    DispatchQueue.main.async {
+                                                        switch status {
+                                                        case .authorized:
+                                                            self.isImagePickerDisplayed = true
+                                                            break
+                                                        case .denied, .restricted:
+                                                            // Handle denied or restricted permission
+                                                            break
+                                                        case .notDetermined:
+                                                            // Handle not determined permission
+                                                            break
+                                                        default:
+                                                            break
+                                                        }
+                                                    }
+                                                }
+                                                // Code to be executed when the button is tapped
+                                                print("Button tapped")
+                                            }) {
+                                                Image(systemName: "photo").resizable().frame(width: 30,height: 30)// Set the icon using an SF Symbol
+                                                    .foregroundColor(.gray)
+                                                Text("Photo").foregroundColor(Color.black)// Set the icon's color
+                                            }
+                                            .sheet(isPresented: $isImagePickerDisplayed) {
+                                                ImagePicker(image: self.$svm.image, sourceType: self.sourceType)
+                                            }
+                                        }
+                                    }
+
                         Button(action: {
-                          /*  mm.addShow(title: mm.title, genre: mm.genre, description: mm.description)*/
+                            svm.addShow(title: svm.title, place: svm.place, genre: svm.genre, description: svm.description, image: svm.image
+                            )
+                            
                             presentationMode.wrappedValue.dismiss()
                         }) {
                             Text("Add Show")
@@ -175,32 +232,35 @@ struct AddShowsView: View {
                                 .foregroundColor(.black)
                                 .padding()
                                 .frame(maxWidth: .infinity)
-                                .background(Color.yellow)
+                                .background(Color("y"))
                                 .cornerRadius(8)
                         }
                         .padding(.horizontal)
+                        
                     }
                     .padding(.horizontal)
+                    Spacer()
+                        .frame(height: 100)
+
                 }
-                .navigationBarItems(leading: Button(action: {
-                    presentationMode.wrappedValue.dismiss()
-                }) {
-                    Text("Cancel")
-                        .foregroundColor(.yellow)
-                        .offset(x:0,y:-20)
-                })
-            } .background(Image("splash")
+//                .navigationBarItems(leading: Button(action: {
+//                    presentationMode.wrappedValue.dismiss()
+//                }) {
+//                    Text("Cancel")
+//                        .foregroundColor(.yellow)
+//                        .offset(x:0,y:-20)
+//                })
+            }
+            .background(Image("splash")
                 .resizable()
                 .ignoresSafeArea()
-                .scaledToFill())
-        }
+                .scaledToFill())        }
         
     }
     
-    struct SwiftUIView_Previews: PreviewProvider {
+    struct SwiftUView_Previews: PreviewProvider {
         static var previews: some View {
-            AddShowsView(genre: "", name:"", duration: "", language: "", Production: "", description: "")
+            AddShowsView()
         }
     }
 }
-
