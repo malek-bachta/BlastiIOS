@@ -86,7 +86,7 @@ struct HomeView: View {
                                     
                                     .padding(.horizontal, 0)
                                     .onAppear {
-                                        print("Movies in HomeView: \(moviesViewModel.movies)")
+//                                        print("Movies in HomeView: \(moviesViewModel.movies)")
                                     }
                                                   }
                                 
@@ -110,7 +110,7 @@ struct HomeView: View {
                             .padding(.horizontal, 5)
                            // .padding(.top, 10)
                             .onAppear {
-                                print("Movies in HomeView: \(eventViewModel.events)")}
+                                print("Event in HomeView: \(eventViewModel.events)")}
                             
                         }
                         
@@ -121,7 +121,7 @@ struct HomeView: View {
                             .fontWeight(.bold)
                             .padding(.horizontal,20)
                            // .padding(.top, 10)
-                            .foregroundColor(Color("rev"))
+                            .foregroundColor(Color("Color"))
                         
                         ScrollView(.horizontal, showsIndicators: false) {
                             HStack(spacing: 5) {
@@ -133,7 +133,9 @@ struct HomeView: View {
                             .padding(.horizontal, 2)
                           //  .padding(.top, 10)
                             .onAppear {
-                                print("Movies in HomeView: \(moviesViewModel.movies)")}
+//                                print("Movies in HomeView: \(moviesViewModel.movies)")
+                                
+                            }
                             
                         }
                         
@@ -171,7 +173,6 @@ struct MovieCardView: View {
 
     var body: some View {
         VStack(alignment: .center) {
-//            let baseURL = "https://serverblasti.onrender.com/"
             if let url = URL(string: baseUrl+"images/\(movie.image)") {
 
                                         AsyncImage(url:url) { phase in
@@ -271,19 +272,34 @@ struct EventCardView: View {
                                             }
                                         } } else {
                                             Text("Invalid URL")}
+            VStack{
+                Button(action: {
 
+               }) {
+               Image( systemName: "star.fill")
+
+                       .shadow(color:.white.opacity(0.7), radius: 5, x: 0, y: 2)
+                       .foregroundColor(Color("y"))
+               .font(.system(size: 25))
+               }.padding(EdgeInsets(top: -250, leading: 150, bottom: 0, trailing: 0))
+            }
 
             Text(event.title)
                 .foregroundColor(Color.white)
-                .font(.system(size: 20, design: .rounded).weight(.light))
+                .frame(width: 200,height: 50)
+               // .cornerRadius(5)
+                .background(  LinearGradient(gradient: Gradient(colors: [.clear, .black]), startPoint: .top, endPoint: .bottom))
+                .offset(x:0,y:-60)
+
+                .font(.system(size: 20, design: .rounded).weight(.semibold))
 
 
 
             }
-       // .padding(20)
-        .background(Color.white.opacity(0.2))
-        .cornerRadius(30)
-        .shadow(color: .white.opacity(0.5), radius: 5, x: 0, y: 4)
+        .padding(3)
+      //   .background(Color.white.opacity(0.2))
+         .cornerRadius(5)
+         .shadow(color: Color("rev").opacity(0.3), radius: 5, x: 0, y: 4)
     }
 }
 

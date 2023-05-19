@@ -55,3 +55,10 @@ struct UserChangePassword:Codable{
     var email: String = ""
     
 }
+
+
+struct UserForgotPassword:Codable{
+    var codeForget:String
+    var email:String
+    var password:String
+}

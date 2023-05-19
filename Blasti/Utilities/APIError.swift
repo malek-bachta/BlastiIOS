@@ -6,8 +6,9 @@
 //
 
 import Foundation
+import SwiftUI
 
-enum APIError: Error, CustomStringConvertible {
+enum APIError: Error {
     
     case badURL
     case urlSession(URLError?)
@@ -17,7 +18,7 @@ enum APIError: Error, CustomStringConvertible {
     case ivalidlogin
     case invalidCredentials
     
-    var description: String {
+    var description: LocalizedStringKey {
         switch self {
             case .badURL:
                 return "badURL"
@@ -26,7 +27,7 @@ enum APIError: Error, CustomStringConvertible {
             case .badResponse(let statusCode):
                 return "bad response with status code: \(statusCode)"
             case .decoding(let decodingError):
-                return "decoding error: \(decodingError)"
+                return "decoding error"
             case .unknown:
                 return "unknown error"
         case .ivalidlogin:

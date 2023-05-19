@@ -27,7 +27,7 @@ class EventsViewModel: ObservableObject {
     @Published var eadd : Bool = false
     
     init(){
-//        self.getEvents()
+        self.getEvents()
     }
     func addEvent(title: String,
                   adress: String,
@@ -63,7 +63,7 @@ class EventsViewModel: ObservableObject {
                             print(events)
 
                         case .failure(let error):
-                            print("error loading movies: \(error)")
+                            print("error loading Events: \(error)")
                         }
             }
         }

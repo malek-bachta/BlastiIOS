@@ -36,6 +36,8 @@ struct ChangePasswordView: View {
                     
                         .foregroundColor(Color("rev"))
                         .padding(.bottom, 100.0)
+                        .bold()
+
                     
                     
                     VStack() {

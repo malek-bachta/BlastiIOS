@@ -13,8 +13,8 @@ struct ForgotPasswordView: View {
 
     var body: some View {
         NavigationView {
-            if (sm.CodeSent == true) {
-                VerifyPasswordKey()
+            if (sm.isSent == true) {
+                ResetPassword( svm: sm)
             } else {
                 ZStack {
                     Color("c1")
@@ -66,17 +66,18 @@ struct ForgotPasswordView: View {
 
                             Button(action: {
                                 if sm.isValidEmail(email: sm.email) {
-                                    sm.sendCodeForgot(email: sm.email)
+                                    sm.forgotpwd()
                                     self.showAlert = true
                                 } else {
                                     self.showError = true
                                 }
                             }) {
-                                Text("Send Key")
-                                    .font(.system(size: 20, design: .rounded).weight(.light))
-                                    .font(.largeTitle)
-                                    .bold()
-                                    .foregroundColor(Color("y"))
+                                    Text("Send Key")
+                                        .font(.system(size: 20, design: .rounded).weight(.light))
+                                        .font(.largeTitle)
+                                        .bold()
+                                        .foregroundColor(Color("y"))
+                                
                             }
                         }
                     }
